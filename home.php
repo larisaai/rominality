@@ -13,7 +13,7 @@ if( !$_SESSION['jUser'] ){
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Rominimal : : home</title>
+  <title>Rominimal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/home.css">
 </head>

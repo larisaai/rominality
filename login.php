@@ -12,9 +12,7 @@
 
 <div class="container">
 
-  <div class="top">
-    Rominimal
-  </div>
+  <div class="top"> Rominimal </div>
 <a href="signup.php">Signup</a>
 
   <div class="content">
