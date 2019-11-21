@@ -1,14 +1,30 @@
+<?php
+    if(!empty($_POST)){
+
+       /* New object of Students() */
+        require_once('../includes/Users_class.php');
+        $user = new User();
+        // get name fields from input in new_student.php
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        
+        // call add method in students object
+        $res = $user->login( $email, $password );
+  
+        if($res){
+            header("Location: lastest_realises.php"); 
+        }
+    }
+    else{
+        echo "nu exista punct si virgula";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
 /* Include <head></head> */
 require_once('../includes/header.php');
-
-/* New object of Students() */
-//require_once('../includes/Students_class.php');
-//$students = new Students();
-/* Get a list of all students in DB */
-//$result = $students->list();
 ?>
 
 <body>
@@ -19,7 +35,7 @@ require_once('../includes/header.php');
     <div class="container">
         <div class="row top-buffer">
             <div class="col-xs-8 col-xs-offset-2">
-                <form class="form-horizontal" method="POST" action="lastest_realises2.php">
+                <form class="form-horizontal" method="POST" action="login.php">
                  
                     <div class="form-group">
                         <label for="director" class="col-sm-2 control-label">Email</label>
