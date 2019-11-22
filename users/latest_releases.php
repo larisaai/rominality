@@ -10,11 +10,11 @@
 <body>
     <?php
     /* Include <head></head> */
-    require_once('../includes/menu.php');
+    require_once('../includes/menu_logged.php');
     ?>
     <div class="container">
         <div class="row top-buffer">
-            <h3>Lastest realises</h3>
+            <h3>Latest releases</h3>
             <div class="col-xs-8 col-xs-offset-2">
                 <div>Welcome, <?php echo   $_SESSION['user']['name'] ; 
             ?></div>
