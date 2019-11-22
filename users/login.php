@@ -7,17 +7,15 @@
         // get name fields from input in new_student.php
         $email = $_POST["email"];
         $password = $_POST["password"];
-        
+
         // call add method in students object
         $res = $user->login( $email, $password );
   
         if($res){
-            header("Location: lastest_realises.php"); 
+            header("Location: latest_releases.php"); 
         }
     }
-    else{
-        echo "nu exista punct si virgula";
-    }
+   
 ?>
 
 <!DOCTYPE html>

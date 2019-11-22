@@ -13,7 +13,7 @@
         // call add method in students object
         $res = $user->create($first, $last, $email, $password, $confirm_password );
         if($res){
-            header("Location: lastest_realises.php"); 
+            header("Location: latest_releases.php"); 
         }
         else{
             echo "email is take or any other error";
