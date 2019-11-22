@@ -1,24 +1,23 @@
 <?php
-    if(!empty($_POST)){
+if (!empty($_POST)) {
 
-       /* New object of Students() */
-        require_once('../includes/User_class.php');
-        $user = new User();
-        // get name fields from input in new_student.php
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+    /* New object of Students() */
+    require_once('../classes/User_class.php');
+    $user = new User();
+    // get name fields from input in new_student.php
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-        // call add method in students object
-        $res = $user->login( $email, $password );
-  
-        if($res ){
-            header("Location: latest_releases.php"); 
-        } else {
-            header("Location: login.php"); 
+    // call add method in students object
+    $res = $user->login($email, $password);
 
-        }
+    if ($res) {
+        header("Location: latest_releases.php");
+    } else {
+        header("Location: login.php");
     }
-   
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +36,7 @@ require_once('../includes/header.php');
         <div class="row top-buffer">
             <div class="col-xs-8 col-xs-offset-2">
                 <form class="form-horizontal" method="POST" action="login.php">
-                 
+
                     <div class="form-group">
                         <label for="director" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
@@ -51,7 +50,7 @@ require_once('../includes/header.php');
                             <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required>
                         </div>
                     </div>
-                   
+
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">

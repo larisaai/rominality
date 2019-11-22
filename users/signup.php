@@ -1,25 +1,23 @@
 <?php
-    if(!empty($_POST)){
-        /* New object of Students() */
-        require_once('../includes/Users_class.php');
-        $user = new User();
+if (!empty($_POST)) {
+    /* New object of Students() */
+    require_once('../classes/Users_class.php');
+    $user = new User();
 
-        // get name fields from input in new_student.php
-        $first = $_POST["firstname"];
-        $last =  $_POST["lastname"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $confirm_password = $_POST["confirm_password"];
-        // call add method in students object
-        $res = $user->create($first, $last, $email, $password, $confirm_password );
-        if($res){
-            header("Location: latest_releases.php"); 
-        }
-        else{
-            echo "email is take or any other error";
-        }
-     
+    // get name fields from input in new_student.php
+    $first = $_POST["firstname"];
+    $last =  $_POST["lastname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
+    // call add method in students object
+    $res = $user->create($first, $last, $email, $password, $confirm_password);
+    if ($res) {
+        header("Location: latest_releases.php");
+    } else {
+        echo "email is take or any other error";
     }
+}
 ?>
 
 <!DOCTYPE html>
