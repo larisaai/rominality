@@ -12,7 +12,7 @@ class User
         if ($con) {
 
             try {
-                
+
                 if($this->checkEmailExists($email)){
                     return false;
                 };
@@ -50,7 +50,9 @@ class User
         if ($con) {
            
             $results = array();
-            $stmt = $con->prepare("SELECT * FROM users WHERE email = :email AND password = :password Limit 1");
+            $stmt = $con->prepare("SELECT * FROM users WHERE email = :email AND
+             password = :password AND
+             active = 1 LIMIT 1");
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             $result = $stmt->execute();
@@ -72,7 +74,6 @@ class User
     }
 
     function checkEmailExists($email){
-
         session_start();
         $db = new DB();
     

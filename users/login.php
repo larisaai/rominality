@@ -2,7 +2,7 @@
     if(!empty($_POST)){
 
        /* New object of Students() */
-        require_once('../includes/Users_class.php');
+        require_once('../includes/User_class.php');
         $user = new User();
         // get name fields from input in new_student.php
         $email = $_POST["email"];
@@ -11,8 +11,11 @@
         // call add method in students object
         $res = $user->login( $email, $password );
   
-        if($res){
+        if($res ){
             header("Location: latest_releases.php"); 
+        } else {
+            header("Location: login.php"); 
+
         }
     }
    
@@ -38,14 +41,14 @@ require_once('../includes/header.php');
                     <div class="form-group">
                         <label for="director" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="director" placeholder="email" name="email">
+                            <input type="email" class="form-control" id="director" placeholder="email" name="email" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="plot" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="plot" placeholder="Password" name="password">
+                            <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required>
                         </div>
                     </div>
                    

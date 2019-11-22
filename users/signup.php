@@ -42,32 +42,32 @@ require_once('../includes/header.php');
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">First Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname">
+                            <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="year" class="col-sm-2 control-label">Last Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname">
+                            <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="director" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="director" placeholder="email" name="email">
+                            <input type="email" class="form-control" id="director" placeholder="email" name="email" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="plot" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="plot" placeholder="Password" name="password">
+                            <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="plot" class="col-sm-2 control-label">Confirm password</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="plot" placeholder="Confirm Password" name="confirm_password">
+                            <input type="text" class="form-control" id="plot" placeholder="Confirm Password" name="confirm_password" required>
                         </div>
                     </div>
 
