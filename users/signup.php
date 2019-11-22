@@ -1,7 +1,7 @@
 <?php
 if (!empty($_POST)) {
     /* New object of Students() */
-    require_once('../classes/Users_class.php');
+    require_once('../classes/User_class.php');
     $user = new User();
 
     // get name fields from input in new_student.php
