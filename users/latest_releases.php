@@ -18,6 +18,7 @@ session_start();
             <div class="col-xs-8 col-xs-offset-2">
                 <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
                     <?php echo $_SESSION['user']['lastname']; ?>
+                    <?php echo $_SESSION['user']['id']; ?>
                 </div>
             </div>
         </div>
