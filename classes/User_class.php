@@ -8,30 +8,36 @@ class User
     //if you have functions that are being used JUST by this class use
     //protected function blalba(){}
 
-    public function create($first_name, $last_name, $email, $password)
+    public function create($first_name, $last_name, $email, $password, $confirmPass)
     {
         $db = new DB();
+
         $con = $db->connect();
 
         if ($con) {
 
             try {
 
-                if ($this->checkEmailExists($email)) {
-                    return false;
+                $errors = $this->checkDataForErrors($first_name, $last_name, $email, $password, $confirmPass);
+
+                if($errors ) {
+                    return $errors;
                 };
-                $stmt = $con->prepare(" INSERT INTO users ( firstname, lastname, email, password, is_active, user_type)
-                        VALUES (:firstname, :lastname, :email, :password, 1, 1)");
+            
+                $stmt = $con->prepare(" INSERT INTO users ( firstname, lastname, email, password, is_active, user_type, profile_picture)
+                        VALUES (:firstname, :lastname, :email, :password, 1, 1, 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png')");
                 $stmt->bindParam(':firstname', $first_name);
                 $stmt->bindParam(':lastname', $last_name);
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':password', $password);
+     
 
                 $ok = $stmt->execute();
 
                 $db->disconnect($con);
 
                 return $this->login($email, $password);
+
             } catch (PDOException $e) {
 
                 return $e->getMessage();
@@ -43,13 +49,22 @@ class User
         }
     }
 
+    public function checkDataForErrors($first_name, $last_name, $email, $password, $confirmPass){
+        if ($confirmPass !==$password ) {
+            return 'paswords are not matching';
+        };
+
+        if ($this->checkEmailExists($email)) {
+            return 'email is already taken';
+        };
+        return false;
+    }
+
+
     public function login($email, $password)
     {
-
-
         $db = new DB();
         $con = $db->connect();
-
 
         if ($con) {
 
@@ -60,17 +75,22 @@ class User
             $result = $stmt->execute();
             $user = $stmt->fetch();
 
-            $this->storeObjectInSession($user, "user");
-
             $db->disconnect($con);
 
-            return true;
+            if($user){
+                 $this->storeObjectInSession($user, "user");
+                 return true;
+            }
+            else{
+                return 'invalid-credentials';
+            }
+          
         } else {
             return false;
         }
     }
 
-    protected function storeObjectInSession($value, $name)
+    protected function storeObjectInSession(  $value, $name)
     {
         session_start();
         $_SESSION[$name] = $value;
@@ -94,4 +114,78 @@ class User
             return false;
         }
     }
+
+
+ 
+public function update($id, $first_name, $last_name, $email, $fileContent, $sExtention)
+{
+    $db = new DB();
+    $con = $db->connect();
+
+    if ($con) {
+
+
+        $sUniqueImageName = uniqid().'.'.$sExtention;
+
+        move_uploaded_file($fileContent , __DIR__."/../images/$sUniqueImageName" );
+
+        $stmt = $con->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, profile_picture = :profilePicture WHERE id = :id');
+
+        $fullPathToProfilePicture = "/images/$sUniqueImageName";
+
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':firstname', $first_name);
+        $stmt->bindParam(':lastname', $last_name);
+        $stmt->bindParam(':email', $email);
+        
+        $stmt->bindParam(':profilePicture',$fullPathToProfilePicture );
+        $ok = $stmt->execute();
+
+        $stmt = null;
+
+        $db->disconnect($con);
+
+        $_SESSION['user']['firstname'] = $first_name;
+        $_SESSION['user']['lastname'] = $last_name;
+        $_SESSION['user']['email'] = $email;
+        $_SESSION['user']['profile_picture'] = $fullPathToProfilePicture;
+
+
+        return ($ok);
+    } else
+        return false;
+}
+
+public function update_password($id, $old_password, $new_password)
+{
+    $db = new DB();
+    $con = $db->connect();
+
+    if ($con) {
+        $stmt = $con->prepare('UPDATE users SET password = :password WHERE id = :id');
+
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':password', $new_password);
+        $ok = $stmt->execute();
+
+        
+
+        $stmt = null;
+        $db->disconnect($con);
+
+        $_SESSION['user']['password'] = $new_password;
+
+        return $ok;
+    } else
+        return false;
+}
+
+
+
+
+
+
+
+
+
 }

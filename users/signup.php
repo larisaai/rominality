@@ -1,4 +1,5 @@
 <?php
+$showError = false;
 if (!empty($_POST)) {
     /* New object of Students() */
     require_once('../classes/User_class.php');
@@ -12,10 +13,11 @@ if (!empty($_POST)) {
     $confirm_password = $_POST["confirm_password"];
     // call add method in students object
     $res = $user->create($first, $last, $email, $password, $confirm_password);
-    if ($res) {
+    if ($res ===  true) {
         header("Location: latest_releases.php");
-    } else {
-        echo "email is take or any other error";
+    } else {    
+        $showError = $res;
+        unset($_POST);
     }
 }
 ?>
@@ -40,26 +42,34 @@ require_once('../includes/header.php');
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">First Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" required>
+                            <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" required 
+                                <?php if(!empty($first)){ echo "value=' $first'";  }?>
+                            >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="year" class="col-sm-2 control-label">Last Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required>
+                            <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required
+                            <?php  if(!empty($last)){ echo "value=' $last'";  }?>
+                            >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="director" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="director" placeholder="email" name="email" required>
+                            <input type="email" class="form-control" id="director" placeholder="email" name="email" required 
+                            <?php if(!empty($email)){ echo "value=' $email'";  }?>
+                            >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="plot" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required>
+                            <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required
+                    
+                            >
                         </div>
                     </div>
                     <div class="form-group">
@@ -68,6 +78,12 @@ require_once('../includes/header.php');
                             <input type="text" class="form-control" id="plot" placeholder="Confirm Password" name="confirm_password" required>
                         </div>
                     </div>
+                    
+                    <?php
+                        if($showError){
+                            echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                        }
+                    ?>
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">

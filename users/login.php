@@ -1,9 +1,13 @@
 <?php
+
+$showError = false;
+
 if (!empty($_POST)) {
 
     /* New object of Students() */
     require_once('../classes/User_class.php');
     $user = new User();
+
     // get name fields from input in new_student.php
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -11,20 +15,20 @@ if (!empty($_POST)) {
     // call add method in students object
     $res = $user->login($email, $password);
 
-    if ($res) {
+    if($res == 'invalid-credentials'){
+        $showError = 'Invalid credentials';
+    }
+    if ($res === true) {
         header("Location: latest_releases.php");
-    } else {
-        header("Location: login.php");
     }
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <?php
-/* Include <head></head> */
-require_once('../includes/header.php');
+    /* Include <head></head> */
+    require_once('../includes/header.php');
 ?>
 
 <body>
@@ -57,7 +61,13 @@ require_once('../includes/header.php');
                             <input type="submit" class="btn btn-primary" value="Login">
                         </div>
                     </div>
-
+               
+                    <?php
+                        if($showError){
+                            echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                        }
+                    ?>
+                
                 </form>
             </div>
         </div>
