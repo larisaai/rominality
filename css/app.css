@@ -12,3 +12,8 @@
 a.nodecoration{
     text-decoration:none;
 }
+
+.error-text{
+    color:red;
+    
+}

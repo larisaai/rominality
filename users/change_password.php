@@ -27,19 +27,19 @@ session_start();
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">First Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" value="<?php echo $_SESSION['user']['firstname'];  ?>" required>
+                            <input type="password" class="form-control" id="title" placeholder="Old password" name="password" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="year" class="col-sm-2 control-label">Last Name</label>
+                        <label for="new_pass1" class="col-sm-2 control-label">Last Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required>
+                            <input type="password" class="form-control" id="new_pass1" placeholder="New password" name="new_password" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="director" class="col-sm-2 control-label">Email</label>
+                        <label for="new_pass2" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="director" placeholder="email" name="email" required>
+                            <input type="password" class="form-control" id="new_pass2" placeholder="Confirm new password" name="new_password" required>
                         </div>
                     </div>
 
