@@ -18,19 +18,19 @@ class User
 
             try {
 
-
                 $errors = $this->checkDataForErrors($first_name, $last_name, $email, $password, $confirmPass);
 
                 if($errors ) {
                     return $errors;
                 };
             
-                $stmt = $con->prepare(" INSERT INTO users ( firstname, lastname, email, password, is_active, user_type)
-                        VALUES (:firstname, :lastname, :email, :password, 1, 1)");
+                $stmt = $con->prepare(" INSERT INTO users ( firstname, lastname, email, password, is_active, user_type, profile_picture)
+                        VALUES (:firstname, :lastname, :email, :password, 1, 1, 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png')");
                 $stmt->bindParam(':firstname', $first_name);
                 $stmt->bindParam(':lastname', $last_name);
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':password', $password);
+     
 
                 $ok = $stmt->execute();
 
@@ -117,26 +117,38 @@ class User
 
 
  
-public function update($id, $first_name, $last_name, $email)
+public function update($id, $first_name, $last_name, $email, $fileContent, $sExtention)
 {
     $db = new DB();
     $con = $db->connect();
 
     if ($con) {
-        $stmt = $con->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email WHERE id = :id');
+
+
+        $sUniqueImageName = uniqid().'.'.$sExtention;
+
+        move_uploaded_file($fileContent , __DIR__."/../images/$sUniqueImageName" );
+
+        $stmt = $con->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, profile_picture = :profilePicture WHERE id = :id');
+
+        $fullPathToProfilePicture = "/images/$sUniqueImageName";
 
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':firstname', $first_name);
         $stmt->bindParam(':lastname', $last_name);
         $stmt->bindParam(':email', $email);
+        
+        $stmt->bindParam(':profilePicture',$fullPathToProfilePicture );
         $ok = $stmt->execute();
 
         $stmt = null;
+
         $db->disconnect($con);
 
         $_SESSION['user']['firstname'] = $first_name;
         $_SESSION['user']['lastname'] = $last_name;
         $_SESSION['user']['email'] = $email;
+        $_SESSION['user']['profile_picture'] = $fullPathToProfilePicture;
 
 
         return ($ok);
@@ -151,10 +163,12 @@ public function update_password($id, $old_password, $new_password)
 
     if ($con) {
         $stmt = $con->prepare('UPDATE users SET password = :password WHERE id = :id');
-        
+
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':password', $new_password);
         $ok = $stmt->execute();
+
+        
 
         $stmt = null;
         $db->disconnect($con);
