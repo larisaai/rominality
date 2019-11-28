@@ -12,7 +12,6 @@
         $email = $_POST["email"];
         
         $res = $user->update($id, $firstname, $lastname, $email);
-
     }
 
 

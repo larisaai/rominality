@@ -144,7 +144,27 @@ public function update($id, $first_name, $last_name, $email)
         return false;
 }
 
+public function update_password($id, $old_password, $new_password)
+{
+    $db = new DB();
+    $con = $db->connect();
 
+    if ($con) {
+        $stmt = $con->prepare('UPDATE users SET password = :password WHERE id = :id');
+        
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':password', $new_password);
+        $ok = $stmt->execute();
+
+        $stmt = null;
+        $db->disconnect($con);
+
+        $_SESSION['user']['password'] = $new_password;
+
+        return $ok;
+    } else
+        return false;
+}
 
 
 
