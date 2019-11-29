@@ -27,14 +27,17 @@ if ($_POST) {
     // };
 
     $uniqueIdName = uniqid();
-    move_uploaded_file($_FILES['songFile']['tmp_name'], "../uploads/$uniqueIdName");
+   
 
     $fileId = $uniqueIdName;
+    $sExtention = (pathinfo("{$_FILES['songFile']['name']}", PATHINFO_EXTENSION));
+    $fileId .= '.' . $sExtention;
+    move_uploaded_file($_FILES['songFile']['tmp_name'], "../uploads/$fileId");
 
 
-    $song->create($_SESSION['user']['id'], $songName, $artistName, $price, 'EUR', $fileId, $attributes);
-    //$newSong = Song::create();
-}
+    $song->create($_SESSION['user']['id'], $songName, $artistName, $price, 'EUR', $uniqueIdName, $attributes);
+}    
+
 
 ?>
 
