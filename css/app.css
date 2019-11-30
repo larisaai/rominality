@@ -1,21 +1,29 @@
-.top-buffer{
-    margin-top:10px;
-}
+@import "navigation.css";
+@import "landingpage.css";
+@import "forms.css";
+@import "buttons.css";
 
-.movietable tr td:nth-child(2){
-    width: 150px;
-}
 
-.movietable tr:nth-child(1) td{
-    border-top: none;
+* { margin: 0; padding:0; box-sizing: border-box;}
+h1, h2, h3, h4, h5, li, a, p { font-family: 'Poppins', sans-serif;}
+h1 {
+    font-size: 75px;
 }
-a.nodecoration{
-    text-decoration:none;
+h3 {
+    font-size: 45px;
+}
+h4{
+    font-size: 30px;
+}
+.box-wide { 
+    width:80%;
+    max-width: 1200px;
+    display: block;
+    margin: auto;
 }
 
 .error-text{
     color:red;
-    
 }
 
 
