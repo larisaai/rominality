@@ -1,0 +1,41 @@
+
+.login-form { 
+    width: 45%;
+    display: flex;
+    justify-content: center;
+
+}
+.login-form h4{
+    margin-bottom: 50px;
+    text-shadow: 0px 3px 6px #000000B3;
+}
+.form-control {
+     background-color: transparent;
+     border: none;
+     border-bottom: 1px solid white;
+     color: white;
+     font-family: 'Poppins', sans-serif;
+     width: 100%;
+     margin-bottom: 20px;
+     font-size: 17px;
+}
+
+::-webkit-input-placeholder { /* Edge */
+    color: white;
+  }
+  
+:-ms-input-placeholder { /* Internet Explorer */
+    color: white;
+  }
+  
+::placeholder {
+    color: white;
+}
+
+
+
+
+
+
+
+

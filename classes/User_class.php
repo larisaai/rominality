@@ -187,7 +187,7 @@ public function delete_account($id)
     $con = $db->connect();
 
     if ($con) {
-        $stmt = $con->prepare('UPDATE users SET is_active = 0 WHERE id = :id');
+        $stmt = $con->prepare('DELETE from users  WHERE id = :id');
 
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
