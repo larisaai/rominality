@@ -1,4 +1,5 @@
 <?php
+
 echo ' <nav class="navbar navbar-default" role="navigation">
 <div class="container-fluid">
 

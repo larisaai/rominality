@@ -17,17 +17,7 @@ if ($_POST) {
     $price = $_POST['price'];
     $attributes = $_POST['tags'];
 
-
-
-    // $attributeRelationship = new Attribute();
-
-    // foreach ($attributes as $tag => $value) {
-    //     $attributeRelationship->addAttributeRel(3, $value);
-    //     echo $value;
-    // };
-
     $uniqueIdName = uniqid();
-   
 
     $fileId = $uniqueIdName;
     $sExtention = (pathinfo("{$_FILES['songFile']['name']}", PATHINFO_EXTENSION));
@@ -37,8 +27,6 @@ if ($_POST) {
 
     $song->create($_SESSION['user']['id'], $songName, $artistName, $price, 'EUR', $uniqueIdName, $attributes);
 }    
-
-
 ?>
 
 <body>
