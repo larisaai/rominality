@@ -40,10 +40,10 @@ if (!empty($_POST)) {
 
     <div class="hero-container">
         <div class="hero-img-container">
-            <img class="hero-img" src="../img/hero.png">
+            <img class="hero-img" src="../img/hero2.png">
         </div>
         <div class="box-wide">
-            <div class="landing-page-container">
+            <div class="landing-page-container box-wide-inner">
                 <div class="titles">
                     <h1>Play and share</h1>
                     <h3>Underground music community</h3>
@@ -74,7 +74,9 @@ if (!empty($_POST)) {
                     
                     </form>
                 </div>
-                <div class="full-width landing-page-bottom-lines">
+             
+            </div>
+            <div class="full-width landing-page-bottom-lines">
                     <svg xmlns="http://www.w3.org/2000/svg" width="23.5" height="119.009" viewBox="0 0 23.5 119.009">
                         <g id="Group_5" data-name="Group 5" transform="translate(-277 -863.491)">
                             <line id="Line_5" data-name="Line 5" x1="22.5" transform="translate(278 981.5)" fill="none" stroke="#f2edf0" stroke-width="2"/>
@@ -95,12 +97,27 @@ if (!empty($_POST)) {
 
 
                 </div>
-            </div>
         </div>
     </div>
 
+    <div class="about-us-container">
+        <div class="box-wide about-us-inner-container">
+            <div class="about-us-top-left-short-line"></div>
+            <div class="about-us-top-right-short-line"></div>
+            <div class="about-us-bottom-left-short-line"></div>
+            <div class="about-us-bottom-right-short-line"></div>
+            <div class="about-us box-wide-inner">
+                <h2 class="about-title">About us</h2>
+                <p class="about-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            </div>
 
+        </div>
 
+    </div>
+    <?php
+    /* Include <head></head> */
+    require_once('../includes/footer.php');
+?>
 </body>
 
 </html>

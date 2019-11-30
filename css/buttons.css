@@ -9,7 +9,7 @@
    
 }
 .btn-white{ 
-    background-color: white;
+    background-color: var(--lightgrey);
     color: black;
 }
 .login-btn {

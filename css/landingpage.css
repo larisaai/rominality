@@ -5,19 +5,17 @@
     left: 0;
     right: 0;
     top: 0;
-    min-width: 100vw;
+    min-width: 99vw;
     max-width: 100vw;
     object-fit: cover;
-    height: 970px;
+    height: 900px;
 }
 
 .landing-page-container {
-    width:90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: auto;
     padding-top: 250px;
 }
 .landing-page-container div:first-child { 
@@ -25,7 +23,7 @@
 }
 
 .landing-page-container h1, .landing-page-container h3,.landing-page-container h4, .landing-page-container label { 
-    color: white;
+    color: var(--lightgrey);
 }
 .titles h1, .titles h3{
     text-shadow: 0px 3px 6px #000000B2;
@@ -63,3 +61,56 @@
       -webkit-transform: translateY(-15px);
       transform: translateY(-15px);
     }
+}
+
+
+
+
+
+/* ABOUT us */
+.about-us-container {
+    margin-top: 30px;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    background-color: black;
+
+}
+.about-us {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+}
+.about-us h2 ,.about-us p { 
+    color: var(--lightgrey);
+}
+.about-us .about-title {
+     width: 35%;
+    }
+.about-us .about-description { 
+    width: 60%;
+}
+.about-us-inner-container {
+    position: relative;
+}
+
+.about-us-top-left-short-line, .about-us-bottom-right-short-line {
+    height: 2px;
+    width: 100px;
+    background-color: var(--lightgrey);
+}
+.about-us-bottom-right-short-line {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+ .about-us-top-right-short-line, .about-us-bottom-left-short-line {
+    height: 50px;
+    width: 2px;
+    background-color: var(--lightgrey);
+    position: absolute;
+    right: 0;
+}
+.about-us-bottom-left-short-line {
+    bottom: 0;
+    left: 0;
+}
