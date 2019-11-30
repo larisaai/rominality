@@ -17,11 +17,13 @@ h4{
 }
 .box-wide { 
     width:80%;
-    max-width: 1200px;
+    max-width: 1250px;
     display: block;
     margin: auto;
 }
-
+.full-width {
+    width: 100%;
+}
 .error-text{
     color:red;
 }
