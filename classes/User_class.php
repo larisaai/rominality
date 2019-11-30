@@ -69,7 +69,7 @@ class User
         if ($con) {
 
             $results = array();
-            $stmt = $con->prepare("SELECT * FROM users WHERE email = :email AND password = :password Limit 1");
+            $stmt = $con->prepare("SELECT * FROM users WHERE email = :email AND password = :password AND is_active = 1 Limit 1");
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             $result = $stmt->execute();
@@ -180,6 +180,25 @@ public function update_password($id, $old_password, $new_password)
         return false;
 }
 
+
+public function delete_account($id)
+{
+    $db = new DB();
+    $con = $db->connect();
+
+    if ($con) {
+        $stmt = $con->prepare('UPDATE users SET is_active = 0 WHERE id = :id');
+
+        $stmt->bindParam(':id', $id);
+        $ok = $stmt->execute();
+
+        $stmt = null;
+        $db->disconnect($con);
+
+        return $ok;
+    } else
+        return false;
+}
 
 
 

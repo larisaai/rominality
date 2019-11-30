@@ -17,3 +17,25 @@ a.nodecoration{
     color:red;
     
 }
+
+
+.delete-account-container{
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
+ }
+ .delete-account-container.show {
+     display: block;
+ }
+ .delete-account-content{
+     width: 500px;
+     height: 350px;
+     background-color: white;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50% , -50%);
+ }

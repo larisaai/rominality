@@ -72,11 +72,7 @@
                         <a href="change_password.php" class="col-sm-offset-2 col-sm-10"> Change password </a>
                     </div>
                   
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                          <button >Delete profile</button>
-                        </div>
-                    </div>
+                   
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
@@ -85,16 +81,33 @@
                     </div>
                 </form>
 
-
+                <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button class="delete-btn">Delete profile</button>
+                        </div>
+                    </div>
 
                 <div class="image-container">
                     <img src="<?php echo $_SESSION['user']['profile_picture']; ?>" alt="">    
+                </div>
+
+                <div class="delete-account-container">
+                    <div class="delete-account-content">
+                        <p>Are you sure that you want to delete your account?</p> 
+                        <button class="cancel-btn">Cancel</button>
+                        <a href="delete_user.php"><button class="confirm-delete-btn">Yes</button></a>
+                    </div>
                 </div>
             </div>
         </div>
             </div>
         </div>
     </div>
-</body>
 
+
+
+
+<!-- bottom -->
+</body>
+<script src="../scripts/profile.js"></script>
 </html>
