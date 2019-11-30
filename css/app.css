@@ -2,12 +2,19 @@
 @import "landingpage.css";
 @import "forms.css";
 @import "buttons.css";
+@import "footer.css";
 
 
 * { margin: 0; padding:0; box-sizing: border-box;}
+body {
+    --lightgrey: #F2EDF0;
+}
 h1, h2, h3, h4, h5, li, a, p { font-family: 'Poppins', sans-serif;}
 h1 {
     font-size: 75px;
+}
+h2 { 
+    font-size:60px;
 }
 h3 {
     font-size: 45px;
@@ -19,6 +26,10 @@ h4{
     width:80%;
     max-width: 1250px;
     display: block;
+    margin: auto;
+}
+.box-wide-inner {
+    width: 90%;
     margin: auto;
 }
 .full-width {
@@ -43,7 +54,7 @@ h4{
  .delete-account-content{
      width: 500px;
      height: 350px;
-     background-color: white;
+     background-color: var(--lightgrey);
      position: absolute;
      top: 50%;
      left: 50%;

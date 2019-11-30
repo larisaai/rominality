@@ -12,8 +12,8 @@
 .form-control {
      background-color: transparent;
      border: none;
-     border-bottom: 1px solid white;
-     color: white;
+     border-bottom: 1px solid var(--lightgrey);
+     color: var(--lightgrey);
      font-family: 'Poppins', sans-serif;
      width: 100%;
      margin-bottom: 20px;
@@ -21,15 +21,15 @@
 }
 
 ::-webkit-input-placeholder { /* Edge */
-    color: white;
+    color: var(--lightgrey);
   }
   
 :-ms-input-placeholder { /* Internet Explorer */
-    color: white;
+    color: var(--lightgrey);
   }
   
 ::placeholder {
-    color: white;
+    color: var(--lightgrey);
 }
 
 
