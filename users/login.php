@@ -87,6 +87,7 @@ if (!empty($_POST)) {
     require_once('../components/about-us-component.php');
     require_once('../includes/footer.php');
 ?>
+<script src="../scripts/app.js"></script>
 </body>
 
 </html>

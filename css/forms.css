@@ -1,11 +1,16 @@
 
-.login-form { 
+.login-form, .signup-form-container { 
     width: 45%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 350px;
+    height: 450px;
+    flex-wrap: wrap;
 
+}
+.login-form form, .signup-form-container form, .user-sigup-btn-container, .producer-sigup-btn-container { 
+  width: 70%;
+  margin: auto;
 }
 .login-form input[type="text"]:not(:empty) {
   background-color: transparent;
@@ -42,7 +47,14 @@
 ::placeholder {
     color: var(--lightgrey);
 }
-.signup-form .form-group {width: 100%;}
+
+.signup-form {
+   width: 100%;
+  }
+.signup-form .form-group {
+  width: 100%;
+  margin-bottom: 7px;
+}
 
 
 

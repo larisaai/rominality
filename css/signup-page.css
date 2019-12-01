@@ -1,0 +1,27 @@
+
+
+.producer-signup {
+    display: none;
+}
+.user-sigup-btn-container , .producer-sigup-btn-container  {
+ position: relative;
+}
+.user-sigup-btn-container img, .producer-sigup-btn-container img {
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+}
+.user-sigup-btn-container img, .producer-sigup-btn-container img {
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+}
+.user-sigup-btn-container, .producer-sigup-btn-container {
+   opacity: 0.6;
+}
+.user-sigup-btn-container.active, .producer-sigup-btn-container.active {
+    opacity: 1;
+
+}
