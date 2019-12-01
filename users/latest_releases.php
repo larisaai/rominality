@@ -15,7 +15,7 @@ session_start();
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container">
+    <div class="container" style="margin-top:100px;">
         <div class="row top-buffer">
             <h3>Latest releases</h3>
             <div class="col-xs-8 col-xs-offset-2">
@@ -23,7 +23,13 @@ session_start();
                     <?php echo $_SESSION['user']['lastname']; ?>
                     <?php echo $_SESSION['user']['id']; ?>
 
-                    <a href="cart.php">CART: <span id="cartItems"><?php echo count($_SESSION['cartItems']); ?></span></p>
+
+                    <a href="cart.php">CART: <span id="cartItems"><?php if (empty($_SESSION['cartItems'])) {
+                                                                        echo '0';
+                                                                    } else {
+                                                                        echo count($_SESSION['cartItems']);
+                                                                    } ?>
+                        </span></p>
                 </div>
             </div>
 

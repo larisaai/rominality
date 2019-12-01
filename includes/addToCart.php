@@ -5,8 +5,7 @@
 //echo json string
 session_start();
 require_once('../classes/Song_class.php');
-
-$itemNumber = count($_SESSION['cartItems']);
+empty($_SESSION['cartItems']) ? $_SESSION['cartItems'] = array() : $itemNumber = count($_SESSION['cartItems']);
 
 function error()
 {

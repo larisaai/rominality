@@ -115,24 +115,11 @@ CREATE TABLE `users` (
   `is_active` tinyint(4) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
-
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `user_type`, `email`, `password`, `is_active`, `create_at`, `updated_at`) VALUES
-(8, '', '', 1, 'da@gmail.com', '0', 1, '2019-11-22 16:45:34', '2019-11-22 16:45:34'),
-(9, 'Razvan', 'Bertea', 1, 'bertea7@d.com', '0', 1, '2019-11-22 17:30:22', '2019-11-22 17:30:22'),
-(10, 'da', 'asd', 1, 'a@s.com', 'da', 1, '2019-11-22 17:33:08', '2019-11-22 17:33:08'),
-(11, 'da', 'asd', 1, 'a@ss.com', 'da', 1, '2019-11-22 17:33:40', '2019-11-22 17:33:40'),
-(12, 'da', 'asd', 1, 'a@sds.com', 'da', 1, '2019-11-22 17:35:27', '2019-11-22 17:35:27'),
-(13, 'da', 'ada', 1, 'adsasdasd@a.as', 'asd', 1, '2019-11-22 17:38:46', '2019-11-22 17:38:46'),
-(14, 'ada', 'asasd', 1, 'a@sd.com', 'asd', 1, '2019-11-22 17:39:58', '2019-11-22 17:39:58'),
-(15, 'da', 'afa', 1, 'aa@aa.S', 'asd', 1, '2019-11-22 17:43:47', '2019-11-22 17:43:47'),
-(16, 'asd', 'asd', 1, 'a@a.aa', 'asd', 1, '2019-11-22 17:44:38', '2019-11-22 17:44:38'),
-(17, 'asd', 'asd', 1, 'asd@email.com', 'asd', 1, '2019-11-22 18:08:30', '2019-11-22 18:08:30'),
-(18, 'Razvan', 'Bertea', 1, 'a@a.com', 'pass', 1, '2019-11-22 18:11:06', '2019-11-22 18:11:06');
 
 -- --------------------------------------------------------
 

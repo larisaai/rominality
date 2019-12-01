@@ -14,7 +14,7 @@ session_start();
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container">
+    <div class="container"  style="margin-top: 100px;">
         <div class="row top-buffer">
             <h3>Cart</h3>
             <div class="col-xs-8 col-xs-offset-2">
@@ -25,32 +25,34 @@ session_start();
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
+    <div class="container" style="margin-top: 100px;">
+        <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr">
             <div class="col-md-6">
                 <p>Cart songs with play</p>
-                <?php
+                <div id="listed-songs">
+                    <?php
                 $cartSongs = $_SESSION['cartItems'];
 
                 foreach ($_SESSION['cartItems'] as $song) {
 
-                    $attributes = Attribute::getAttributesForId($song['id']);
+                 
                     echo '<div style="background-color: lightgrey; margin: 10px; padding: 4px;">
                     
                     
                         <h3>' . $song['song_title'] . '</h3>
                         <p>' . $song['artist_name'] . '</p>
-                        <div>' .  Attribute::getCurrentAttributesAsList($attributes) . '</div>
-                        <p>Add comment</p>
-                        <a href="#">Like</a>
+                        
+                        
                         <audio controls="controls">
                             <source src="../uploads/' . $song['path_id'] . '.mp3" type="audio/mpeg" />
                                 Your browser does not support the audio element.
                         </audio>
-                        <p>Price: ' . $song['price'] . ' EUR</p>
+                        
                     </div>';
                 }
                 ?>
+                </div>
+                
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-4">
@@ -58,14 +60,8 @@ session_start();
                 <div style="background-color:lightgray; padding: 20px;">
 
                     <ol id="listedItems" style="width: 100%; padding: 0px;">
-                        <?php
-
-                        //name
-                        //price
-                        //remove button
-                        //total
-                        //pay   
-                        print_r($_SESSION['cartItems']);
+                        <?php   
+                        //print_r($_SESSION['cartItems']);
 
                         $totalPrice = 0;
 
@@ -81,10 +77,9 @@ session_start();
                         }
 
                         ?>
-
-                        <p style="text-align: right; margin-right: 35%; margin-top: 20px;">Total: <?php echo $totalPrice; ?>EUR</p>
-                    </ol>
-
+ </ol>
+                        <p style="text-align: right; margin-right: 35%; margin-top: 20px;">Total: <span id="cartTotal"><?php echo $totalPrice . ' EUR'; ?></span></p>
+                   
 
 
 
@@ -136,7 +131,27 @@ session_start();
 
         };
 
-        function createSongElement() {
+        function createSongElement(title, artist, path) {
+            var div = document.createElement('div');
+            div.setAttribute('style', 'background-color: lightgrey; margin: 10px; padding: 4px;')
+            document.getElementById('listed-songs').appendChild(div);
+
+            var h3 = document.createElement('h3');
+            h3.innerHTML = title;
+            div.appendChild(h3);
+
+            var p = document.createElement('p');
+            p.innerHTML = artist;
+            div.appendChild(p);
+
+            var audio = document.createElement('audio');
+            audio.setAttribute('controls', 'controls');
+            div.appendChild(audio);
+
+            var source = document.createElement('source');
+            source.setAttribute('src', '../uploads/' + path + '.mp3');
+            source.setAttribute('type', 'audio/mpeg');
+            audio.appendChild(source);
 
         }
 
@@ -153,14 +168,18 @@ session_start();
                     console.log('accessed');
                     var result = $.parseJSON(data);
                     let array = result.items;
+                    let total = 0;
                     $('#listedItems').html('');
+                    $('#listed-songs').html('');
 
                     array.forEach(element => {
                         // console.log(element);
                         createListElement(element.song_title, element.price, element.id);
-
+                        createSongElement(element.song_title, element.artist_name, element.path_id)
+                        total += element.price;
                     })
-
+                   
+                    $('#cartTotal').html(total + ' EUR');
                     //see what to do with the cart
                 }).fail(function(xhr, status, error) {
                     alert(xhr.responseText);
