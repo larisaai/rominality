@@ -15,44 +15,49 @@ session_start();
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container">
-        <div class="row top-buffer">
-            <h3>Latest releases</h3>
-            <div class="col-xs-8 col-xs-offset-2">
-                <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
-                    <?php echo $_SESSION['user']['lastname']; ?>
-                    <?php echo $_SESSION['user']['id']; ?>
+    <div class="latest-releases-container">
+        <div class="hero-img-container">
+            <img class="hero-img" src="../img/hero2.png">
+        </div>
+        <div class="box-wide">
+            <div class="latest-releases-inner ">
+                <h3>Latest releases</h3>
+                <div class="">
+                    <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
+                        <?php echo $_SESSION['user']['lastname']; ?>
+                        <?php echo $_SESSION['user']['id']; ?>
 
-                    <a href="cart.php">CART: <span id="cartItems"><?php echo count($_SESSION['cartItems']); ?></span></p>
+                        <a href="cart.php">CART: <span id="cartItems"><?php echo count($_SESSION['cartItems']); ?></span></p>
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <a href="upload_song.php">Add song</a>
-                <?php
+                <div>
+                    <a href="upload_song.php">Add song</a>
+                    <?php
 
-                $songs = Song::all();
-                foreach ($songs as $song) {
-                    $id = $song['id'];
-                    $attributes = Attribute::getAttributesForId($id);
-                    echo '<div style="background-color: lightgrey; margin: 10px; padding: 4px;">
-                    
-                    
-                        <h3>' . $song['song_title'] . '</h3>
-                        <p>' . $song['artist_name'] . '</p>
-                        <div>' .  Attribute::getCurrentAttributesAsList($attributes) . '</div>
-                        <p>Add comment</p>
-                        <a href="#">Like</a>
-                        <audio controls="controls">
-                            <source src="../uploads/' . $song['path_id'] . '.mp3" type="audio/mpeg" />
-                                Your browser does not support the audio element.
-                        </audio>
-                        <p>Price: ' . $song['price'] . ' EUR</p>
-                        <a class="cartButton" value="' . $song['id'] . '" href="#">Add to cart</a>
-                    </div>';
-                }
+                    $songs = Song::all();
+                    foreach ($songs as $song) {
+                        $id = $song['id'];
+                        $attributes = Attribute::getAttributesForId($id);
+                        echo '<div style="background-color: lightgrey; margin: 10px; padding: 4px;">
+                        
+                        
+                            <h3>' . $song['song_title'] . '</h3>
+                            <p>' . $song['artist_name'] . '</p>
+                            <div>' .  Attribute::getCurrentAttributesAsList($attributes) . '</div>
+                            <p>Add comment</p>
+                            <a href="#">Like</a>
+                            <audio controls="controls">
+                                <source src="../uploads/' . $song['path_id'] . '.mp3" type="audio/mpeg" />
+                                    Your browser does not support the audio element.
+                            </audio>
+                            <p>Price: ' . $song['price'] . ' EUR</p>
+                            <a class="cartButton" value="' . $song['id'] . '" href="#">Add to cart</a>
+                        </div>';
+                    }
 
-                ?>
+                    ?>
+                </div>
             </div>
         </div>
     </div>

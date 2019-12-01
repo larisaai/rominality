@@ -4,6 +4,8 @@
 @import "buttons.css";
 @import "footer.css";
 @import "signup-page.css";
+@import "latest.css";
+@import "profile-page.css";
 
 
 * { margin: 0; padding:0; box-sizing: border-box;}
@@ -40,24 +42,3 @@ h4{
     color:red;
 }
 
-
-.delete-account-container{
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom:0;
-    left:0;
-    right:0;
- }
- .delete-account-container.show {
-     display: block;
- }
- .delete-account-content{
-     width: 500px;
-     height: 350px;
-     background-color: var(--lightgrey);
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50% , -50%);
- }
