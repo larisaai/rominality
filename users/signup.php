@@ -12,7 +12,7 @@ if (!empty($_POST)) {
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
     // call add method in students object
-    $res = $user->create($first, $last, $email, $password, $confirm_password);
+    $res = $user->create($first, $last, $email, $password, $confirm_password, $user_type);
     if ($res ===  true) {
         header("Location: latest_releases.php");
     } else {    
@@ -46,49 +46,107 @@ require_once('../includes/header.php');
                     <h1>Play and share</h1>
                     <h3>Underground music community</h3>
                 </div>
-            <div class="signup-form login-form">
-                <form class="" method="POST" action="signup.php">
-                <h4>Signup to rominality</h4>
-                    <div class="form-group">
-                            <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" required 
-                                <?php if(!empty($first)){ echo "value=' $first'";  }?>
-                            >
-                     
+                <div class="signup-form-container">
+                    <div class="user-sigup-btn-container active">
+                        <h4 class="user-sigup-btn ">Signup as a  user</h4>
+                        <img src="../svg/arrow-down.svg">
                     </div>
-                    <div class="form-group">
-                            <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required
-                            <?php  if(!empty($last)){ echo "value=' $last'";  }?>
-                            >
-                     
+                    <div class="producer-sigup-btn-container">
+                       <h4 class="producer-sigup-btn">Signup as a producer</h4>
+                       <img src="../svg/arrow-down.svg">
                     </div>
-                    <div class="form-group">
-                            <input type="email" class="form-control" id="director" placeholder="email" name="email" required 
-                            <?php if(!empty($email)){ echo "value=' $email'";  }?>
-                            >
+                        
+                    <div class="signup-form user-signup">
+                        <form class="" method="POST" action="signup.php">
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" required 
+                                        <?php if(!empty($first)){ echo "value=' $first'";  }?>
+                                    >
+                            
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required
+                                    <?php  if(!empty($last)){ echo "value=' $last'";  }?>
+                                    >
+                            
+                            </div>
+                            <div class="form-group">
+                                    <input type="email" class="form-control" id="director" placeholder="email" name="email" required 
+                                    <?php if(!empty($email)){ echo "value=' $email'";  }?>
+                                    >
+                            </div>
+
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required
+                            
+                                    >
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="plot" placeholder="Confirm Password" name="confirm_password" required>
+                            </div> 
+                            <div class="form-group">
+                                    <input type="hidden" class="form-control" id="plot"  name="user_type" value="1" required>
+                            </div>
+                            
+                            <?php
+                                if($showError){
+                                    echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                                }
+                            ?>
+
+                            <div class="form-group">
+                                    <input type="submit" class="button btn-white login-btn" value="Register">
+                            </div>
+
+                        </form>
                     </div>
 
-                    <div class="form-group">
-                            <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required
+                    <div class="signup-form login-form producer-signup">
+                        <form class="" method="POST" action="signup.php">
                     
-                            >
-                    </div>
-                    <div class="form-group">
-                            <input type="text" class="form-control" id="plot" placeholder="Confirm Password" name="confirm_password" required>
-                    </div>
-                    
-                    <?php
-                        if($showError){
-                            echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
-                        }
-                    ?>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" required 
+                                        <?php if(!empty($first)){ echo "value=' $first'";  }?>
+                                    >
+                            
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required
+                                    <?php  if(!empty($last)){ echo "value=' $last'";  }?>
+                                    >
+                            
+                            </div>
+                            <div class="form-group">
+                                    <input type="email" class="form-control" id="director" placeholder="email" name="email" required 
+                                    <?php if(!empty($email)){ echo "value=' $email'";  }?>
+                                    >
+                            </div>
 
-                    <div class="form-group">
-                            <input type="submit" class="button btn-white login-btn" value="Register">
-                    </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required
+                            
+                                    >
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="plot" placeholder="Confirm Password" name="confirm_password" required>
+                            </div> 
+                            <div class="form-group">
+                                    <input type="hidden" class="form-control" id="plot"  name="user_type" value="2" required>
+                            </div>
+                            
+                            <?php
+                                if($showError){
+                                    echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                                }
+                            ?>
 
-                </form>
-            </div>
-   
+                            <div class="form-group">
+                                    <input type="submit" class="button btn-white login-btn" value="Register">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
         </div>
         <?php
             require_once('../components/landing-page-bottom-animation.php');

@@ -8,7 +8,7 @@ class User
     //if you have functions that are being used JUST by this class use
     //protected function blalba(){}
 
-    public function create($first_name, $last_name, $email, $password, $confirmPass)
+    public function create($first_name, $last_name, $email, $password, $confirmPass, $user_type)
     {
         $db = new DB();
 
@@ -25,11 +25,12 @@ class User
                 };
             
                 $stmt = $con->prepare(" INSERT INTO users ( firstname, lastname, email, password, is_active, user_type, profile_picture)
-                        VALUES (:firstname, :lastname, :email, :password, 1, 1, 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png')");
+                        VALUES (:firstname, :lastname, :email, :password, 1, :usertype, 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png')");
                 $stmt->bindParam(':firstname', $first_name);
                 $stmt->bindParam(':lastname', $last_name);
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':password', $password);
+                $stmt->bindParam(':usertype', $user_type);
      
 
                 $ok = $stmt->execute();
