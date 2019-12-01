@@ -59,33 +59,33 @@ require_once('../includes/header.php');
                     <div class="signup-form user-signup">
                         <form class="" method="POST" action="signup.php">
                             <div class="form-group">
-                                    <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" required 
+                                    <input type="text" class="form-control" placeholder="First Name" name="firstname" required 
                                         <?php if(!empty($first)){ echo "value=' $first'";  }?>
                                     >
                             
                             </div>
                             <div class="form-group">
-                                    <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required
+                                    <input type="text" class="form-control" i placeholder="Last Name" name="lastname" required
                                     <?php  if(!empty($last)){ echo "value=' $last'";  }?>
                                     >
                             
                             </div>
                             <div class="form-group">
-                                    <input type="email" class="form-control" id="director" placeholder="email" name="email" required 
+                                    <input type="email" class="form-control"  placeholder="Email" name="email" required 
                                     <?php if(!empty($email)){ echo "value=' $email'";  }?>
                                     >
                             </div>
 
                             <div class="form-group">
-                                    <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required
+                                    <input type="text" class="form-control" placeholder="Password" name="password" required
                             
                                     >
                             </div>
                             <div class="form-group">
-                                    <input type="text" class="form-control" id="plot" placeholder="Confirm Password" name="confirm_password" required>
+                                    <input type="text" class="form-control"  placeholder="Confirm Password" name="confirm_password" required>
                             </div> 
                             <div class="form-group">
-                                    <input type="hidden" class="form-control" id="plot"  name="user_type" value="1" required>
+                                    <input type="hidden" class="form-control"  name="user_type" value="1" required>
                             </div>
                             
                             <?php
@@ -101,37 +101,32 @@ require_once('../includes/header.php');
                         </form>
                     </div>
 
-                    <div class="signup-form login-form producer-signup">
+                    <div class="signup-form producer-signup">
                         <form class="" method="POST" action="signup.php">
                     
                             <div class="form-group">
-                                    <input type="text" class="form-control" id="title" placeholder="First Name" name="firstname" required 
-                                        <?php if(!empty($first)){ echo "value=' $first'";  }?>
-                                    >
+                                    <input type="text" class="form-control" placeholder="First Name" name="firstname" required 
+                                        <?php if(!empty($first)){ echo "value=' $first'";  }?>>
                             
                             </div>
                             <div class="form-group">
-                                    <input type="text" class="form-control" id="year" placeholder="Last Name" name="lastname" required
-                                    <?php  if(!empty($last)){ echo "value=' $last'";  }?>
-                                    >
+                                    <input type="text" class="form-control"  placeholder="Last Name" name="lastname" required
+                                    <?php  if(!empty($last)){ echo "value=' $last'";  }?>>
                             
                             </div>
                             <div class="form-group">
-                                    <input type="email" class="form-control" id="director" placeholder="email" name="email" required 
-                                    <?php if(!empty($email)){ echo "value=' $email'";  }?>
-                                    >
+                                    <input type="email" class="form-control" placeholder="Email" name="email" required 
+                                    <?php if(!empty($email)){ echo "value=' $email'";  }?>>
                             </div>
 
                             <div class="form-group">
-                                    <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required
-                            
-                                    >
+                                    <input type="text" class="form-control" placeholder="Password" name="password" required>
                             </div>
                             <div class="form-group">
-                                    <input type="text" class="form-control" id="plot" placeholder="Confirm Password" name="confirm_password" required>
+                                    <input type="text" class="form-control" placeholder="Confirm Password" name="confirm_password" required>
                             </div> 
                             <div class="form-group">
-                                    <input type="hidden" class="form-control" id="plot"  name="user_type" value="2" required>
+                                    <input type="hidden" class="form-control" name="user_type" value="2" required>
                             </div>
                             
                             <?php
@@ -159,6 +154,8 @@ require_once('../includes/header.php');
         require_once('../components/about-us-component.php');
         require_once('../includes/footer.php');
     ?>
+<script src="../scripts/app.js"></script>
+
 </body>
 
 </html>
