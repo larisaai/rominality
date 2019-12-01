@@ -1,0 +1,14 @@
+
+
+
+
+.latest-releases-inner {
+    margin-top: 150px;
+}
+
+.latest-releases-inner h3 {
+    color: var(--lightgrey);
+text-shadow: 0px 3px 6px #000000B2;
+}
+
+

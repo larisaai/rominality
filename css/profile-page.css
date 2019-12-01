@@ -1,0 +1,53 @@
+
+
+
+.profile-page-inner {
+    margin-top: 150px;
+}
+
+.profile-page-inner h3 {
+    color: var(--lightgrey);
+text-shadow: 0px 3px 6px #000000B2;
+}
+.editable-data { 
+    width: 500px;
+    margin: auto;
+}
+.editable-data .form-group { 
+    margin-bottom: 10px;
+}
+
+
+.image-container img {
+    border: 1px solid var(--lightgrey) ;
+    min-width: 100px;
+    min-height: 100px;
+}
+.editable-data .change-pass {
+    color: var(--lightgrey);
+}
+
+
+
+
+
+.delete-account-container{
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
+ }
+ .delete-account-container.show {
+     display: block;
+ }
+ .delete-account-content{
+     width: 500px;
+     height: 350px;
+     background-color: var(--lightgrey);
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50% , -50%);
+ }
