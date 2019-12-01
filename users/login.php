@@ -63,7 +63,7 @@ if (!empty($_POST)) {
 
 
                         <div class="">
-                                <input type="submit" class="button btn-white login-btn" value="Login">
+                            <input type="submit" class="button btn-white login-btn" value="Login">
                         </div>
                 
                         <?php
