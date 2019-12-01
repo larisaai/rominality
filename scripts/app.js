@@ -1,0 +1,42 @@
+
+
+var fbButton = document.getElementById('fb-share-button');
+var url = window.location.href;
+
+fbButton.addEventListener('click', function() {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + url,
+        'facebook-share-dialog',
+        'width=800,height=600'
+    );
+    return false;
+});
+
+
+
+
+//signup as a user or as a producer
+document.querySelector(".producer-sigup-btn-container").addEventListener("click", function(){
+  document.querySelector(".producer-signup").style.display = "block";
+  document.querySelector(".user-signup").style.display = "none";
+  document.querySelector(".producer-sigup-btn-container").style.opacity = "1";
+  document.querySelector(".user-sigup-btn-container").style.opacity = "0.6";
+});
+
+document.querySelector(".user-sigup-btn-container").addEventListener("click", function(){
+  document.querySelector(".producer-signup").style.display = "none";
+  document.querySelector(".user-signup").style.display = "block";
+  document.querySelector(".producer-sigup-btn-container").style.opacity = "0.6";
+  document.querySelector(".user-sigup-btn-container").style.opacity = "1";
+});
+
+
+
+//delete account button functionality
+document.querySelector(".delete-btn").addEventListener("click", function(){
+  document.querySelector(".delete-account-container").style.display = "block";
+});
+
+document.querySelector(".cancel-btn").addEventListener("click", function(){
+  document.querySelector(".delete-account-container").style.display = "none";
+});
+

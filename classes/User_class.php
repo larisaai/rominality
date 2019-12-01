@@ -8,7 +8,7 @@ class User
     //if you have functions that are being used JUST by this class use
     //protected function blalba(){}
 
-    public function create($first_name, $last_name, $email, $password, $confirmPass)
+    public function create($first_name, $last_name, $email, $password, $confirmPass, $user_type)
     {
         $db = new DB();
 
@@ -25,11 +25,12 @@ class User
                 };
             
                 $stmt = $con->prepare(" INSERT INTO users ( firstname, lastname, email, password, is_active, user_type, profile_picture)
-                        VALUES (:firstname, :lastname, :email, :password, 1, 1, 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png')");
+                        VALUES (:firstname, :lastname, :email, :password, 1, :usertype, 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png')");
                 $stmt->bindParam(':firstname', $first_name);
                 $stmt->bindParam(':lastname', $last_name);
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':password', $password);
+                $stmt->bindParam(':usertype', $user_type);
      
 
                 $ok = $stmt->execute();
@@ -69,7 +70,7 @@ class User
         if ($con) {
 
             $results = array();
-            $stmt = $con->prepare("SELECT * FROM users WHERE email = :email AND password = :password Limit 1");
+            $stmt = $con->prepare("SELECT * FROM users WHERE email = :email AND password = :password AND is_active = 1 Limit 1");
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             $result = $stmt->execute();
@@ -180,6 +181,25 @@ public function update_password($id, $old_password, $new_password)
         return false;
 }
 
+
+public function delete_account($id)
+{
+    $db = new DB();
+    $con = $db->connect();
+
+    if ($con) {
+        $stmt = $con->prepare('DELETE from users  WHERE id = :id');
+
+        $stmt->bindParam(':id', $id);
+        $ok = $stmt->execute();
+
+        $stmt = null;
+        $db->disconnect($con);
+
+        return $ok;
+    } else
+        return false;
+}
 
 
 

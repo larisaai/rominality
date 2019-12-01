@@ -36,42 +36,58 @@ if (!empty($_POST)) {
     /* Include <head></head> */
     require_once('../includes/menu.php');
     ?>
-    <div class="container">
-        <div class="row top-buffer">
-            <div class="col-xs-8 col-xs-offset-2">
-                <form class="form-horizontal" method="POST" action="login.php">
 
-                    <div class="form-group">
-                        <label for="director" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="director" placeholder="email" name="email" required>
+
+    <div class="hero-container">
+        <div class="hero-img-container">
+            <img class="hero-img" src="../img/hero2.png">
+        </div>
+        <div class="box-wide">
+            <div class="landing-page-container box-wide-inner">
+                <div class="titles">
+                    <h1>Play and share</h1>
+                    <h3>Underground music community</h3>
+                </div>
+                <div class="login-form">
+                    <form class="" method="POST" action="login.php">
+                        <h4>Login to rominality</h4>
+                        <div class="">
+                            <!-- <label for="director" class="">Email</label> -->
+                            <input type="email" class="form-control" id="director" placeholder="Email" name="email" required>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="plot" class="col-sm-2 control-label">Password</label>
-                        <div class="col-sm-10">
+                        <div class="">
+                            <!-- <label for="" class="">Password</label> -->
                             <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required>
                         </div>
-                    </div>
 
 
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <input type="submit" class="btn btn-primary" value="Login">
+                        <div class="">
+                            <input type="submit" class="button btn-white login-btn" value="Login">
                         </div>
-                    </div>
-               
-                    <?php
-                        if($showError){
-                            echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
-                        }
-                    ?>
                 
-                </form>
+                        <?php
+                            if($showError){
+                                echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                            }
+                        ?>
+                    
+                    </form>
+                </div>
+             
             </div>
+            <?php
+                require_once('../components/landing-page-bottom-animation.php');
+            ?>
         </div>
     </div>
+
+    
+    <?php
+    require_once('../components/about-us-component.php');
+    require_once('../includes/footer.php');
+?>
+<script src="../scripts/app.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,17 @@
+
+.button { 
+    font-size: 20px;
+    border: none;
+    padding: 8px 40px;
+    box-shadow: 0px 3px 6px #000000B3;
+    border-radius: 10px;
+    
+   
+}
+.btn-white{ 
+    background-color: var(--lightgrey);
+    color: black;
+}
+.login-btn {
+    width: 100%;
+}
