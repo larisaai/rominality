@@ -32,37 +32,15 @@ session_start();
                 <?php
 
                 $songs = Song::all();
-
-                // print_r($songs);
-
-                //  name
-                // song artist
-                // the file as mp3
-                // comment button
-                //like button
-                //add to cart button
-
                 foreach ($songs as $song) {
                     $id = $song['id'];
                     $attributes = Attribute::getAttributesForId($id);
-
-
-
-                    foreach ($attributes as $attribute) {
-                        echo '<li>' . Attribute::getAttributeName($attribute['attribute_id'])['attribute_name'] . '</li>';
-                    }
-
-
                     echo '<div style="background-color: lightgrey; margin: 10px; padding: 4px;">
                     
                     
                         <h3>' . $song['song_title'] . '</h3>
                         <p>' . $song['artist_name'] . '</p>
-                        <div>
-                            <ul>
-                                
-                            </ul>
-                        </div>
+                        <div>' .  Attribute::getCurrentAttributesAsList($attributes) . '</div>
                         <p>Add comment</p>
                         <a href="#">Like</a>
                         <audio controls="controls">

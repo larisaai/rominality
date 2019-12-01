@@ -80,6 +80,15 @@ class Attribute
         }
     }
 
+    public function getCurrentAttributesAsList($item)
+    {
+        $var = '';
+        foreach ($item as $attribute) {
+            $var .= '<li>' . Attribute::getAttributeName($attribute['attribute_id'])['attribute_name'] . '</li>';
+        }
+        return '<ul> ' . $var . '</ul>';
+    }
+
     public function update()
     {
         //
