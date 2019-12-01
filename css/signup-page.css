@@ -19,9 +19,13 @@
     transform: translateY(-50%);
 }
 .user-sigup-btn-container, .producer-sigup-btn-container {
-   opacity: 0.6;
+    opacity: 0.6;
+    
+}
+.user-sigup-btn, .producer-sigup-btn {
+    text-shadow: 0px 3px 6px #000000B3
+    
 }
 .user-sigup-btn-container.active, .producer-sigup-btn-container.active {
     opacity: 1;
-
 }
