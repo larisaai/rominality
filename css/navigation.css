@@ -15,14 +15,13 @@
 }
 .nav-right-aligned li { 
     list-style-type: none;
-    margin-left: 30px;
-
 }
 .navigation a { 
     text-decoration: none;
     text-transform: uppercase;
     color: var(--lightgrey);
     font-size: 20px;
+    margin-left: 30px;
 }
 
 .nav-right-aligned {
@@ -46,4 +45,27 @@
 .nav-design-line:last-child {
     margin-left: 10px;
     margin-top: 8px;
+}
+.sub-menu-header { position: relative;}
+.sub-menu { 
+    display: none;
+    position: absolute;
+    top: 35px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+}
+.sub-menu a {
+    font-size: 18px;
+}
+.active .sub-menu { 
+    display: block;
+}
+.menu-arrow-down { 
+    transform: rotate(180deg);
+    margin-left: -10px;
+    margin-bottom: -3px;
+}
+.active .menu-arrow-down {
+    transform: rotate(0deg);
 }

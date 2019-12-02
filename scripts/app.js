@@ -13,20 +13,20 @@ fbButton.addEventListener('click', function() {
 
 
 
-
 //signup as a user or as a producer
 document.querySelector(".producer-sigup-btn-container").addEventListener("click", function(){
-  document.querySelector(".producer-signup").style.display = "block";
-  document.querySelector(".user-signup").style.display = "none";
-  document.querySelector(".producer-sigup-btn-container").style.opacity = "1";
-  document.querySelector(".user-sigup-btn-container").style.opacity = "0.6";
+  document.querySelector(".user-signup").classList.remove("active");
+  document.querySelector(".producer-sigup-btn-container").classList.add("active");
+  document.querySelector(".producer-signup").classList.add("active");
+  document.querySelector(".user-sigup-btn-container").classList.remove("active");
+  
 });
 
 document.querySelector(".user-sigup-btn-container").addEventListener("click", function(){
-  document.querySelector(".producer-signup").style.display = "none";
-  document.querySelector(".user-signup").style.display = "block";
-  document.querySelector(".producer-sigup-btn-container").style.opacity = "0.6";
-  document.querySelector(".user-sigup-btn-container").style.opacity = "1";
+  document.querySelector(".user-signup").classList.add("active");
+  document.querySelector(".producer-sigup-btn-container").classList.remove("active");
+  document.querySelector(".producer-signup").classList.remove("active");
+  document.querySelector(".user-sigup-btn-container").classList.add("active");
 });
 
 

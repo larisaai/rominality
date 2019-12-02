@@ -56,7 +56,7 @@ require_once('../includes/header.php');
                        <img src="../svg/arrow-down.svg">
                     </div>
                         
-                    <div class="signup-form user-signup">
+                    <div class="signup-form user-signup active">
                         <form class="" method="POST" action="signup.php">
                             <div class="form-group">
                                     <input type="text" class="form-control" placeholder="First Name" name="firstname" required 
@@ -101,7 +101,7 @@ require_once('../includes/header.php');
                         </form>
                     </div>
 
-                    <div class="signup-form producer-signup">
+                    <div class="signup-form producer-signup ">
                         <form class="" method="POST" action="signup.php">
                     
                             <div class="form-group">
