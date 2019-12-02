@@ -3,6 +3,15 @@
 .producer-signup {
     display: none;
 }
+.producer-signup.active {
+    display:block;
+}
+.user-signup {
+    display: none;
+}
+.user-signup.active {
+    display:block;
+}
 .user-sigup-btn-container , .producer-sigup-btn-container  {
  position: relative;
 }
@@ -29,3 +38,4 @@
 .user-sigup-btn-container.active, .producer-sigup-btn-container.active {
     opacity: 1;
 }
+.active img { transform:translateY(-50%) rotate(-90deg);}
