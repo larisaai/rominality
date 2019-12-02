@@ -39,57 +39,38 @@
         <div class="box-wide">
             <div class="profile-page-inner">
                 <h3>My profile</h3>
-            
                 <div class="editable-data">
-                <div >
-                <div class="">
-                    <form class="form-horizontal" method="POST" action="profile.php" enctype="multipart/form-data">
-                        <div class="form-group">
-                            
-                            <div class="">
-                                <input type="text" class="form-control" placeholder="First Name" name="firstname" value="<?php echo $_SESSION['user']['firstname'];  ?>" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="">
-                                <input type="text" class="form-control"  placeholder="Last Name" name="lastname" value="<?php echo $_SESSION['user']['lastname']; ?>" required>
-                            </div>  
-                        </div>
-                        <div class="form-group">
-                            <div class="">
-                                <input type="email" class="form-control" placeholder="email" name="email" value=" <?php echo $_SESSION['user']['email']; ?>" required>
-                            </div>
-                        </div>
-
-                    
-                        <div class="form-group">
-                            <div class="">
-                                <input type="file" class="form-control" name="profileImage" accept="image/png, image/jpeg" >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <a href="change_password.php" class="change-pass"> Change password </a>
-                        </div>
-                    
-                    
-
-                        <div class="form-group">
-                            <div class="">
-                                <input type="submit" class="button btn-white " value="Update profile">
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="form-group">
-                            <div class="">
-                            <button class="button btn-white delete-btn">Delete profile</button>
-                            </div>
-                        </div>
-
                     <div class="image-container">
                         <img src="<?php echo $_SESSION['user']['profile_picture']; ?>" alt="">    
                     </div>
+                    <div class="profile-form-container">
+                        <form class="form-horizontal" method="POST" action="profile.php" enctype="multipart/form-data">
+                        
+                            <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="First Name" name="firstname" value="<?php echo $_SESSION['user']['firstname'];  ?>" required>
+                            </div>
+                            <div class="form-group">
+                                    <input type="text" class="form-control"  placeholder="Last Name" name="lastname" value="<?php echo $_SESSION['user']['lastname']; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="email" name="email" value=" <?php echo $_SESSION['user']['email']; ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="file" class="form-control " name="profileImage" accept="image/png, image/jpeg" >
+                            </div>
+
+                            <div class="form-group">
+                                <a href="change_password.php" class="change-pass">Change password </a>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="button btn-white update-btn" value="Update profile">
+                            </div>
+                        </form>
+                            <div class="form-group">
+                                <button class="button btn-white delete-btn">Delete profile</button>
+                            </div>
+                     </div>
 
                     <div class="delete-account-container">
                         <div class="delete-account-content">
@@ -98,15 +79,11 @@
                             <a href="delete_user.php"><button class="button btn-white  confirm-delete-btn">Yes</button></a>
                         </div>
                     </div>
-                </div>
-            </div>
+               
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
 <!-- bottom -->
 </body>

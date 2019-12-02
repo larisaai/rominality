@@ -10,13 +10,17 @@
 text-shadow: 0px 3px 6px #000000B2;
 }
 .editable-data { 
-    width: 500px;
+    width: 600px;
     margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.profile-form-container {
+    width:70%;
 }
 .editable-data .form-group { 
     margin-bottom: 10px;
 }
-
 
 .image-container img {
     border: 1px solid var(--lightgrey) ;
@@ -26,10 +30,6 @@ text-shadow: 0px 3px 6px #000000B2;
 .editable-data .change-pass {
     color: var(--lightgrey);
 }
-
-
-
-
 
 .delete-account-container{
     display: none;
@@ -51,3 +51,15 @@ text-shadow: 0px 3px 6px #000000B2;
      left: 50%;
      transform: translate(-50% , -50%);
  }
+ .editable-data .button {
+     font-size: 18px;
+     padding: 8px 30px;
+ }
+
+ .editable-data .button.delete-btn { 
+     opacity: 0.6;
+     padding: 6px 30px;
+    }
+.update-btn { 
+    float: right;
+}

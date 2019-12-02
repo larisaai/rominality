@@ -46,17 +46,25 @@
     margin-left: 10px;
     margin-top: 8px;
 }
-.sub-menu-header { position: relative;}
+.sub-menu-header {
+     position: relative;
+    }
 .sub-menu { 
     display: none;
     position: absolute;
     top: 35px;
+    right: 36px;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: flex-end;
+
+}
+.sub-menu li {
+    text-align: end;
 
 }
 .sub-menu a {
     font-size: 18px;
+    text-align: end;
 }
 .active .sub-menu { 
     display: block;
