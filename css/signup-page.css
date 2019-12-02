@@ -38,4 +38,4 @@
 .user-sigup-btn-container.active, .producer-sigup-btn-container.active {
     opacity: 1;
 }
-.active img { transform:translateY(-50%) rotate(-90deg);}
+.active .hero-img { transform:translateY(-50%) rotate(-90deg);}

@@ -13,7 +13,6 @@ fbButton.addEventListener('click', function() {
 
 
 
-
 //signup as a user or as a producer
 document.querySelector(".producer-sigup-btn-container").addEventListener("click", function(){
   document.querySelector(".user-signup").classList.remove("active");
