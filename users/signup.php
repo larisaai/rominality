@@ -11,6 +11,7 @@ if (!empty($_POST)) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
+    $user_type = $_POST["user_type"];
     // call add method in students object
     $res = $user->create($first, $last, $email, $password, $confirm_password, $user_type);
     if ($res ===  true) {

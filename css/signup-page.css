@@ -22,11 +22,16 @@
     transform: translateY(-50%);
 }
 .user-sigup-btn-container img, .producer-sigup-btn-container img {
+    display: none;
     position: absolute;
     top: 50%;
     left: -40px;
     transform: translateY(-50%);
 }
+.active .user-sigup-btn-container img, .active .producer-sigup-btn-container img {
+    display:block;
+}
+
 .user-sigup-btn-container, .producer-sigup-btn-container {
     opacity: 0.6;
     
