@@ -14,7 +14,7 @@ session_start();
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container">
+    <div class="container" style="margin-top: 100px;">
         <div class="row top-buffer">
             <h3>Cart</h3>
             <div class="col-xs-8 col-xs-offset-2">
@@ -26,7 +26,7 @@ session_start();
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
             <div class="col-md-6">
                 <p>Cart songs with play</p>
                 <?php

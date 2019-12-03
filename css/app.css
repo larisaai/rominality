@@ -4,46 +4,71 @@
 @import "buttons.css";
 @import "footer.css";
 @import "signup-page.css";
-@import "latest.css";
+@import "latest-releases.css";
 @import "profile-page.css";
 
-
-* { margin: 0; padding:0; box-sizing: border-box;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-    --lightgrey: #F2EDF0;
+  --lightgrey: #f2edf0;
 }
-button, a, li {cursor: pointer;}
-h1, h2, h3, h4, h5, li, a, p { font-family: 'Poppins', sans-serif;}
+h1,
+h2,
+h3,
+h4,
+h5,
+li,
+a,
+p {
+  font-family: "Poppins", sans-serif;
+}
+button,
+a,
+li {
+  cursor: pointer;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+li,
+a,
+p {
+  font-family: "Poppins", sans-serif;
+}
 h1 {
-    font-size: 75px;
+  font-size: 75px;
 }
-h2 { 
-    font-size:60px;
+h2 {
+  font-size: 60px;
 }
 h3 {
-    font-size: 45px;
+  font-size: 45px;
 }
-h4{
-    font-size: 27px;
+h4 {
+  font-size: 27px;
 }
-.box-wide { 
-    width:80%;
-    max-width: 1250px;
-    display: block;
-    margin: auto;
+.box-wide {
+  width: 80%;
+  max-width: 1250px;
+  display: block;
+  margin: auto;
 }
 .box-wide-inner {
-    width: 90%;
-    margin: auto;
+  width: 90%;
+  margin: auto;
 }
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 .two-columns {
-    display:flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-.error-text{
-    color:red;
+.error-text {
+  color: red;
 }
-
