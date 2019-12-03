@@ -79,9 +79,6 @@ session_start();
                         // $.('#cartItems').html(result.itemNumber);
                         document.getElementById('cartItems').innerHTML = result.itemNumber;
 
-
-
-                        //see what to do with the cart
                     })
             })
         })

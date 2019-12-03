@@ -83,7 +83,7 @@ session_start();
 
 
 
-                    <button>Pay</button>
+                    <a href="../includes/processPayment.php">Pay now</a>
 
 
                 </div>
