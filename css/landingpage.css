@@ -12,6 +12,7 @@
     object-fit: cover;
     height: 900px;
     max-height:100vh;
+    min-height:100%;
 }
 
 .landing-page-container {
@@ -67,7 +68,6 @@
 
 /* ABOUT us */
 .about-us-container {
-    margin-top: 30px;
     padding-top: 150px;
     padding-bottom: 100px;
     background-color: black;

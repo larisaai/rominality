@@ -65,10 +65,7 @@ h4 {
 .full-width {
   width: 100%;
 }
-.two-columns {
-  display: flex;
-  justify-content: space-between;
-}
-.error-text {
-  color: red;
-}
+
+
+.error-text{
+    color:red;
