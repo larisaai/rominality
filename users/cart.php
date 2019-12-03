@@ -14,7 +14,7 @@ session_start();
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container"  style="margin-top: 100px;">
+    <div class="container" style="margin-top: 100px;">
         <div class="row top-buffer">
             <h3>Cart</h3>
             <div class="col-xs-8 col-xs-offset-2">
@@ -25,18 +25,18 @@ session_start();
         </div>
     </div>
 
-    <div class="container" style="margin-top: 100px;">
-        <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr">
+    <div class="container">
+        <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
             <div class="col-md-6">
                 <p>Cart songs with play</p>
                 <div id="listed-songs">
                     <?php
-                $cartSongs = $_SESSION['cartItems'];
+                    $cartSongs = $_SESSION['cartItems'];
 
-                foreach ($_SESSION['cartItems'] as $song) {
+                    foreach ($_SESSION['cartItems'] as $song) {
 
-                 
-                    echo '<div style="background-color: lightgrey; margin: 10px; padding: 4px;">
+
+                        echo '<div style="background-color: lightgrey; margin: 10px; padding: 4px;">
                     
                     
                         <h3>' . $song['song_title'] . '</h3>
@@ -49,10 +49,10 @@ session_start();
                         </audio>
                         
                     </div>';
-                }
-                ?>
+                    }
+                    ?>
                 </div>
-                
+
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-4">
@@ -60,7 +60,7 @@ session_start();
                 <div style="background-color:lightgray; padding: 20px;">
 
                     <ol id="listedItems" style="width: 100%; padding: 0px;">
-                        <?php   
+                        <?php
                         //print_r($_SESSION['cartItems']);
 
                         $totalPrice = 0;
@@ -77,9 +77,9 @@ session_start();
                         }
 
                         ?>
- </ol>
-                        <p style="text-align: right; margin-right: 35%; margin-top: 20px;">Total: <span id="cartTotal"><?php echo $totalPrice . ' EUR'; ?></span></p>
-                   
+                    </ol>
+                    <p style="text-align: right; margin-right: 35%; margin-top: 20px;">Total: <span id="cartTotal"><?php echo $totalPrice . ' EUR'; ?></span></p>
+
 
 
 
@@ -178,7 +178,7 @@ session_start();
                         createSongElement(element.song_title, element.artist_name, element.path_id)
                         total += element.price;
                     })
-                   
+
                     $('#cartTotal').html(total + ' EUR');
                     //see what to do with the cart
                 }).fail(function(xhr, status, error) {

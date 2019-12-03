@@ -11,6 +11,7 @@ if (!empty($_POST)) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
+    $user_type = $_POST["user_type"];
     // call add method in students object
     $res = $user->create($first, $last, $email, $password, $confirm_password, $user_type);
     if ($res ===  true) {
@@ -56,7 +57,7 @@ require_once('../includes/header.php');
                        <img src="../svg/arrow-down.svg">
                     </div>
                         
-                    <div class="signup-form user-signup">
+                    <div class="signup-form user-signup active">
                         <form class="" method="POST" action="signup.php">
                             <div class="form-group">
                                     <input type="text" class="form-control" placeholder="First Name" name="firstname" required 
@@ -101,7 +102,7 @@ require_once('../includes/header.php');
                         </form>
                     </div>
 
-                    <div class="signup-form producer-signup">
+                    <div class="signup-form producer-signup ">
                         <form class="" method="POST" action="signup.php">
                     
                             <div class="form-group">

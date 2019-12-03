@@ -20,10 +20,10 @@ class User
 
                 $errors = $this->checkDataForErrors($first_name, $last_name, $email, $password, $confirmPass);
 
-                if($errors ) {
+                if ($errors) {
                     return $errors;
                 };
-            
+
                 $stmt = $con->prepare(" INSERT INTO users ( firstname, lastname, email, password, is_active, user_type, profile_picture)
                         VALUES (:firstname, :lastname, :email, :password, 1, :usertype, 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png')");
                 $stmt->bindParam(':firstname', $first_name);
@@ -31,14 +31,13 @@ class User
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':password', $password);
                 $stmt->bindParam(':usertype', $user_type);
-     
+
 
                 $ok = $stmt->execute();
 
                 $db->disconnect($con);
 
                 return $this->login($email, $password);
-
             } catch (PDOException $e) {
 
                 return $e->getMessage();
@@ -50,8 +49,9 @@ class User
         }
     }
 
-    public function checkDataForErrors($first_name, $last_name, $email, $password, $confirmPass){
-        if ($confirmPass !==$password ) {
+    public function checkDataForErrors($first_name, $last_name, $email, $password, $confirmPass)
+    {
+        if ($confirmPass !== $password) {
             return 'paswords are not matching';
         };
 
@@ -78,20 +78,18 @@ class User
 
             $db->disconnect($con);
 
-            if($user){
-                 $this->storeObjectInSession($user, "user");
-                 return true;
-            }
-            else{
+            if ($user) {
+                $this->storeObjectInSession($user, "user");
+                return true;
+            } else {
                 return 'invalid-credentials';
             }
-          
         } else {
             return false;
         }
     }
 
-    protected function storeObjectInSession(  $value, $name)
+    protected function storeObjectInSession($value, $name)
     {
         session_start();
         $_SESSION[$name] = $value;
@@ -117,95 +115,110 @@ class User
     }
 
 
- 
-public function update($id, $first_name, $last_name, $email, $fileContent, $sExtention)
-{
-    $db = new DB();
-    $con = $db->connect();
 
-    if ($con) {
+    public function update($id, $first_name, $last_name, $email, $fileContent, $sExtention)
+    {
+        $db = new DB();
+        $con = $db->connect();
 
-
-        $sUniqueImageName = uniqid().'.'.$sExtention;
-
-        move_uploaded_file($fileContent , __DIR__."/../images/$sUniqueImageName" );
-
-        $stmt = $con->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, profile_picture = :profilePicture WHERE id = :id');
-
-        $fullPathToProfilePicture = "/images/$sUniqueImageName";
-
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':firstname', $first_name);
-        $stmt->bindParam(':lastname', $last_name);
-        $stmt->bindParam(':email', $email);
-        
-        $stmt->bindParam(':profilePicture',$fullPathToProfilePicture );
-        $ok = $stmt->execute();
-
-        $stmt = null;
-
-        $db->disconnect($con);
-
-        $_SESSION['user']['firstname'] = $first_name;
-        $_SESSION['user']['lastname'] = $last_name;
-        $_SESSION['user']['email'] = $email;
-        $_SESSION['user']['profile_picture'] = $fullPathToProfilePicture;
+        if ($con) {
 
 
-        return ($ok);
-    } else
-        return false;
-}
+            $sUniqueImageName = uniqid() . '.' . $sExtention;
 
-public function update_password($id, $old_password, $new_password)
-{
-    $db = new DB();
-    $con = $db->connect();
+            move_uploaded_file($fileContent, __DIR__ . "/../images/$sUniqueImageName");
 
-    if ($con) {
-        $stmt = $con->prepare('UPDATE users SET password = :password WHERE id = :id');
+            $stmt = $con->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, profile_picture = :profilePicture WHERE id = :id');
 
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':password', $new_password);
-        $ok = $stmt->execute();
+            $fullPathToProfilePicture = "/images/$sUniqueImageName";
 
-        
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':firstname', $first_name);
+            $stmt->bindParam(':lastname', $last_name);
+            $stmt->bindParam(':email', $email);
 
-        $stmt = null;
-        $db->disconnect($con);
+            $stmt->bindParam(':profilePicture', $fullPathToProfilePicture);
+            $ok = $stmt->execute();
 
-        $_SESSION['user']['password'] = $new_password;
+            $stmt = null;
 
-        return $ok;
-    } else
-        return false;
-}
+            $db->disconnect($con);
+
+            $_SESSION['user']['firstname'] = $first_name;
+            $_SESSION['user']['lastname'] = $last_name;
+            $_SESSION['user']['email'] = $email;
+            $_SESSION['user']['profile_picture'] = $fullPathToProfilePicture;
 
 
-public function delete_account($id)
-{
-    $db = new DB();
-    $con = $db->connect();
+            return ($ok);
+        } else
+            return false;
+    }
 
-    if ($con) {
-        $stmt = $con->prepare('DELETE from users  WHERE id = :id');
+    public function update_password($id, $old_password, $new_password)
+    {
+        $db = new DB();
+        $con = $db->connect();
 
-        $stmt->bindParam(':id', $id);
-        $ok = $stmt->execute();
+        if ($con) {
+            $stmt = $con->prepare('UPDATE users SET password = :password WHERE id = :id');
 
-        $stmt = null;
-        $db->disconnect($con);
-
-        return $ok;
-    } else
-        return false;
-}
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':password', $new_password);
+            $ok = $stmt->execute();
 
 
 
+            $stmt = null;
+            $db->disconnect($con);
+
+            $_SESSION['user']['password'] = $new_password;
+
+            return $ok;
+        } else
+            return false;
+    }
 
 
+    public function delete_account($id)
+    {
+        $db = new DB();
+        $con = $db->connect();
 
+        if ($con) {
+            $stmt = $con->prepare('DELETE from users  WHERE id = :id');
 
+            $stmt->bindParam(':id', $id);
+            $ok = $stmt->execute();
 
+            $stmt = null;
+            $db->disconnect($con);
+
+            return $ok;
+        } else
+            return false;
+    }
+
+    public function getUserFirstnameById($user_id)
+    {
+        $db = new DB();
+        $con = $db->connect();
+        if ($con) {
+            try {
+                $stmt = $con->prepare('SELECT firstname FROM users WHERE id = :user_id');
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->execute();
+                $result = $stmt->fetch();
+
+                $db->disconnect($con);
+                return $result;
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
+        } else {
+            $stmt = null;
+            $db->disconnect($con);
+            return false;
+        }
+    }
 }
