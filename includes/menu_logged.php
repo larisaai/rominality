@@ -10,9 +10,10 @@ echo '
                         <li><a href="../users/latest_releases.php">Home</a></li>
                         <li><a href="../users/library.php">Library</a></li>
                         
-                        <div class="sub-menu-header"><a >'; echo $_SESSION['user']['firstname'];?>
-                         <?php echo $_SESSION['user']['lastname']; 
-                        echo '</a>
+                        <div class="sub-menu-header"><a >';
+echo $_SESSION['user']['firstname']; ?>
+                         <?php echo $_SESSION['user']['lastname'];
+                            echo '</a>
                             <div class="sub-menu">
                                 <li> <a href="../users/profile.php">My profile</a></li>
                                 <li> <a href="../users/cart.php">My cart</a></li>
