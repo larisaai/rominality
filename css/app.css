@@ -12,9 +12,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   --lightgrey: #f2edf0;
 }
+
 h1,
 h2,
 h3,
@@ -25,11 +27,13 @@ a,
 p {
   font-family: "Poppins", sans-serif;
 }
+
 button,
 a,
 li {
   cursor: pointer;
 }
+
 h1,
 h2,
 h3,
@@ -40,32 +44,40 @@ a,
 p {
   font-family: "Poppins", sans-serif;
 }
+
 h1 {
   font-size: 75px;
 }
+
 h2 {
   font-size: 60px;
 }
+
 h3 {
   font-size: 45px;
 }
+
 h4 {
   font-size: 27px;
 }
+
 .box-wide {
   width: 80%;
   max-width: 1250px;
   display: block;
   margin: auto;
 }
+
 .box-wide-inner {
   width: 90%;
   margin: auto;
 }
+
 .full-width {
   width: 100%;
 }
 
 
-.error-text{
-    color:red;
+.error-text {
+  color: red;
+}
