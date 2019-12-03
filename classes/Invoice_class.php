@@ -87,19 +87,41 @@ class Invoice
         }
     }
 
-    public function createInvoiceForUser($userId, $invoiceId)
+    public function getSongsBasedOnBuyerId($buyer_id)
     {
-        $songIds = Invoice::getSongBasedOnInvoice($invoiceId);
-        $songs = array();
+        $db = new DB();
+        $con = $db->connect();
 
-        foreach ($songIds as $songId) {
-            array_push($songs, Song::getSong($songId));
+        if ($con) {
+            try {
+                $stmt = $con->prepare("SELECT `id` FROM `invoices` WHERE `buyer_id` = :buyer_id");
+                $stmt->bindParam(':buyer_id', $buyer_id);
+                $stmt->execute();
+                $result = $stmt->fetchAll(); // here we have all the invoices id with that specific buyer
+                $songIds = (array) null;
+
+                foreach ($result as $invoiceId) {
+                    array_push($songIds, Invoice::getSongBasedOnInvoice($invoiceId['id']));
+                }
+
+                $boughtSongsArray = array();
+
+                foreach ($songIds as $songId) {
+                    foreach ($songId as $itemId) {
+                        array_push($boughtSongsArray, Song::getSong($itemId['song_id']));
+                    }
+                }
+
+                $db->disconnect($con);
+
+                return $boughtSongsArray;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        } else {
+            $stmt = null;
+            $db->disconnect($con);
+            return false;
         }
-
-
-        // invoice needs to contain the songs & the artist
-        // invoice needs to contain the invoice number
-        // invoice needs to contain the total amount of money
-
     }
 }
