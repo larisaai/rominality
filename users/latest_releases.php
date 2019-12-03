@@ -16,14 +16,10 @@ session_start();
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-<<<<<<< HEAD
-    <div class="container" style="margin-top:100px;">
-=======
     <div class="hero-container" id="container-releases">
         <div class="hero-img-container">
             <img class="hero-img" src="../img/mixer3_bw_gradient.jpg">
         </div>
->>>>>>> 62fa66abe4f4ee43e3fc2ae3fe0495834f5d039f
         <div class="row top-buffer">
             <div class="titles">
                 <h1>Latest releases</h1>
@@ -33,20 +29,11 @@ session_start();
                     <?php echo $_SESSION['user']['lastname']; ?>
                     <?php echo $_SESSION['user']['id']; ?>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 62fa66abe4f4ee43e3fc2ae3fe0495834f5d039f
                     <a href="cart.php">CART: <span id="cartItems"><?php if (empty($_SESSION['cartItems'])) {
                                                                         echo '0';
                                                                     } else {
                                                                         echo count($_SESSION['cartItems']);
-<<<<<<< HEAD
-                                                                    } ?>
-                        </span></p>
-=======
                                                                     } ?></span></p>
->>>>>>> 62fa66abe4f4ee43e3fc2ae3fe0495834f5d039f
                 </div>
 
                 <div>
