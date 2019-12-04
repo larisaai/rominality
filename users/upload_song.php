@@ -62,30 +62,16 @@ if ($_POST) {
                             ?>
                         </div>
 
+                        <input name="songName" type="text" placeholder="Add the title of the song" required><br>
 
+                        <input name="artistName" type="text" placeholder="Add the name of the artist" required><br>
 
-                        <input name="songName" type="text" placeholder="Add the title of the song"><br>
+                        <input name="price" type="number" placeholder="Add the price" required><br>
 
-                        <input name="artistName" type="text" placeholder="Add the name of the artist"><br>
-
-                        <input name="price" type="number" placeholder="Add the price"><br>
-
-                        <input type="file" name="songFile"><br><br>
+                        <input type="file" name="songFile" required><br><br>
 
                         <button type="submit">Add song</button>
                     </form>
-                    <div>
-                        <h2>Getting one song</h2><br>
-
-                        <?php
-                        $Song = new Song();
-                        $oneSong = $Song->getSong(30);
-                        echo 'Title of the song: ' . $oneSong['song_title'];
-                        echo '<br>Id of the song: ' . $oneSong['id']
-
-                        ?>
-                    </div>
-
                 </div>
             </div>
         </div>

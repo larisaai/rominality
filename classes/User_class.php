@@ -5,9 +5,6 @@ require_once("../includes/connection.php");
 class User
 {
 
-    //if you have functions that are being used JUST by this class use
-    //protected function blalba(){}
-
     public function create($first_name, $last_name, $email, $password, $confirmPass, $user_type)
     {
         $db = new DB();
