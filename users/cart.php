@@ -15,19 +15,15 @@ session_start();
     require_once('../includes/menu_logged.php');
     ?>
     <div class="container" style="margin-top: 100px;">
-        <div class="row top-buffer">
+        <div>
             <h3>Cart</h3>
-            <div class="col-xs-8 col-xs-offset-2">
-                <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
-                    <?php echo $_SESSION['user']['id']; ?>
-                </div>
-            </div>
+
         </div>
     </div>
 
     <div class="container">
-        <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
-            <div class="col-md-6">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+            <div>
                 <p>Cart songs with play</p>
                 <div id="listed-songs">
                     <?php
@@ -54,8 +50,8 @@ session_start();
                 </div>
 
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-4">
+            <div></div>
+            <div>
                 <p>My cart with price and listed songs</p>
                 <div style="background-color:lightgray; padding: 20px;">
 
