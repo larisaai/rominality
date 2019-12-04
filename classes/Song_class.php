@@ -136,12 +136,4 @@ class Song
             return false;
         }
     }
-
-    public function update()
-    { }
-
-    public function delete()
-    {
-        //
-    }
 }

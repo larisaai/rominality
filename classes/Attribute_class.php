@@ -9,7 +9,7 @@ class Attribute
     {
         $db = new DB();
         $con = $db->connect();
-        $results = array();
+
         if ($con) {
             try {
                 $stmt = $con->prepare('SELECT * FROM song_attributes ORDER BY attribute_name DESC');
@@ -32,7 +32,7 @@ class Attribute
     {
         $db = new DB();
         $con = $db->connect();
-        $results = array();
+
 
         if ($con) {
             try {
@@ -58,7 +58,6 @@ class Attribute
     {
         $db = new DB();
         $con = $db->connect();
-
 
         if ($con) {
             try {
@@ -87,16 +86,6 @@ class Attribute
             $var .= '<li>' . Attribute::getAttributeName($attribute['attribute_id'])['attribute_name'] . '</li>';
         }
         return '<ul> ' . $var . '</ul>';
-    }
-
-    public function update()
-    {
-        //
-    }
-
-    public function delete()
-    {
-        //
     }
 
     public function addAttributeRel($song_id, $attribute_id)

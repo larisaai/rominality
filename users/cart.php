@@ -17,28 +17,23 @@ session_start();
     <div class="container" style="margin-top: 100px;">
         <div>
             <h3>Cart</h3>
-
         </div>
     </div>
 
     <div class="container">
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
-            <div>
+            <div id="listedSongsDiv" style=<?php if (empty($_SESSION['cartItems'])) {
+                                                echo '"display: none;"';
+                                            } ?>>
                 <p>Cart songs with play</p>
                 <div id="listed-songs">
                     <?php
                     $cartSongs = $_SESSION['cartItems'];
 
                     foreach ($_SESSION['cartItems'] as $song) {
-
-
                         echo '<div style="background-color: lightgrey; margin: 10px; padding: 4px;">
-                    
-                    
                         <h3>' . $song['song_title'] . '</h3>
                         <p>' . $song['artist_name'] . '</p>
-                        
-                        
                         <audio controls="controls">
                             <source src="../uploads/' . $song['path_id'] . '.mp3" type="audio/mpeg" />
                                 Your browser does not support the audio element.
@@ -50,17 +45,23 @@ session_start();
                 </div>
 
             </div>
-            <div></div>
-            <div>
+            <div id="noSongsMessage">
+                <?php
+
+                if (empty($_SESSION['cartItems'])) {
+                    echo '<h2>Your cart is empty please go back shopping</h2>';
+                }
+
+                ?>
+            </div>
+            <div id="myCartDiv" style=<?php if (empty($_SESSION['cartItems'])) {
+                                            echo '"display: none;"';
+                                        } ?>>
                 <p>My cart with price and listed songs</p>
                 <div style="background-color:lightgray; padding: 20px;">
-
                     <ol id="listedItems" style="width: 100%; padding: 0px;">
                         <?php
-                        //print_r($_SESSION['cartItems']);
-
                         $totalPrice = 0;
-
                         foreach ($_SESSION['cartItems'] as $song) {
                             $totalPrice += $song['price'];
                             echo '<li>
@@ -71,21 +72,13 @@ session_start();
                                     </ul>
                                 </li>';
                         }
-
                         ?>
                     </ol>
                     <p style="text-align: right; margin-right: 35%; margin-top: 20px;">Total: <span id="cartTotal"><?php echo $totalPrice . ' EUR'; ?></span></p>
 
-
-
-
                     <a href="../includes/processPayment.php">Pay now</a>
-
-
                 </div>
-
             </div>
-
         </div>
     </div>
 
@@ -123,8 +116,6 @@ session_start();
             link.innerHTML = "Remove";
 
             linkLi.appendChild(link);
-
-
         };
 
         function createSongElement(title, artist, path) {
@@ -152,30 +143,36 @@ session_start();
 
 
         $("#listedItems").on('click', '.cartRemove', function() {
-
             let songId = $(this).attr('value');
             $.ajax({
                     method: "GET",
                     url: "../includes/removeFromCart.php?songId=" + songId + "",
                 })
                 .done(function(data) {
-                    console.log(data);
-                    console.log('accessed');
                     var result = $.parseJSON(data);
                     let array = result.items;
+                    if ((result.items).length == 0) {
+                        document.getElementById('myCartDiv').style.display = 'none';
+                        document.getElementById('listedSongsDiv').style.display = 'none';
+
+                        var h2 = document.createElement('h2');
+                        h2.innerHTML = "Your cart is empty, go back to shopping";
+                        document.getElementById('noSongsMessage').appendChild(h2);
+                    } else {
+                        document.getElementById('myCartDiv').style.display = 'block';
+                        document.getElementById('listedSongsDiv').style.display = 'block';
+                    }
                     let total = 0;
                     $('#listedItems').html('');
                     $('#listed-songs').html('');
 
                     array.forEach(element => {
-                        // console.log(element);
                         createListElement(element.song_title, element.price, element.id);
                         createSongElement(element.song_title, element.artist_name, element.path_id)
                         total += element.price;
                     })
 
                     $('#cartTotal').html(total + ' EUR');
-                    //see what to do with the cart
                 }).fail(function(xhr, status, error) {
                     alert(xhr.responseText);
                 })

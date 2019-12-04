@@ -19,7 +19,6 @@ session_start();
             <div class="col-xs-8 col-xs-offset-2">
                 <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
                     <?php echo $_SESSION['user']['id']; ?>
-
                 </div>
             </div>
 
@@ -27,8 +26,6 @@ session_start();
                 <div>
                     <p>Payment has been completed/incompleted</p>
                     <p>Invoice:</p>;
-
-
                 </div>
             </div>
         </div>
