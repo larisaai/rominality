@@ -164,7 +164,6 @@ session_start();
                     var result = $.parseJSON(data);
                     let comments = result.comments;
                     let commentDiv = document.querySelectorAll('.commentDiv');
-                    // console.log(comments);
 
                     commentDiv.forEach(element => {
                         let thisDiv = element;
