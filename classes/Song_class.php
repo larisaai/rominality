@@ -74,10 +74,54 @@ class Song
     {
         $db = new DB();
         $con = $db->connect();
-        $results = array();
         if ($con) {
             try {
                 $stmt = $con->prepare('SELECT * FROM songs ORDER BY song_title DESC');
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+
+                $db->disconnect($con);
+                return $result;
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
+        } else {
+            $stmt = null;
+            $db->disconnect($con);
+            return false;
+        }
+    }
+
+    public function getSongsBasedOnUserId($user_id)
+    {
+        $db = new DB();
+        $con = $db->connect();
+        if ($con) {
+            try {
+                $stmt = $con->prepare('SELECT * FROM songs WHERE user_id = :user_id');
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+
+                $db->disconnect($con);
+                return $result;
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
+        } else {
+            $stmt = null;
+            $db->disconnect($con);
+            return false;
+        }
+    }
+
+    public function getRandomSongs()
+    {
+        $db = new DB();
+        $con = $db->connect();
+        if ($con) {
+            try {
+                $stmt = $con->prepare('SELECT * FROM songs ORDER BY RAND() LIMIT 5');
                 $stmt->execute();
                 $result = $stmt->fetchAll();
 

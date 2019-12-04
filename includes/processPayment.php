@@ -10,4 +10,6 @@ $cartItems = $_SESSION['cartItems'];
 
 Invoice::create($_SESSION['user']['id'], count($cartItems), $cartItems);
 
+$_SESSION['cartItems'] = array();
+
 echo 'Invoice created. Payment complete.';

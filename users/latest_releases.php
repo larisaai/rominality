@@ -22,26 +22,12 @@ session_start();
             <img class="hero-img" src="../img/mixer3_bw_gradient.jpg">
         </div>
 
-        <div class="row top-buffer">
+        <div>
             <div class="titles">
                 <h1>Latest releases</h1>
             </div>
-            <div class="col-xs-8 col-xs-offset-2">
-                <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
-                    <?php echo $_SESSION['user']['lastname']; ?>
-                    <?php echo $_SESSION['user']['id']; ?>
+            <div>
 
-
-
-                    <a href="cart.php">CART: <span id="cartItems"><?php if (empty($_SESSION['cartItems'])) {
-                                                                        echo '0';
-                                                                    } else {
-                                                                        echo count($_SESSION['cartItems']);
-                                                                    } ?></span></p>
-
-                        } ?></span></p>
-
-                </div>
 
                 <div>
                     <a id="upload-btn" href="upload_song.php">Upload new song</a>
@@ -164,7 +150,6 @@ session_start();
                     var result = $.parseJSON(data);
                     let comments = result.comments;
                     let commentDiv = document.querySelectorAll('.commentDiv');
-                    // console.log(comments);
 
                     commentDiv.forEach(element => {
                         let thisDiv = element;
