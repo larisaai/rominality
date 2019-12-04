@@ -1,5 +1,11 @@
 <?php
 
+if (empty($_SESSION['cartItems'])) {
+    $cartItems = 0;
+} else {
+    $cartItems = count($_SESSION['cartItems']);
+}
+
 
 echo '
 <nav class="navbar  " >
@@ -16,7 +22,7 @@ echo $_SESSION['user']['firstname']; ?>
                             echo '</a>
                             <div class="sub-menu">
                                 <li> <a href="../users/profile.php">My profile</a></li>
-                                <li> <a href="../users/cart.php">My cart</a></li>
+                                <li> <a href="../users/cart.php">My cart <span id="cartItems">' . $cartItems . '</span></a></li>
                                 <li><a href="../users/logout.php">Logout</a></li>
                             </div>
                             <img class="menu-arrow-down" src="../svg/arrow-down.svg" alt="menu arrow down">
@@ -31,3 +37,4 @@ echo $_SESSION['user']['firstname']; ?>
     <script src="../scripts/drop-down-sub-menu.js"></script>
 
 ';
+                            ?>
