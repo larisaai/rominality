@@ -46,7 +46,14 @@
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 70px;
+    position: relative;
 }
+.arrow-down{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 
 .bounce {
     animation: bounce 3s infinite;
@@ -137,4 +144,35 @@
 .about-us-bottom-left-short-line {
     bottom: 0;
     left: 0;
+}
+
+@media screen and (max-width:1400px) {
+
+    .landing-page-container {
+        padding-top: 135px;
+    }
+    .landing-page-bottom-lines {
+        margin-top: 15px;
+    }
+}
+
+
+@media screen and (max-width:1024px)  {
+    .titles { width: 90%; margin-top:200px;}
+    .landing-page-bottom-lines { margin-top: 130px;}
+    .about-us {flex-wrap: wrap;}
+    .about-us .about-title { width: 100%;}
+    .about-us .about-description { width: 100%;}
+}
+@media screen and (max-width:768px) {
+    .titles { margin-top:30px; width:95%; }
+    .landing-page-bottom-lines { margin-top:60px;}
+    .about-us-container { padding-top: 40px;}
+}
+@media screen and (max-width:450px) {
+    .landing-page-container { padding-top: 100px;}
+    .titles { margin-top:0; }
+    .landing-page-bottom-lines svg:first-child, .landing-page-bottom-lines svg:last-child { display: none;}
+    .landing-page-bottom-lines { margin-top: 35px;}
+    .arrow-down{ position: relative; margin: auto; left:0; transform: translateX(0); }
 }
