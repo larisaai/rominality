@@ -79,10 +79,6 @@ session_start();
                         ?>
                     </ol>
                     <p style="text-align: right; margin-right: 35%; margin-top: 20px;">Total: <span id="cartTotal"><?php echo $totalPrice . ' EUR'; ?></span></p>
-<<<<<<< HEAD
-=======
-
->>>>>>> 9caf2190503bc09b020ad8339b3b3812b0b7a798
 
 
 
