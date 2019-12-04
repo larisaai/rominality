@@ -12,4 +12,6 @@ Invoice::create($_SESSION['user']['id'], count($cartItems), $cartItems);
 
 $_SESSION['cartItems'] = array();
 
+header("Location: ../users/latest_releases.php");
+
 echo 'Invoice created. Payment complete.';
