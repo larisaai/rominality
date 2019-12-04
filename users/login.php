@@ -58,7 +58,7 @@ if (!empty($_POST)) {
 
                         <div class="">
                             <!-- <label for="" class="">Password</label> -->
-                            <input type="text" class="form-control" id="plot" placeholder="Password" name="password" required>
+                            <input type="password" class="form-control" id="plot" placeholder="Password" name="password" required>
                         </div>
 
 

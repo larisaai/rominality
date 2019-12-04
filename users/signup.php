@@ -78,12 +78,12 @@ require_once('../includes/header.php');
                             </div>
 
                             <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Password" name="password" required
+                                    <input type="password" class="form-control" placeholder="Password" name="password" required
                             
                                     >
                             </div>
                             <div class="form-group">
-                                    <input type="text" class="form-control"  placeholder="Confirm Password" name="confirm_password" required>
+                                    <input type="password" class="form-control"  placeholder="Confirm Password" name="confirm_password" required>
                             </div> 
                             <div class="form-group">
                                     <input type="hidden" class="form-control"  name="user_type" value="1" required>
