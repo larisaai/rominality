@@ -36,8 +36,8 @@
     transform: translateY(-50%);
 }
 
-.active .user-sigup-btn-container img,
-.active .producer-sigup-btn-container img {
+.user-sigup-btn-container.active  img,
+.producer-sigup-btn-container.active  img {
     display: block;
 }
 

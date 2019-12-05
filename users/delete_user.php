@@ -8,7 +8,7 @@ $user = new User();
  
 $id = $_SESSION['user']['id'];
 // Call delete method in $user object
-$res = $user->delete_account($id);
+$res = $user->dezactivate_account($id);
 if( $res){
 header('Location: logout.php');
 }

@@ -198,6 +198,25 @@ class User
         } else
             return false;
     }
+    public function dezactivate_account($id)
+    {
+        $db = new DB();
+        $con = $db->connect();
+
+        if ($con) {
+            $stmt = $con->prepare('UPDATE users SET is_active = 0 WHERE id = :id');
+
+            $stmt->bindParam(':id', $id);
+            $ok = $stmt->execute();
+
+            $stmt = null;
+            $db->disconnect($con);
+
+            return $ok;
+        } else
+            return false;
+    }
+
 
     public function getUserFirstnameById($user_id)
     {
