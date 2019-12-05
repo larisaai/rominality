@@ -1,53 +1,42 @@
 
 .footer-container {
     background-color: var(--lightgrey);
-    height: 50px;
     width: 100%;
 }
 .footer {
-    height: 50px;
+    height: 70px;
     width: 80%;
     max-width: 1250px;
     margin: auto;
     display: flex;
-    
     align-items: center;
+    justify-content: space-between;
 }
-.footer div {
-    width:33.3%;
+.footer .copy-rights {
+    justify-content: flex-start;
+}
+.footer .social-media{
+    justify-content: flex-end;
+}
+.copy-rights, .logo, .social-media {
+    width: 33.33%;
     display: flex;
     justify-content: center;
 }
-.footer div:first-child {
-justify-content: flex-start;
-}
-.footer div:last-child {
-    justify-content: flex-end;
-    }
-#fb-share-button {
-    background: #3b5998;
-    border-radius: 3px;
-    font-weight: 600;
-    padding: 5px 8px;
-    display: inline-block;
-    position: static;
-}
 
-#fb-share-button:hover {
+
+.social-media img {
+    width: 25px;
+    height: 25px;
+    margin:0 10px;
     cursor: pointer;
-    background: #213A6F
+
+}
+@media screen and (max-width:768px) {
+    
+    .footer {  height: 170px; flex-direction: column-reverse; justify-content:space-around; width:100%; padding: 20px 0;}
+    .footer .copy-rights,  .footer .social-media{ justify-content: center; width:100%;}
+    .footer div#fb-share-buttin, .footer div.send-email { width: 40px;}
+
 }
 
-#fb-share-button svg {
-    width: 18px;
-    fill: white;
-    vertical-align: middle;
-    border-radius: 2px
-}
-
-#fb-share-button span {
-    vertical-align: middle;
-    color: white;
-    font-size: 14px;
-    padding: 0 3px
-}
