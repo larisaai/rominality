@@ -8,12 +8,12 @@ require_once('../classes/Song_class.php');
 
 require_once('../classes/Attribute_class.php');
 session_start();
-
+echo $_SESSION['user']['user_type'];
 ?>
+
 
 <body>
     <?php
-    /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
 
@@ -21,18 +21,14 @@ session_start();
         <div class="hero-img-container">
             <img class="hero-img" src="../img/mixer3_bw_gradient.jpg">
         </div>
-
         <div>
             <div class="titles">
                 <h1>Latest releases</h1>
             </div>
             <div>
-
-
                 <div>
-                    <a id="upload-btn" href="upload_song.php">Upload new song</a>
+                    <a style="<?= $_SESSION['user']['user_type'] == 0 ? 'display: none;' : 'display: inline-block;' ?>" id="upload-btn" href="upload_song.php">Upload new song</a>
                     <?php
-
                     $songs = Song::all();
                     foreach ($songs as $song) {
                         $id = $song['id'];
@@ -85,9 +81,7 @@ session_start();
       </div>
     </div>
                     ';
-                    }
-
-                    ?>
+                    } ?>
                 </div>
             </div>
         </div>
@@ -97,7 +91,7 @@ session_start();
     <script>
         $(function() {
             $(".cartButton").on('click', function() {
-
+                let buttonElement = $(this);
                 let songId = $(this).attr('value');
                 $.ajax({
                         method: "GET",
@@ -105,19 +99,45 @@ session_start();
                     })
                     .done(function(data) {
                         var result = $.parseJSON(data);
-                        console.log(result);
-                        // $.('#cartItems').html(result.itemNumber);
-                        document.getElementById('cartItems').innerHTML = result.itemNumber;
+                        if (result.status == 1) {
+                            document.getElementById('cartItems').innerHTML = result.itemNumber;
 
+                            buttonElement.addClass("addedToCart");
+                            buttonElement.html('Added to cart');
+                        } else {
+                            console.log(result);
+                        }
                     })
             })
         })
+
+        function checkIfElementIsInCart(id, element) {
+            $.ajax({
+                url: '../includes/checkIfElementIsInCart.php?song_id=' + id
+            }).done(function(data) {
+                var result = $.parseJSON(data);
+                if (result.status == 1) {
+                    element.classList.remove('notAddedToCart')
+                    element.classList.add('addedToCart');
+                    element.innerHTML = 'Added to cart';
+                } else {
+                    element.classList.remove('addedToCart');
+                    element.classList.add('notAddedToCart');
+                    element.innerHTML = 'Add to cart';
+                }
+            })
+        }
+
+        cartButtons = document.querySelectorAll('.cartButton');
+        cartButtons.forEach(item => {
+            checkIfElementIsInCart(item.getAttribute('value'), item);
+        })
+
 
         $(function() {
             $('.addComment').on('click', function() {
                 let songId = $(this).siblings('#commentId').attr('songId');
                 let commentBody = $(this).siblings('#commentId').val();
-                console.log(songId);
 
                 $.ajax({
                         method: "GET",
@@ -156,18 +176,15 @@ session_start();
                         let songId = thisDiv.getAttribute('songId');
                         thisDiv.innerHTML = '';
 
-                        // console.log(thisDiv);
                         comments.forEach(comment => {
 
                             if (songId == comment.song_id) {
-                                // console.log(comment.comment_body);
                                 var p = document.createElement('p');
                                 thisDiv.appendChild(p);
 
                                 var name = document.createElement('span');
                                 let nameDb = getUserNameById(comment.user_id)
                                 name.innerHTML = nameDb;
-                                console.log(nameDb);
                                 p.append(name);
 
                                 var commentBody = document.createElement('span');
@@ -177,17 +194,10 @@ session_start();
                         })
 
                     })
-
-                    // console.log('====================================');
-                    // console.log(result);
-                    // console.log('====================================');
                 })
-            //get all comments
-            //place the comments where they belong
         }
         readComments();
         setInterval(readComments, 1000);
-
 
         // PLAYER
         // var aud = $('audio')[0];

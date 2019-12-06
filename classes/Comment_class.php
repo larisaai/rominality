@@ -52,14 +52,4 @@ class Comment
             return false;
         }
     }
-
-    public function update()
-    {
-        //
-    }
-
-    public function delete()
-    {
-        //
-    }
 }

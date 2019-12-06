@@ -6,8 +6,8 @@ class DB
     {
         $server = 'localhost';
         $db = 'rominimal';
-        $user = 'root';
-        $pwd = '';
+        $user = 'admin';
+        $pwd = 'password';
 
         $DSN = 'mysql:host=' . $server . ';dbname=' . $db . ';charset=utf8';
 
@@ -21,7 +21,7 @@ class DB
             $connections_to_db = new PDO($DSN, $user, $pwd, $options);
         } catch (PDOException $e) {
             echo 'Connection unsuccessful';
-            die('Connection unsuccessful: ' . $connections_to_db->connect_error());
+            die('Connection unsuccessful: ' . $connections_to_db->connect_error);
             exit();
         }
 
