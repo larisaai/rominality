@@ -25,6 +25,9 @@
     font-size: 20px;
     margin-left: 30px;
 }
+.navigation a.logo { 
+    text-transform: lowercase;
+}
 
 .nav-right-aligned {
     display: flex;

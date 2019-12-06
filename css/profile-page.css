@@ -3,15 +3,17 @@
     margin-top: 150px;
 }
 
-.profile-page-inner h3 {
+.profile-page-inner h3 , .change-password-page-inner h3, .change-password-page-inner h4 {
     color: var(--lightgrey);
     text-shadow: 0px 3px 6px #000000B2;
+    color: var(--lightgrey);
 }
 .editable-data { 
     width: 600px;
     margin: auto;
     display: flex;
     justify-content: space-around;
+    max-width:100%;
 }
 .profile-form-container {
     width:70%;
@@ -21,9 +23,14 @@
 }
 
 .image-container img {
+    width: 100px;
+    height: 100px;
+}
+.image-container {
     border: 1px solid var(--lightgrey) ;
-    min-width: 100px;
-    min-height: 100px;
+    width: 100px;
+    height: 100px;
+    margin-bottom:20px;
 }
 .editable-data .change-pass {
     color: var(--lightgrey);
@@ -36,28 +43,73 @@
     bottom:0;
     left:0;
     right:0;
+    background-color:  rgba(0, 0, 0, 0.7);
+  
+;
  }
 .delete-account-container.show {
-     display: block;
- }
+    display: flex;
+}
 .delete-account-content{
-     width: 500px;
-     height: 350px;
+     width:600px;
+     height:400px;
      background-color: var(--lightgrey);
      position: absolute;
      top: 50%;
      left: 50%;
      transform: translate(-50% , -50%);
+     display: flex;
+     justify-content:center;
+     flex-direction: column;
+     align-items: center;
+     border-radius: 5px;
+     max-width: 95%
  }
+ .delete-account-content p {
+     margin: 30px 0;
+     text-align: center;
+     
+ }
+ .delete-account-content .button { margin:0 10px;}
 .editable-data .button {
     font-size: 18px;
     padding: 8px 30px;
  }
 
-.editable-data .button.delete-btn { 
+.editable-data .button.delete-button { 
+    margin-top:2px ;
     opacity: 0.6;
     padding: 6px 30px;
 }
+.editable-data .button.delete-button:hover { 
+    opacity:1;
+}
 .update-btn { 
     float: right;
+}
+.hero-container.profile-page{
+    max-height: calc(100vh - 220px);
+}
+.hero-container.change-password-page {
+    max-height: calc(100vh - 274px);
+}
+.change-password-form { width:400px; margin-top:40px; max-width:100%;}
+
+@media screen and (max-width:1024px) {
+    .editable-data { flex-direction: column; margin-top: 50px;}
+}
+@media screen and (max-width:768px) {
+    .hero-container.profile-page { max-height: calc(100vh - 320px);}
+    .hero-container.change-password-page { max-height: calc(100vh - 374px); }
+    .profile-form-container { width:100%;}
+}
+@media screen and (max-width:450px) {
+    .hero-container.profile-page {max-height: calc(100vh - 100px);}
+    .hero-container.change-password-page { max-height: calc(100vh - 320px);}
+
+    .profile-form-container { width: 100%;}
+    .editable-data .button { padding:8px 25px;}
+    .profile-page-inner {margin-top:100px;}
+    .delete-account-content .button { margin: 0 5px;;}
+
 }

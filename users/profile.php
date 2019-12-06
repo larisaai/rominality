@@ -31,7 +31,7 @@ require_once('../includes/header.php');
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container">
+    <div class="hero-container profile-page">
         <div class="hero-img-container">
             <img class="hero-img" src="../img/hero2.png">
         </div>
@@ -66,16 +66,21 @@ require_once('../includes/header.php');
                                 <input type="submit" class="button btn-white update-btn" value="Update profile">
                             </div>
                         </form>
-                        <div class="form-group">
-                            <button class="button btn-white delete-btn">Delete profile</button>
-                        </div>
-                    </div>
+
+                            <div class="form-group">
+                                <button class="button btn-white delete-btn delete-button">Delete profile</button>
+                            </div>
+                     </div>
 
                     <div class="delete-account-container">
                         <div class="delete-account-content">
-                            <p>Are you sure that you want to delete your account?</p>
-                            <button class="button btn-white  cancel-btn">Cancel</button>
-                            <a href="delete_user.php"><button class="button btn-white  confirm-delete-btn">Yes</button></a>
+                            <h4>We are sorry to see you go...</h4>
+                            <p>Are you sure that you want to delete your account?</p> 
+                            <div>
+                                <button class="button btn-white cancel-btn">Cancel</button>
+                                <a href="delete_user.php"><button class="button btn-white confirm-delete-btn delete-button">Yes</button></a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -83,7 +88,13 @@ require_once('../includes/header.php');
         </div>
     </div>
 
-    <!-- bottom -->
+
+<!-- bottom -->
+   
+<?php
+    require_once('../includes/footer.php');
+?>
+
 </body>
 <script src="../scripts/profile.js"></script>
 
