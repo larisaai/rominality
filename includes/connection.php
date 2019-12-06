@@ -6,7 +6,7 @@ class DB
     {
         $server = 'localhost';
         $db = 'rominimal';
-        $user = 'read-only';
+        $user = 'admin';
         $pwd = 'password';
 
         $DSN = 'mysql:host=' . $server . ';dbname=' . $db . ';charset=utf8';

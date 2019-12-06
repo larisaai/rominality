@@ -8,8 +8,9 @@ require_once('../classes/Song_class.php');
 
 require_once('../classes/Attribute_class.php');
 session_start();
-
+echo $_SESSION['user']['user_type'];
 ?>
+
 
 <body>
     <?php
