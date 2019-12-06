@@ -37,4 +37,4 @@ echo $_SESSION['user']['firstname']; ?>
     <script src="../scripts/drop-down-sub-menu.js"></script>
 
 ';
-                            ?>
+?>

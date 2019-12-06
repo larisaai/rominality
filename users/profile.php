@@ -31,7 +31,7 @@
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container">
+    <div class="hero-container">
         <div class="hero-img-container">
             <img class="hero-img" src="../img/hero2.png">
         </div>
