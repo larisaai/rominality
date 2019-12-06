@@ -19,75 +19,35 @@ echo $_SESSION['user']['user_type'];
 
     <div class="hero-container" id="container-releases">
         <div class="hero-img-container">
-            <img class="hero-img" src="../img/mixer3_bw_gradient.jpg">
+            <img class="hero-img" src="../img/library.png">
         </div>
-        <div>
-            <div class="titles">
-                <h1>Latest releases</h1>
+        <div class="box-wide" id="containerLatest">
+            <div class="titles" id="searchAndTitle">
+                <h1>Latest releases.</h1>
+                <?php
+                require_once('../includes/searchBar.php')
+                ?>
             </div>
-            <div>
-                <div>
-                    <a style="<?= $_SESSION['user']['user_type'] == 0 ? 'display: none;' : 'display: inline-block;' ?>" id="upload-btn" href="upload_song.php">Upload new song</a>
-                    <?php
-                    $songs = Song::all();
-                    foreach ($songs as $song) {
-                        $id = $song['id'];
-                        $attributes = Attribute::getAttributesForId($id);
-                        echo '
-    <div class="container-song">
-      <div class="content-song">
-        <h3>' . $song['song_title'] . '</h3>
-        <div class="tags-container">
-          <p>' . $song['artist_name'] . ' - ' . $song['song_title'] . '</p>
-          <div class="tags">
-            ' . Attribute::getCurrentAttributesAsList($attributes) . '
-          </div>
+            <div id="buttonLatest">
+                <a href="upload_song.php"><button>Upload new song</button></a>
+            </div>
+            <div id="songs-container">
+                <?php
+
+                $songs = Song::all();
+                foreach ($songs as $song) {
+                    $id = $song['id'];
+                    $attributes = Attribute::getAttributesForId($id);
+                    include('../components/audioPlayer.php');
+                } ?>
+            </div>
         </div>
 
-        <audio controls="controls">
-          <source
-            src="../uploads/' . $song['path_id'] . '.mp3"
-            type="audio/mpeg"
-          />
-          Your browser does not support the audio element.
-        </audio>
-        
-          <a href="#"><img class="like" src="../img/like.svg"/></a>
-          <a class="cartButton" id="upload-btn" value="' . $song['id'] . '" href="#"
-            >Add to cart</a
-          >
-          <p>Price: ' . $song['price'] . ' EUR</p>
-
-          <details>
-            <summary>Add comment</summary>
-            <div class="commentDiv" songId="' . $song['id'] . '">
-              <p>
-                <span class="user-comment"></span>
-                <span class="comment-body">Comment</span>
-              </p>
-            </div>
-            <div class="addCommentDiv">
-            <input
-              type="text"
-              placeholder="Add comment here"
-              id="commentId"
-              songId="' . $song['id'] . '"
-                />
-                <button class="addComment">Add</button>
-            </div>
-             
-          </details>
-        
-      </div>
     </div>
-                    ';
-                    } ?>
-                </div>
-            </div>
-        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="../scripts/audio.js"></script> -->
+    <script src="../scripts/audio.js"></script>
+    <script src="../scripts/search.js"></script>
     <script>
         $(function() {
             $(".cartButton").on('click', function() {
@@ -95,7 +55,7 @@ echo $_SESSION['user']['user_type'];
                 let songId = $(this).attr('value');
                 $.ajax({
                         method: "GET",
-                        url: "../includes/addToCart.php?songId=" + songId + "",
+                        url: "../includes/addToCart.php?songId=" + songId
                     })
                     .done(function(data) {
                         var result = $.parseJSON(data);
@@ -136,8 +96,11 @@ echo $_SESSION['user']['user_type'];
 
         $(function() {
             $('.addComment').on('click', function() {
+                let currentElement = $(this).siblings();
+                console.log(currentElement);
                 let songId = $(this).siblings('#commentId').attr('songId');
                 let commentBody = $(this).siblings('#commentId').val();
+
 
                 $.ajax({
                         method: "GET",
@@ -146,6 +109,7 @@ echo $_SESSION['user']['user_type'];
                     .done(function(data) {
                         var result = $.parseJSON(data)
                     })
+                currentElement.val('');
             })
         })
 
@@ -198,21 +162,6 @@ echo $_SESSION['user']['user_type'];
         }
         readComments();
         setInterval(readComments, 1000);
-
-        // PLAYER
-        // var aud = $('audio')[0];
-
-        // $('.play-pause').on('click', function() {
-        //     if (aud.paused) {
-        //         aud.play();
-        //         $('.play-pause').removeClass('icon-play');
-        //         $('.play-pause').addClass('icon-stop')
-        //     } else {
-        //         aud.pause();
-        //         $('.play-pause').removeClass('icon-stop');
-        //         $('.play-pause').addClass('icon-play')
-        //     }
-        // })
     </script>
 </body>
 

@@ -15,7 +15,7 @@ session_start();
     require_once('../includes/menu_logged.php');
     ?>
     <div class="container" style="margin-top: 100px;">
-        <div>
+        <div class="box-wide">
             <h3>Cart</h3>
         </div>
     </div>
