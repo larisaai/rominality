@@ -139,10 +139,18 @@ session_start();
                     var result = $.parseJSON(data);
                     let array = result.items;
                     $('#songList').html('');
+                    if (array.length == 1) {
+                        array.forEach(element => {
+                            createSongElement(element.song_title, element.artist_name, element.price, element.path_id)
+                        })
+                    } else {
+                        $('#songList').html('');
+                        let errorMessage = document.createElement('h2');
+                        errorMessage.innerHTML = 'Sorry there are no items here';
 
-                    array.forEach(element => {
-                        createSongElement(element.song_title, element.artist_name, element.price, element.path_id)
-                    })
+                        document.getElementById('songList').appendChild(errorMessage);
+                    }
+
                 }).fail(function(xhr, status, error) {
                     alert(xhr.responseText);
                 })
@@ -158,10 +166,18 @@ session_start();
                     var result = $.parseJSON(data);
                     let array = result.items;
                     $('#songList').html('');
+                    if (array.length > 0) {
+                        array.forEach(element => {
+                            createSongElement(element.song_title, element.artist_name, element.price, element.path_id)
+                        })
+                    } else {
+                        $('#songList').html('');
+                        let errorMessage = document.createElement('h2');
+                        errorMessage.innerHTML = 'Sorry there are no items here';
 
-                    array.forEach(element => {
-                        createSongElement(element.song_title, element.artist_name, element.price, element.path_id)
-                    })
+                        document.getElementById('songList').appendChild(errorMessage);
+                    }
+
                 }).fail(function(xhr, status, error) {
                     alert(xhr.responseText);
                 })
@@ -178,10 +194,18 @@ session_start();
                     var result = $.parseJSON(data);
                     let array = result.items;
                     $('#songList').html('');
+                    if (array.length > 0) {
+                        array.forEach(element => {
+                            createSongElementWithCart(element.id, element.song_title, element.artist_name, element.price, element.path_id)
+                        })
+                    } else {
+                        $('#songList').html('');
+                        let errorMessage = document.createElement('h2');
+                        errorMessage.innerHTML = 'Sorry there are no items here';
 
-                    array.forEach(element => {
-                        createSongElementWithCart(element.id, element.song_title, element.artist_name, element.price, element.path_id)
-                    })
+                        document.getElementById('songList').appendChild(errorMessage);
+                    }
+
                 }).fail(function(xhr, status, error) {
                     alert(xhr.responseText);
                 })
