@@ -18,7 +18,7 @@ echo '
                         
                         <div class="sub-menu-header"><a >';
 echo $_SESSION['user']['firstname']; ?>
-                         <?php echo $_SESSION['user']['lastname'];
+                         <?php 
                             echo '</a>
                             <div class="sub-menu">
                                 <li> <a href="../users/profile.php">My profile</a></li>
