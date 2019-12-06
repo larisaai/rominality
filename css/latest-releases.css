@@ -2,104 +2,15 @@ body {
   background: #000000;
 }
 
-#container-releases {
-  width: 1200px;
-  margin: auto;
-}
-
-.top-buffer {
-  position: absolute;
-  top: 115px;
-  width: 1200px;
-  margin: auto;
-}
-h1 {
-  font-size: 75px;
-  color: var(--lightgrey);
-}
-
-#upload-btn {
-  box-shadow: 0px 3px 6px #000000b3;
-  border-radius: 10px;
-  width: 240px;
-  padding: 3px 20px;
-  text-align: center;
-  background-color: #ffffff !important;
-  margin-bottom: 55px;
-  font-size: 20px;
-  text-decoration: none;
-  color: #000000;
-  opacity: 1;
-}
-
-/* PLAYER */
-
-.tags > ul {
-  list-style: none;
-  display: flex;
-}
-.tags > ul > li {
-  font-size: 12px;
-  color: #bebcbc;
-  margin-right: 10px;
-  background-color: #7b7575;
-  padding: 2px 20px;
-  border-radius: 10px;
-}
-
-.tags-container {
-  display: flex;
-  align-items: center;
-}
-
-.container-song {
-  margin: 26px 0px;
-  background-color: #bdbdbd;
-  border-radius: 14px;
-  height: 242px;
-}
-.content-song {
-  padding: 16px 44px;
-}
-
-.content-song > h3 {
-  font-size: 45px;
-  color: #504e4f;
-}
-.tags-container > p {
-  font-size: 25px;
-  font-family: Poppins, sans-serif;
-  font-weight: 600;
-  margin-right: 30px;
-}
-
-.like {
-  height: 30px;
-}
-
-.commentDiv {
-  height: auto;
-  width: 1200px;
-  background-color: #e8e6e6;
+#containerLatest {
   position: relative;
-  left: -44px;
-  top: 15px;
-  z-index: 100;
-  border-radius: 14px 14px 0px 0px;
-  padding: 10px 44px;
+  top: 100px;
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
 }
-
-.addCommentDiv {
-  width: 1200px;
-  height: 30px;
-  position: relative;
-  left: -44px;
-  top: 15px;
-  background-color: #e8e6e6;
-  z-index: 100;
-
-  border-radius: 0px 0px 14px 14px;
-}
-.addCommentDiv > input {
-  margin: 3px 0px 3px 44px;
+#searchAndTitle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
 }
