@@ -62,3 +62,25 @@
 
 
 
+
+@media screen and (max-width:1024px) {
+  .signup-form-container, .login-form { width:90%; margin-top:30px;}
+  
+  .login-form form, .signup-form-container form, .user-sigup-btn-container, .producer-sigup-btn-container { margin:0;}
+  }
+  
+@media screen and (max-width:768px) {
+  .signup-form-container, .login-form { width:95%;height:400px; }
+
+}
+@media screen and (max-width:700px) {
+  .signup-form-container, .login-form { width:95%; }
+
+}
+@media screen and (max-width:450px) {
+  .login-form form, .signup-form-container form, .user-sigup-btn-container, .producer-sigup-btn-container { width: 100%;}
+  .login-form, .signup-form-container { height: 350px; align-items: flex-start;}
+  .signup-form .form-group {margin-bottom: 0px; }
+  .form-control { font-size: 15px;}
+  
+  }
