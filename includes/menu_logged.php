@@ -19,13 +19,15 @@ echo '
                         <div class="sub-menu-header"><a >';
 echo $_SESSION['user']['firstname']; ?>
                          <?php 
-                            echo '</a>
-                            <div class="sub-menu">
+                            echo '
+                            <img class="menu-arrow-down" src="../svg/arrow-right.svg" alt="menu arrow down">
+                            <div class="sub-menu"></a>
+                       
                                 <li> <a href="../users/profile.php">My profile</a></li>
                                 <li> <a href="../users/cart.php">My cart <span id="cartItems">' . $cartItems . '</span></a></li>
                                 <li><a href="../users/logout.php">Logout</a></li>
                             </div>
-                            <img class="menu-arrow-down" src="../svg/arrow-down.svg" alt="menu arrow down">
+                           
                         </div>
                         
                      
