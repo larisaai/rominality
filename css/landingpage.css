@@ -15,7 +15,7 @@
     max-width: 100%;
     object-fit: cover;
     height: 900px;
-    max-height:calc(100vh - 150px);
+    max-height:100vh;
 }
 
 .landing-page-container {
@@ -178,11 +178,9 @@
     .titles, .landing-page-bottom-lines { margin-top:0; }
 }
 @media screen and (max-width:768px) {
-    .hero-container { height: 950px;}
+    .hero-container { height: 950px; max-height:990px;}
     .titles { margin-top:50px; width:95%; }
     .landing-page-bottom-lines { margin-top:80px;}
-    .about-us-container { padding-top:0px;}
-    .hero-container { max-height:990px;}
 }
 
 @media screen and (max-width:450px) {

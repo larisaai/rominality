@@ -50,11 +50,11 @@ require_once('../includes/header.php');
                 <div class="signup-form-container">
                     <div class="user-sigup-btn-container active">
                         <h4 class="user-sigup-btn ">Signup as a  user</h4>
-                        <img src="../svg/arrow-down.svg">
+                        <img src="../svg/arrow-right.svg">
                     </div>
                     <div class="producer-sigup-btn-container">
                        <h4 class="producer-sigup-btn">Signup as a producer</h4>
-                       <img src="../svg/arrow-down.svg">
+                       <img src="../svg/arrow-right.svg">
                     </div>
                         
                     <div class="signup-form user-signup active">
