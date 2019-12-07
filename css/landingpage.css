@@ -163,12 +163,13 @@
 @media only screen and (device-width : 1024px) and (device-height: 1366px) {
     .hero-container { height: 1250px;}
     .login-form, .signup-form-container { height:600px;}
-    .landing-page-bottom-lines { margin-top:95px;}
+    .landing-page-bottom-lines { margin-top:220px;}
+    .titles {  margin-top:170px;}
+
 }
 
 @media screen and (max-width:1024px) {
-    .titles { width: 90%; margin-top:170px;}
-    .landing-page-bottom-lines { margin-top: 200px;}
+    .titles { width: 90%; }
     .about-us-container { padding-top:50px;}
     .about-us {flex-wrap: wrap;}
     .about-us .about-title { width: 100%;}
@@ -178,19 +179,24 @@
     .titles, .landing-page-bottom-lines { margin-top:0; }
 }
 @media screen and (max-width:768px) {
-    .hero-container { height: 950px; max-height:990px;}
-    .titles { margin-top:50px; width:95%; }
-    .landing-page-bottom-lines { margin-top:80px;}
+    .hero-container { height: 950px; }
+    .titles { width:95%; }
 }
+@media only screen 
+    and (device-width : 768px) 
+    and (device-height : 1024px) {
+        .titles, .landing-page-bottom-lines { margin-top:30px;}
 
+    }
 @media screen and (max-width:450px) {
     .titles { margin-top:0; }
     .landing-page-bottom-lines svg:first-child, .landing-page-bottom-lines svg:last-child { display: none;}
     .landing-page-bottom-lines { margin-top: 45px;}
     .arrow-down{ position: relative; margin: auto; left:0; transform: translateX(0); }
-    .hero-container { max-height:750px; }
+    .hero-container { max-height:600px; }
     .hero-img { max-height:650px; }
     .about-us-container { padding-top:0; padding-bottom:60px;}
+    .about-us { padding:20px;}
 }
 /* iphone x breackpoint */
 @media only screen 
@@ -199,4 +205,6 @@
         .hero-container { max-height: 816px;}
         .landing-page-bottom-lines { margin-top:120px;}
         .titles { margin-top:30px;}
+        .hero-container { max-height:750px; }
+
     }
