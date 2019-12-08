@@ -11,7 +11,9 @@ echo '
 <nav class="navbar  " >
         <div class="box-wide">
             <div class="navigation ">
+            <a href="../users/latest_releases.php">
                 <div class="nav-left-aligned"><h4>rominality</h4></div>
+            </a>
                 <div class="burger-menu-container">
                     <div class="burger-menu">
                         <span class="burger-menu-item"></span>
@@ -19,7 +21,7 @@ echo '
                         <span class="burger-menu-item"></span>
                     </div>
                 </div>
-                    <div class="nav-right-aligned">
+                    <div class="nav-right-aligned logged-in">
                    
                         <li><a href="../users/latest_releases.php">Home</a></li>
                         <li><a href="../users/library.php">Library</a></li>

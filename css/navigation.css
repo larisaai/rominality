@@ -113,21 +113,26 @@
  .menu-arrow-down { width:15px;}
 .nav-left-aligned {  height:75px;display:flex; align-items: center;}
  .nav-right-aligned {
+    display:flex; 
+ align-items: center;
+ height: 75px;
+}
+.nav-right-aligned.logged-in{
+    flex-direction:column; 
+    align-items:flex-start; 
+
+    padding-top:75px; 
     position:absolute; 
     right:-100%;
     top: 0; 
-    flex-direction:column; 
-    padding-top:75px; 
-    display:flex; 
-    align-items:flex-start; 
     background-color:rgba(0, 0, 0, 0.7); 
     z-index:1; 
     height: 100vh; 
     width:65%; 
     transition: right 1s; 
-}
- .open .nav-right-aligned { right:0; }
-.nav-right-aligned > * { min-height:40px; display:flex; align-items:center;}
+} 
+ .open .nav-right-aligned.logged-in { right:0; }
+.nav-right-aligned.logged-in > * { min-height:40px; display:flex; align-items:center;}
 
 .burger-menu-container { 
     display: flex; 
