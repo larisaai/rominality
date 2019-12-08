@@ -47,7 +47,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 100px;
+    margin-top: 50px;
     position: relative;
 }
 .arrow-down{
@@ -148,13 +148,12 @@
     left: 0;
 }
 
-@media screen and (max-width:1500px) {
+@media screen and (max-width:1700px) {
     .landing-page-bottom-lines {
-        margin-top: 100px;
+        margin-top: 70px;
     }
 }
 @media screen and (max-width:1300px) {
-    .landing-page-container {padding-top:0;}
     .landing-page-bottom-lines {
         margin-top: 50px;
     }
@@ -170,6 +169,8 @@
 }
 
 @media screen and (max-width:1024px) {
+    .landing-page-container {padding-top:0;}
+
     .titles { width: 90%; }
     .about-us-container { padding-top:50px;}
     .about-us {flex-wrap: wrap;}
