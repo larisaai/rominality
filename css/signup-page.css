@@ -60,3 +60,13 @@
 .active .hero-img {
     transform: translateY(-50%) rotate(-90deg);
 }
+
+@media screen and (max-width:450px) {
+    .user-sigup-btn-container svg,
+    .producer-sigup-btn-container svg {
+        width: 25px;
+        left: -20px;
+    }
+
+
+}

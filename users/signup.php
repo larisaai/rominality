@@ -14,6 +14,7 @@ if (!empty($_POST)) {
     $user_type = $_POST["user_type"];
     // call add method in students object
     $res = $user->create($first, $last, $email, $password, $confirm_password, $user_type);
+    
     if ($res ===  true) {
         header("Location: latest_releases.php");
     } else {    
