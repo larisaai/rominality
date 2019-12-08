@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="file" class="form-control " name="profileImage" accept="image/png, image/jpeg" >
+                                <input type="file" class="form-control " value="<?php echo $_SESSION['user']['profile_picture']?>444" name="profileImage" accept="image/png, image/jpeg" >
                             </div>
 
                             <div class="form-group">
