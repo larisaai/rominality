@@ -2,13 +2,13 @@
 <html lang="en">
 
 <?php
-/* Include <head></head> */
+
 require_once('../includes/header.php');
 require_once('../classes/Song_class.php');
 
 require_once('../classes/Attribute_class.php');
 session_start();
-echo $_SESSION['user']['user_type'];
+
 ?>
 
 
@@ -17,10 +17,8 @@ echo $_SESSION['user']['user_type'];
     require_once('../includes/menu_logged.php');
     ?>
 
-    <div class="hero-container" id="container-releases">
-        <div class="hero-img-container">
-            <img class="hero-img" src="../img/library.png">
-        </div>
+    <div class="parent-container" id="container-releases">
+        <div class="imgParent"></div>
         <div class="box-wide" id="containerLatest">
             <div class="titles" id="searchAndTitle">
                 <h1>Latest releases.</h1>
@@ -45,6 +43,10 @@ echo $_SESSION['user']['user_type'];
 
     </div>
     </div>
+    <?php
+
+    require_once('../includes/footer.php');
+    ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../scripts/audio.js"></script>
     <script src="../scripts/search.js"></script>
@@ -150,6 +152,9 @@ echo $_SESSION['user']['user_type'];
                                 let nameDb = getUserNameById(comment.user_id)
                                 name.innerHTML = nameDb;
                                 p.append(name);
+
+                                var dash = " - ";
+                                p.append(dash)
 
                                 var commentBody = document.createElement('span');
                                 commentBody.innerHTML = comment.comment_body;
