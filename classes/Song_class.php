@@ -144,7 +144,7 @@ class Song
 
         if ($con) {
             try {
-                $stmt = $con->prepare("SELECT song_title FROM songs WHERE song_title LIKE CONCAT('%', :search_term, '%') ORDER BY song_title DESC");
+                $stmt = $con->prepare("SELECT * FROM songs WHERE song_title LIKE CONCAT( :search_term, '%') ORDER BY song_title DESC");
                 $stmt->bindParam(':search_term', $value);
                 $stmt->execute();
                 $result = $stmt->fetchAll();

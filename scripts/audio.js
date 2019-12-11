@@ -3,7 +3,7 @@ const song = document.querySelector("audio");
 // document.getElementById("play").addEventListener("click", function() {
 //   console.log(this.parentElement.parentElement.previousElementSibling);
 // });
-$(".play").on("click", function() {
+$("#songs-container").on("click", ".play", function () {
   let linkElement = this;
   let song = this.parentElement.parentElement.previousElementSibling;
   //   console.log(song);
@@ -32,7 +32,7 @@ $(".play").on("click", function() {
 //   }
 // }
 
-song.addEventListener("timeupdate", function() {
+song.addEventListener("timeupdate", function () {
   const position = song.currentTime / song.duration;
   fill.style.width = position * 100 + "%";
 });

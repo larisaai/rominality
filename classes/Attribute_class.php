@@ -28,12 +28,12 @@ class Attribute
         }
     }
 
+
+
     public function getAttributesForId($id)
     {
         $db = new DB();
         $con = $db->connect();
-
-
         if ($con) {
             try {
 
