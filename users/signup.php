@@ -14,6 +14,7 @@ if (!empty($_POST)) {
     $user_type = $_POST["user_type"];
     // call add method in students object
     $res = $user->create($first, $last, $email, $password, $confirm_password, $user_type);
+    
     if ($res ===  true) {
         header("Location: latest_releases.php");
     } else {    
@@ -50,11 +51,15 @@ require_once('../includes/header.php');
                 <div class="signup-form-container">
                     <div class="user-sigup-btn-container active">
                         <h4 class="user-sigup-btn ">Signup as a  user</h4>
-                        <img src="../svg/arrow-down.svg">
+                        <svg class="arrow-down " xmlns="http://www.w3.org/2000/svg" width="43" height="18" viewBox="0 0 43 18">
+                        <text id="_" data-name="&gt;" transform="translate(11) rotate(90)" fill="#f2edf0" font-size="30" font-family="Poppins-SemiBold, Poppins" font-weight="600"><tspan x="0" y="0">&gt;</tspan></text>
+                        </svg>
                     </div>
                     <div class="producer-sigup-btn-container">
                        <h4 class="producer-sigup-btn">Signup as a producer</h4>
-                       <img src="../svg/arrow-down.svg">
+                       <svg class="arrow-down " xmlns="http://www.w3.org/2000/svg" width="43" height="18" viewBox="0 0 43 18">
+                        <text id="_" data-name="&gt;" transform="translate(11) rotate(90)" fill="#f2edf0" font-size="30" font-family="Poppins-SemiBold, Poppins" font-weight="600"><tspan x="0" y="0">&gt;</tspan></text>
+                        </svg>
                     </div>
                         
                     <div class="signup-form user-signup active">

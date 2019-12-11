@@ -36,9 +36,9 @@ session_start();
         </div>
     </div>
     <?php
-
     require_once('../includes/footer.php');
     ?>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>
 
@@ -149,7 +149,7 @@ session_start();
                     var result = $.parseJSON(data);
                     let array = result.items;
                     $('#songList').html('');
-                    if (array.length == 1) {
+                    if (array.length > 0) {
                         array.forEach(element => {
                             createSongElement(element.song_title, element.artist_name, element.price, element.path_id)
                         })

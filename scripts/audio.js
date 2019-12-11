@@ -1,7 +1,10 @@
 const song = document.querySelector("audio");
 const fillBar = document.getElementById("fill");
 
-$(".play").on("click", function() {
+// document.getElementById("play").addEventListener("click", function() {
+//   console.log(this.parentElement.parentElement.previousElementSibling);
+// });
+$("#songs-container").on("click", ".play", function () {
   let linkElement = this;
   let song = this.parentElement.parentElement.previousElementSibling;
 
@@ -18,7 +21,9 @@ $(".play").on("click", function() {
   }
 });
 
-song.addEventListener("timeupdate", function() {
+song.addEventListener("timeupdate", function () {
   const position = song.currentTime / song.duration;
+
   fillBar.style.width = position * 100 + "%";
 });
+

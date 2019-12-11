@@ -49,7 +49,7 @@ class User
     public function checkDataForErrors($first_name, $last_name, $email, $password, $confirmPass)
     {
         if ($confirmPass !== $password) {
-            return 'paswords are not matching';
+            return 'the password and confirmation password do not match.';
         };
 
         if ($this->checkEmailExists($email)) {

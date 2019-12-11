@@ -60,17 +60,17 @@ if (!empty($_POST)) {
                             <!-- <label for="" class="">Password</label> -->
                             <input type="password" class="form-control" id="plot" placeholder="Password" name="password" required>
                         </div>
-
-
-                        <div class="">
-                            <input type="submit" class="button btn-white login-btn" value="Login">
-                        </div>
-                
                         <?php
                             if($showError){
                                 echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
                             }
                         ?>
+
+                        <div class="">
+                            <input type="submit" class="button btn-white login-btn" value="Login">
+                        </div>
+                
+                     
                     
                     </form>
                 </div>

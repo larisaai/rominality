@@ -13,9 +13,6 @@
 .login-btn {
   width: 100%;
 }
-.button:hover {
-  transform: scale(1.05);
-}
 
 .button.delete-button:hover {
   opacity: 1;

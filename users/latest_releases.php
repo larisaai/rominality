@@ -8,7 +8,6 @@ require_once('../classes/Song_class.php');
 
 require_once('../classes/Attribute_class.php');
 session_start();
-
 ?>
 
 
@@ -26,7 +25,7 @@ session_start();
                 require_once('../includes/searchBar.php')
                 ?>
             </div>
-            <div id="buttonLatest">
+            <div <?= $_SESSION['user']['user_type'] == 1 ? 'style="display:none;"' : 'style="display:inline-block;"' ?> id="buttonLatest">
                 <a href="upload_song.php"><button>Upload new song</button></a>
             </div>
             <div id="songs-container">
@@ -52,7 +51,7 @@ session_start();
     <script src="../scripts/search.js"></script>
     <script>
         $(function() {
-            $(".cartButton").on('click', function() {
+            $("#songs-container").on('click', ".cartButton", function() {
                 let buttonElement = $(this);
                 let songId = $(this).attr('value');
                 $.ajax({
@@ -90,14 +89,29 @@ session_start();
             })
         }
 
-        cartButtons = document.querySelectorAll('.cartButton');
-        cartButtons.forEach(item => {
-            checkIfElementIsInCart(item.getAttribute('value'), item);
-        })
+        function getAttributesForSongId(id) {
+
+            var s = $.ajax({
+                async: false,
+                method: "GET",
+                url: "../includes/getAttributesForSong.php?id=" + id
+            })
+            var result = $.parseJSON(s.responseText);
+            return result.attributesHTML;
+        }
+
+        function addValueToCartButtons() {
+            cartButtons = document.querySelectorAll('.cartButton');
+            cartButtons.forEach(item => {
+                checkIfElementIsInCart(item.getAttribute('value'), item);
+            })
+        }
+
+        addValueToCartButtons()
 
 
         $(function() {
-            $('.addComment').on('click', function() {
+            $('#songs-container').on('click', ".addComment", function() {
                 let currentElement = $(this).siblings();
                 console.log(currentElement);
                 let songId = $(this).siblings('#commentId').attr('songId');
