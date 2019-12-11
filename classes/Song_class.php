@@ -136,4 +136,28 @@ class Song
             return false;
         }
     }
+
+    public function searchSong($value)
+    {
+        $db = new DB();
+        $con = $db->connect();
+
+        if ($con) {
+            try {
+                $stmt = $con->prepare("SELECT song_title FROM songs WHERE song_title LIKE CONCAT('%', :search_term, '%') ORDER BY song_title DESC");
+                $stmt->bindParam(':search_term', $value);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+
+                $db->disconnect($con);
+                return $result;
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
+        } else {
+            $stmt = null;
+            $db->disconnect($con);
+            return false;
+        }
+    }
 }

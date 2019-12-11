@@ -1,4 +1,4 @@
-<div class="full-width landing-page-bottom-lines">
+<div class=" landing-page-bottom-lines">
                     <svg xmlns="http://www.w3.org/2000/svg" width="23.5" height="119.009" viewBox="0 0 23.5 119.009">
                         <g id="Group_5" data-name="Group 5" transform="translate(-277 -863.491)">
                             <line id="Line_5" data-name="Line 5" x1="22.5" transform="translate(278 981.5)" fill="none" stroke="#f2edf0" stroke-width="2"/>

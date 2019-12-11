@@ -22,8 +22,15 @@
     text-decoration: none;
     text-transform: uppercase;
     color: var(--lightgrey);
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 30px;
+    display: flex;
+    align-self: center;
+}
+.navigation a.logo { 
+    text-transform: lowercase;
+    font-size: 28px;
+    width:auto;
 }
 
 .nav-right-aligned {
@@ -60,7 +67,7 @@
     display: none;
     position: absolute;
     top: 35px;
-    right: 36px;
+    right: 0;
     flex-wrap: wrap;
     justify-content: flex-end;
 
@@ -73,7 +80,9 @@
 
 .sub-menu a {
     font-size: 18px;
-    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    min-width:150px;
 }
 
 .active .sub-menu {
@@ -81,17 +90,81 @@
 }
 
 .menu-arrow-down {
-    transform: rotate(180deg);
-    margin-left: -10px;
-    margin-bottom: -3px;
+    transform: rotate(90deg);
+    margin-left:10px;
+  
 }
 
 .active .menu-arrow-down {
-    transform: rotate(0deg);
+    transform: rotate(270deg);
 }
+.sub-menu-header .user-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.burger-menu { display: none;}
 
 @media screen and (max-width:450px) {
  .nav-two-design-lines { display: none;}  
- .navigation { height: 75px;}
- .navigation a { font-size:17px;}
+ .navigation {height:75px; align-items:flex-start;}
+ .navigation a { font-size:15px;}
+ .navigation a.logo { font-size: 22px; margin-left:7px ;}
+ .menu-arrow-down { width:15px;}
+.nav-left-aligned {  height:75px;display:flex; align-items: center;}
+ .nav-right-aligned {
+    display:flex; 
+ align-items: center;
+ height: 75px;
 }
+.nav-right-aligned.logged-in{
+    flex-direction:column; 
+    align-items:flex-start; 
+
+    padding-top:75px; 
+    position:absolute; 
+    right:-100%;
+    top: 0; 
+    background-color:rgba(0, 0, 0, 0.7); 
+    z-index:1; 
+    height: 100vh; 
+    width:65%; 
+    transition: right 1s; 
+} 
+ .open .nav-right-aligned.logged-in { right:0; }
+.nav-right-aligned.logged-in > * { min-height:40px; display:flex; align-items:center;}
+
+.burger-menu-container { 
+    display: flex; 
+    justify-content:flex-end; 
+    align-items: center; 
+    height:75px;}
+.burger-menu {
+    z-index:2;
+    display: block;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  .burger-menu-item {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+    opacity: 1;
+    display: block;
+    color: white;
+  }
+  .open .burger-menu-item:first-child {
+    transform: rotate(-45deg) translate(-6px, 6px);
+  }
+  .open .burger-menu-item:nth-child(2) {
+    opacity: 0;
+  }
+  .open .burger-menu-item:last-child {
+    transform: rotate(45deg) translate(-7px, -7px);
+  }
+
+
+}
+

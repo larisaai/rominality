@@ -27,8 +27,8 @@
     transform: translateY(-50%);
 }
 
-.user-sigup-btn-container img,
-.producer-sigup-btn-container img {
+.user-sigup-btn-container svg,
+.producer-sigup-btn-container svg {
     display: none;
     position: absolute;
     top: 50%;
@@ -36,8 +36,8 @@
     transform: translateY(-50%) rotate(-90deg);
 }
 
-.user-sigup-btn-container.active  img,
-.producer-sigup-btn-container.active  img {
+.user-sigup-btn-container.active  svg,
+.producer-sigup-btn-container.active  svg {
     display: block;
 }
 
@@ -59,4 +59,14 @@
 
 .active .hero-img {
     transform: translateY(-50%) rotate(-90deg);
+}
+
+@media screen and (max-width:450px) {
+    .user-sigup-btn-container svg,
+    .producer-sigup-btn-container svg {
+        width: 25px;
+        left: -20px;
+    }
+
+
 }

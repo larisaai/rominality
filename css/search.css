@@ -1,0 +1,12 @@
+.search-container {
+  position: absolute;
+  right: 0;
+}
+
+#buttonSearch {
+  width: 10px !important;
+}
+
+input #searchInput {
+  width: 100px;
+}

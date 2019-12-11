@@ -35,7 +35,11 @@ if ($_POST) {
     require_once('../includes/menu_logged.php');
     ?>
     <div class="container">
+<<<<<<< Updated upstream
         <div>
+=======
+        <div class="box-wide">
+>>>>>>> Stashed changes
             <h3>Latest releases</h3>
             <div>
                 <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
