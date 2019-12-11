@@ -28,7 +28,7 @@ session_start();
                     <ul>
                         <li style="display: inline-block; padding: 10px;"><a id="likedSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Liked songs</a></li>
                         <li style="display: inline-block; padding: 10px;"><a id="boughtSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Bought songs</a></li>
-                        <li style=" <?= $_SESSION['user']['user_type'] == 0 ? 'display:none;' : 'display:inline-block;' ?> padding: 10px;"><a id="mySongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">My songs</a></li>
+                        <li style=" <?= $_SESSION['user']['user_type'] == 1 ? 'display:none;' : 'display:inline-block;' ?> padding: 10px;"><a id="mySongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">My songs</a></li>
                     </ul>
                     <div id="songList"></div>
                 </div>
@@ -221,7 +221,32 @@ session_start();
                 })
         })
 
+        function checkIfElementIsInCart(id, element) {
+            $.ajax({
+                url: '../includes/checkIfElementIsInCart.php?song_id=' + id
+            }).done(function(data) {
+                var result = $.parseJSON(data);
+                if (result.status == 1) {
+                    element.classList.remove('notAddedToCart')
+                    element.classList.add('addedToCart');
+                    element.innerHTML = 'Added to cart';
+                } else {
+                    element.classList.remove('addedToCart');
+                    element.classList.add('notAddedToCart');
+                    element.innerHTML = 'Add to cart';
+                }
+            })
+        }
+
         $("#likedSongs").trigger("click");
+
+        function addValueToCartButtons() {
+            cartButtons = document.querySelectorAll('.cartButton');
+            cartButtons.forEach(item => {
+                checkIfElementIsInCart(item.getAttribute('value'), item);
+            })
+        }
+        setTimeout(addValueToCartButtons, 100);
     </script>
 </body>
 
