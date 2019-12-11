@@ -27,7 +27,7 @@ echo $_SESSION['user']['user_type'];
             </div>
             <div>
                 <div>
-                    <a style="<?= $_SESSION['user']['user_type'] == 0 ? 'display: none;' : 'display: inline-block;' ?>" id="upload-btn" href="upload_song.php">Upload new song</a>
+                    <a style="<?= $_SESSION['user']['user_type'] == 1 ? 'display: none;' : 'display: inline-block;' ?>" id="upload-btn" href="upload_song.php">Upload new song</a>
                     <?php
                     $songs = Song::all();
                     foreach ($songs as $song) {
