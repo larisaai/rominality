@@ -1,5 +1,5 @@
-const song = document.querySelector("audio");
-const fillBar = document.getElementById("fill");
+// const song = document.querySelector("audio");
+// const fillBar = document.getElementById("fill");
 
 // document.getElementById("play").addEventListener("click", function() {
 //   console.log(this.parentElement.parentElement.previousElementSibling);
@@ -19,11 +19,11 @@ $("#songs-container").on("click", ".play", function () {
       .children()
       .attr("src", "../img/play.png");
   }
+
+  song.addEventListener("timeupdate", function () {
+    const position = song.currentTime / song.duration;
+    console.log(this.previousElementSibling.firstElementChild);
+    this.previousElementSibling.firstElementChild.style.width = position * 100 + "%";
+  });
+
 });
-
-song.addEventListener("timeupdate", function () {
-  const position = song.currentTime / song.duration;
-
-  fillBar.style.width = position * 100 + "%";
-});
-
