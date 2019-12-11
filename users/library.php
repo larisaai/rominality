@@ -12,23 +12,33 @@ session_start();
 
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container" style="margin-top: 100px;">
-        <div>
-            <h3>Library</h3>
+    <div class="parent-container">
+        <div class="imgParent"></div>
+        <div class="box-wide" id="containerLatest">
+            <div class="titles" id="searchAndTitle">
+                <h1>Library.</h1>
+                <?php
+                require_once('../includes/searchBar.php')
+                ?>
+            </div>
 
+
+            <div class="container">
+                <div class="row" style="display: grid; grid-template-columns: 1fr">
+                    <ul>
+                        <li style="display: inline-block; padding: 10px;"><a id="likedSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Liked songs</a></li>
+                        <li style="display: inline-block; padding: 10px;"><a id="boughtSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Bought songs</a></li>
+                        <li style=" <?= $_SESSION['user']['user_type'] == 0 ? 'display:none;' : 'display:inline-block;' ?> padding: 10px;"><a id="mySongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">My songs</a></li>
+                    </ul>
+                    <div id="songList"></div>
+                </div>
+            </div>
         </div>
     </div>
+    <?php
+    require_once('../includes/footer.php');
+    ?>
 
-    <div class="container" style="margin-top: 300px;">
-        <div class="row" style="display: grid; grid-template-columns: 1fr">
-            <ul>
-                <li style="display: inline-block; padding: 10px;"><a id="likedSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Liked songs</a></li>
-                <li style="display: inline-block; padding: 10px;"><a id="boughtSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Bought songs</a></li>
-                <li style=" <?= $_SESSION['user']['user_type'] == 1 ? 'display:none;' : 'display:inline-block;' ?> padding: 10px;"><a id="mySongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">My songs</a></li>
-            </ul>
-            <div id="songList"></div>
-        </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>
 

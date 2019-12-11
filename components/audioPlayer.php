@@ -13,7 +13,7 @@ echo ' <div class="player-component">
     <div id="fill"></div>
     <div id="handle"></div>
 </div>
-<audio controls="controls">
+<audio>
 <source
     src="../uploads/' . $song['path_id'] . '.mp3"
     type="audio/mpeg"
@@ -27,7 +27,7 @@ Your browser does not support the audio element.
 
 </div>
 <a><img class="like" src="../img/like.svg"/></a>
-<details>
+<details class="commentDetails">
     <summary>Add comment</summary>
     <div class="commentDiv" songId="' . $song['id'] . '">
     <p>

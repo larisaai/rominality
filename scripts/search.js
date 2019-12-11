@@ -83,6 +83,7 @@ function createAudioElement(
   tagsContainer.setAttribute("class", "tags-container");
   parentDiv.appendChild(tagsContainer);
 
+
   let artist = document.createElement("p");
   artist.innerHTML = artistName + " - " + songTitle;
   tagsContainer.appendChild(artist);
