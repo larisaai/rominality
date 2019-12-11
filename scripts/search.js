@@ -1,13 +1,13 @@
-$("#searchInput").keyup(function() {
+$("#searchInput").keyup(function () {
   let parentResults = document.getElementById("searchResults");
   parentResults.innerHTML = "";
   value = $(this).val();
-  console.log(value);
+  // console.log(value);
   if (value != "") {
     $.ajax({
       method: "GET",
       url: "../includes/searchForSong.php?currentSearch=" + value
-    }).done(function(data) {
+    }).done(function (data) {
       var result = $.parseJSON(data);
 
       let songs = result.items;
@@ -24,26 +24,52 @@ $("#searchInput").keyup(function() {
         parentResults.appendChild(p);
         p.innerHTML = "No items found";
       }
-
-      //pentru fiecare element pe care il primesti prin forEach, append <p> la div-ul searchedItems
     });
   } else {
     parentResults.innerHTML = "";
   }
 });
 
-$("#searchResults").on("click", ".foundItem", function() {
-  console.log(this.innerHTML);
+$("#searchResults").on("click", ".foundItem", function () {
   document.getElementById("searchInput").value = this.innerHTML;
   document.getElementById("searchResults").innerHTML = "";
 });
+
+$("#buttonSearch").on('click', function () {
+  let searchBar = document.getElementById('searchInput');
+  value = $(searchBar).val();
+
+  if (value != "") {
+    $.ajax({
+      method: "GET",
+      url: "../includes/searchForSong.php?currentSearch=" + value
+    }).done(function (data) {
+      var result = $.parseJSON(data);
+
+      let songs = result.items;
+      if (songs.length > 0) {
+        songs.forEach(song => {
+          //get the attributes for each song so access a function 
+          console.log(song);
+
+          document.getElementById('songs-container').innerHTML = '';
+          createAudioElement(song.song_title, song.artist_name, song.path_id, song.id, song.price, getAttributesForSongId(song.id));
+        });
+      }
+      addValueToCartButtons();
+    });
+
+  }
+  //we want to take the items that were found so we do one more call the last time to se eif there is anything to display
+})
 
 function createAudioElement(
   songTitle,
   artistName,
   songPath,
   songId,
-  songPrice
+  songPrice,
+  attributeHTML
 ) {
   let parentDiv = document.createElement("div");
   parentDiv.setAttribute("class", "player-component");
@@ -57,17 +83,17 @@ function createAudioElement(
   tagsContainer.setAttribute("class", "tags-container");
   parentDiv.appendChild(tagsContainer);
 
-  let artistName = document.createElement("p");
-  artistName.innerHTML = artistName + " - " + songTitle;
-  tagsContainer.appendChild(artistName);
+  let artist = document.createElement("p");
+  artist.innerHTML = artistName + " - " + songTitle;
+  tagsContainer.appendChild(artist);
 
   let tagsDiv = document.createElement("div");
   tagsDiv.setAttribute("class", "tags");
   tagsContainer.appendChild(tagsDiv);
 
-  //I will fill uo the tags div with the attributes later - Razvan
+  tagsDiv.innerHTML = attributeHTML;
 
-  //now you start from seek bar
+
   let seekBarDiv = document.createElement("div");
   seekBarDiv.setAttribute("id", "seek-bar");
   parentDiv.appendChild(seekBarDiv);
@@ -128,8 +154,6 @@ function createAudioElement(
   let pTagCommentDiv = document.createElement("p");
   commentDiv.appendChild(pTagCommentDiv);
 
-  // CHECK IF SPANS  with username and comment WORK, if NOT you need to add them
-
   let addCommentDiv = document.createElement("div");
   detailsContainer.appendChild(addCommentDiv);
 
@@ -153,4 +177,9 @@ function createAudioElement(
   aTagAddToCart.setAttribute("class", "cartButton");
   aTagAddToCart.setAttribute("id", "upload-btn");
   aTagAddToCart.setAttribute("value", songId);
+  aTagAddToCart.innerHTML = 'Add to cart';
+  infoAboutSongDiv.appendChild(aTagAddToCart);
 }
+
+// when you click on #buttonSearch I want to load all the results
+// 
