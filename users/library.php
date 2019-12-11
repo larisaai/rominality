@@ -124,17 +124,26 @@ session_start();
             audio.appendChild(source);
         }
 
-        $(function() {
-            $("#songList").on('click', '.cartButton', function() {
 
+
+        $(function() {
+            $("#songList").on('click', ".cartButton", function() {
+                let buttonElement = $(this);
                 let songId = $(this).attr('value');
                 $.ajax({
                         method: "GET",
-                        url: "../includes/addToCart.php?songId=" + songId + "",
+                        url: "../includes/addToCart.php?songId=" + songId
                     })
                     .done(function(data) {
                         var result = $.parseJSON(data);
-                        document.getElementById('cartItems').innerHTML = result.itemNumber;
+                        if (result.status == 1) {
+                            document.getElementById('cartItems').innerHTML = result.itemNumber;
+
+                            buttonElement.addClass("addedToCart");
+                            buttonElement.html('Added to cart');
+                        } else {
+                            console.log(result);
+                        }
                     })
             })
         })
