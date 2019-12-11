@@ -211,7 +211,32 @@ session_start();
                 })
         })
 
+        function checkIfElementIsInCart(id, element) {
+            $.ajax({
+                url: '../includes/checkIfElementIsInCart.php?song_id=' + id
+            }).done(function(data) {
+                var result = $.parseJSON(data);
+                if (result.status == 1) {
+                    element.classList.remove('notAddedToCart')
+                    element.classList.add('addedToCart');
+                    element.innerHTML = 'Added to cart';
+                } else {
+                    element.classList.remove('addedToCart');
+                    element.classList.add('notAddedToCart');
+                    element.innerHTML = 'Add to cart';
+                }
+            })
+        }
+
         $("#likedSongs").trigger("click");
+
+        function addValueToCartButtons() {
+            cartButtons = document.querySelectorAll('.cartButton');
+            cartButtons.forEach(item => {
+                checkIfElementIsInCart(item.getAttribute('value'), item);
+            })
+        }
+        setTimeout(addValueToCartButtons, 100);
     </script>
 </body>
 
