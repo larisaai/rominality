@@ -144,8 +144,8 @@ class Song
 
         if ($con) {
             try {
-                $stmt = $con->prepare("SELECT * FROM songs WHERE song_title LIKE CONCAT( :search_term, '%') ORDER BY song_title DESC");
-                $stmt->bindParam(':search_term', $value);
+                $stmt = $con->prepare("CALL searchBar(?)");
+                $stmt->bindParam(1, $value, PDO::PARAM_STR | PDO::PARAM_INPUT_OUTPUT, 4000);
                 $stmt->execute();
                 $result = $stmt->fetchAll();
 
