@@ -357,16 +357,12 @@ GRANT SELECT ON `rominimal`.* TO 'read-only'@'%';
 
 GRANT USAGE ON *.* TO 'restricted-user'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19';
 
-GRANT SELECT ON `rominimal`.`song_attributes` TO 'restricted-user'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `rominimal`.`invoices` TO 'restricted-user'@'%';
 
-GRANT SELECT ON `rominimal`.`comments` TO 'restricted-user'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `rominimal`.`comments` TO 'restricted-user'@'%';
 
-GRANT SELECT ON `rominimal`.`invoices` TO 'restricted-user'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `rominimal`.`users` TO 'restricted-user'@'%';
 
-GRANT SELECT ON `rominimal`.`song_attributes_relationship` TO 'restricted-user'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `rominimal`.`user_types` TO 'restricted-user'@'%';
 
-GRANT SELECT ON `rominimal`.`user_types` TO 'restricted-user'@'%';
-
-GRANT SELECT (updated_at, create_at, id, firstname, user_type, email, lastname, is_active, profile_picture) ON `rominimal`.`users` TO 'restricted-user'@'%';
-
-GRANT SELECT ON `rominimal`.`invoices_relationship` TO 'restricted-user'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `rominimal`.`invoices_relationship` TO 'restricted-user'@'%';
