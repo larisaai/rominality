@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2019 at 05:15 PM
+-- Generation Time: Dec 12, 2019 at 03:33 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -21,6 +21,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `rominimal`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchBar` (IN `search_term` CHAR(255))  BEGIN
+SELECT * FROM songs WHERE song_title LIKE CONCAT( search_term, '%') ORDER BY song_title DESC;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -51,7 +61,6 @@ CREATE TABLE `invoices` (
   `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 -- --------------------------------------------------------
 
 --
@@ -62,10 +71,6 @@ CREATE TABLE `invoices_relationship` (
   `invoice_id` int(11) NOT NULL,
   `song_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `invoices_relationship`
---
 
 -- --------------------------------------------------------
 
@@ -85,6 +90,8 @@ CREATE TABLE `songs` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `song_attributes`
@@ -124,8 +131,6 @@ CREATE TABLE `song_attributes_relationship` (
   `attribute_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -145,6 +150,21 @@ CREATE TABLE `users` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `user_type`, `email`, `password`, `profile_picture`, `is_active`, `create_at`, `updated_at`) VALUES
+(27, 'Cassandra', 'Tiltack', 1, 'cassandra@me.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:23:15', '2019-12-12 14:23:15'),
+(28, 'Razvan', 'Bertea', 1, 'bertea74@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:23:38', '2019-12-12 14:23:38'),
+(29, 'Andrei', 'Atudorei', 1, 'stefandrei123@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:24:07', '2019-12-12 14:24:07'),
+(30, 'Larisa', 'Ailisoaie', 1, 'larisa@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:24:59', '2019-12-12 14:24:59'),
+(32, 'Teacher', 'Kea', 1, 'teacher@kea.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:26:19', '2019-12-12 14:26:19'),
+(33, 'Alin', 'Chiosa', 2, 'alin@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:26:46', '2019-12-12 14:26:46'),
+(34, 'Petru', 'Birzu', 2, 'petru@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:27:06', '2019-12-12 14:27:28'),
+(35, 'Tavi', 'Ciorobatca', 2, 'tavi@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:28:18', '2019-12-12 14:28:18'),
+(36, 'Alexandru', 'Dediu', 2, 'alex@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:29:04', '2019-12-12 14:29:04'),
+(37, 'Alexandru', 'Lentza', 2, 'lentza@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:30:03', '2019-12-12 14:30:03');
 
 -- --------------------------------------------------------
 
@@ -162,9 +182,12 @@ CREATE TABLE `user_types` (
 --
 
 INSERT INTO `user_types` (`id`, `user_types`) VALUES
-(1, 'Normal user'),
-(2, 'Producer');
+(1, 'normal user'),
+(2, 'producer');
 
+--
+-- Indexes for dumped tables
+--
 
 --
 -- Indexes for table `comments`
@@ -229,13 +252,13 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `songs`
@@ -253,7 +276,7 @@ ALTER TABLE `song_attributes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `user_types`
@@ -308,3 +331,42 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+--
+-- Users and privileges
+--
+
+# Privileges for `admin1`@`%`
+
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON `rominimal`.* TO 'admin'@'%';
+
+
+# Privileges for `read-only`@`%`
+
+GRANT SELECT ON *.* TO 'read-only'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19';
+
+GRANT SELECT ON `rominimal`.* TO 'read-only'@'%';
+
+GRANT SELECT ON `rominimal`.* TO 'read-only'@'%';
+
+
+# Privileges for `restricted-user`@`%`
+
+GRANT USAGE ON *.* TO 'restricted-user'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19';
+
+GRANT SELECT ON `rominimal`.`song_attributes` TO 'restricted-user'@'%';
+
+GRANT SELECT ON `rominimal`.`comments` TO 'restricted-user'@'%';
+
+GRANT SELECT ON `rominimal`.`invoices` TO 'restricted-user'@'%';
+
+GRANT SELECT ON `rominimal`.`song_attributes_relationship` TO 'restricted-user'@'%';
+
+GRANT SELECT ON `rominimal`.`user_types` TO 'restricted-user'@'%';
+
+GRANT SELECT (updated_at, create_at, id, firstname, user_type, email, lastname, is_active, profile_picture) ON `rominimal`.`users` TO 'restricted-user'@'%';
+
+GRANT SELECT ON `rominimal`.`invoices_relationship` TO 'restricted-user'@'%';
