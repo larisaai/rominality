@@ -76,6 +76,7 @@ session_start();
             $.ajax({
                 url: '../includes/checkIfElementIsInCart.php?song_id=' + id
             }).done(function(data) {
+                console.log(data);
                 var result = $.parseJSON(data);
                 if (result.status == 1) {
                     element.classList.remove('notAddedToCart')
