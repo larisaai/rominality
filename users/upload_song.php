@@ -26,6 +26,7 @@ if ($_POST) {
 
 
     $song->create($_SESSION['user']['id'], $songName, $artistName, $price, 'EUR', $uniqueIdName, $attributes);
+    header("Location: latest_releases.php");
 }
 ?>
 
@@ -35,11 +36,7 @@ if ($_POST) {
     require_once('../includes/menu_logged.php');
     ?>
     <div class="container">
-<<<<<<< Updated upstream
-        <div>
-=======
         <div class="box-wide">
->>>>>>> Stashed changes
             <h3>Latest releases</h3>
             <div>
                 <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
