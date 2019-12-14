@@ -25,10 +25,8 @@ class Song
 
                 $db->disconnect($con);
 
-                $attributeRelationship = new Attribute();
-
                 foreach ($tagsId as $tagId) {
-                    $attributeRelationship->addAttributeRel($con->lastInsertId(), $tagId);
+                    Attribute::addAttributeRel($con->lastInsertId(), $tagId);
                 };
 
                 return $this;

@@ -25,7 +25,7 @@ if ($_POST) {
     move_uploaded_file($_FILES['songFile']['tmp_name'], "../uploads/$fileId");
 
 
-    $song->create($_SESSION['user']['id'], $songName, $artistName, $price, 'EUR', $uniqueIdName, $attributes);
+    $song->create($_SESSION['user']['id'], $songName, $artistName, $price, 1, $uniqueIdName, $attributes);
     header("Location: latest_releases.php");
 }
 ?>

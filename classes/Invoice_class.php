@@ -11,49 +11,36 @@ class Invoice
         $con = $db->connect();
         $total = 0;
 
-        if ($con) {
-            try {
-
-                $stmt = $con->prepare("INSERT INTO `invoices` (`buyer_id`, `items`) VALUES ( :buyer_id, :items);");
-                $stmt->bindParam(':buyer_id', $buyer_id);
-                $stmt->bindParam(':items', $items);
-                $stmt->execute();
-
-                foreach ($cartSongs as $item) {
-                    Invoice::createInvoiceSongRelationship($con->lastInsertId(), $item['id']);
-                    $total += $item['price'];
-                }
-
-
-                $db->disconnect($con);
-
-                //return the invoice created
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-        } else {
-            $stmt = null;
-            $db->disconnect($con);
-            return false;
+        foreach ($cartSongs as $item) {
+            $total += $item['price'];
         }
-    }
-
-    protected function createInvoiceSongRelationship($invoice_id, $song_id)
-    {
-        $db = new DB();
-        $con = $db->connect();
 
         if ($con) {
-            try {
+            if ($con->beginTransaction()) {
+                try {
+                    $stmt = $con->prepare("INSERT INTO `invoices` (`buyer_id`, `items`, `total`, `currency`) VALUES ( :buyer_id, :items, :total, 1);");
+                    $stmt->bindParam(':buyer_id', $buyer_id);
+                    $stmt->bindParam(':items', $items);
+                    $stmt->bindParam(':total', $total);
+                    $stmt->execute();
 
-                $stmt = $con->prepare("INSERT INTO `invoices_relationship` (`invoice_id`, `song_id`) VALUES ( :invoice_id, :song_id);");
-                $stmt->bindParam(':invoice_id', $invoice_id);
-                $stmt->bindParam(':song_id', $song_id);
-                $stmt->execute();
+                    $currentInvoiceId = $con->lastInsertId();
 
-                $db->disconnect($con);
-            } catch (PDOException $e) {
-                echo $e->getMessage();
+                    foreach ($cartSongs as $item) {
+                        $stmt = $con->prepare("INSERT INTO `invoices_relationship` (`invoice_id`, `song_id`) VALUES ( :invoice_id, :song_id);");
+                        $stmt->bindParam(':invoice_id',  $currentInvoiceId);
+                        $stmt->bindParam(':song_id', $item['id']);
+                        $stmt->execute();
+                    }
+
+                    $con->commit();
+                    $db->disconnect($con);
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                    if ($con->inTransaction()) {
+                        $con->rollBack();
+                    }
+                }
             }
         } else {
             $stmt = null;
