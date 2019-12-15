@@ -1,4 +1,5 @@
 <?php
 session_start();
-session_destroy(); 
+$_SESSION['cartItems'] = array();
+session_destroy();
 header('Location: login.php');
