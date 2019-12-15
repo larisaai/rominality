@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2019 at 09:07 PM
+-- Generation Time: Dec 15, 2019 at 04:00 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -47,6 +47,16 @@ CREATE TABLE `comments` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `song_id`, `user_id`, `comment_body`, `updated_at`, `created_at`) VALUES
+(14, 53, 33, 'Hey! I really like this song!!!', '2019-12-15 12:27:57', '2019-12-15 12:27:57'),
+(15, 52, 35, 'I really like your song', '2019-12-15 14:51:02', '2019-12-15 14:51:02'),
+(16, 51, 33, 'You really do a good job', '2019-12-15 14:52:04', '2019-12-15 14:52:04'),
+(17, 41, 33, 'Thank you all for the support!', '2019-12-15 14:54:23', '2019-12-15 14:54:23');
+
 -- --------------------------------------------------------
 
 --
@@ -81,6 +91,14 @@ CREATE TABLE `invoices` (
   `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `invoices`
+--
+
+INSERT INTO `invoices` (`id`, `buyer_id`, `items`, `total`, `currency`, `created_at`, `update_at`) VALUES
+(28, 35, 3, 23, 1, '2019-12-15 14:35:34', '2019-12-15 14:35:34'),
+(29, 33, 4, 36, 1, '2019-12-15 14:55:05', '2019-12-15 14:55:05');
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +109,19 @@ CREATE TABLE `invoices_relationship` (
   `invoice_id` int(11) NOT NULL,
   `song_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `invoices_relationship`
+--
+
+INSERT INTO `invoices_relationship` (`invoice_id`, `song_id`) VALUES
+(28, 52),
+(28, 51),
+(28, 45),
+(29, 47),
+(29, 48),
+(29, 52),
+(29, 53);
 
 -- --------------------------------------------------------
 
@@ -104,12 +135,31 @@ CREATE TABLE `songs` (
   `song_title` varchar(255) NOT NULL,
   `artist_name` varchar(255) NOT NULL,
   `price` smallint(11) NOT NULL,
-  `currency` varchar(11) NOT NULL,
+  `currency` int(11) NOT NULL,
   `path_id` varchar(255) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `songs`
+--
+
+INSERT INTO `songs` (`id`, `user_id`, `song_title`, `artist_name`, `price`, `currency`, `path_id`, `is_deleted`, `updated_at`, `created_at`) VALUES
+(41, 33, 'Monkey man', 'Eat static', 12, 1, '5df56583497ce', 0, '2019-12-14 22:43:15', '2019-12-14 22:43:15'),
+(42, 33, 'Visual spectrum', 'Jay Tripwire', 6, 1, '5df565cfcf667', 0, '2019-12-14 22:44:31', '2019-12-14 22:44:31'),
+(43, 33, 'Wanna go bang', 'Geeeman', 8, 1, '5df56679a254b', 0, '2019-12-14 22:47:21', '2019-12-14 22:47:21'),
+(44, 34, 'Las Ramblas part. 2', 'Soul Capsule Productions', 11, 1, '5df566e701ba2', 0, '2019-12-14 22:49:11', '2019-12-14 22:49:11'),
+(45, 34, 'Yweru', 'Alex Celler', 9, 1, '5df5673be9ec1', 0, '2019-12-14 22:50:35', '2019-12-14 22:50:35'),
+(46, 34, 'Believe in yourself', 'D Base', 7, 1, '5df56794b7486', 0, '2019-12-14 22:52:04', '2019-12-14 22:52:04'),
+(47, 35, 'Subtle universe', 'Le Loup', 8, 1, '5df567e802d0d', 0, '2019-12-14 22:54:02', '2019-12-14 22:53:28'),
+(48, 35, 'Radio Morocco', 'Pulse 8', 12, 1, '5df56864d349c', 0, '2019-12-14 22:55:32', '2019-12-14 22:55:32'),
+(49, 35, 'Bicycle Thieves', 'Slap', 10, 1, '5df568b8ea2b6', 0, '2019-12-14 22:56:56', '2019-12-14 22:56:56'),
+(50, 36, 'Ninatron', 'Cedric Dekowski', 9, 1, '5df5693e1ee84', 0, '2019-12-14 22:59:10', '2019-12-14 22:59:10'),
+(51, 36, 'Klaus Grony', 'Franky greiner', 6, 1, '5df5699cdb9a8', 0, '2019-12-14 23:00:44', '2019-12-14 23:00:44'),
+(52, 37, 'Junq', 'Closer', 8, 1, '5df56a6dba286', 0, '2019-12-14 23:04:13', '2019-12-14 23:04:13'),
+(53, 37, 'Love Craft', 'Zzonked', 8, 1, '5df56ac3ded24', 0, '2019-12-14 23:05:39', '2019-12-14 23:05:39');
 
 -- --------------------------------------------------------
 
@@ -155,6 +205,61 @@ CREATE TABLE `song_attributes_relationship` (
 -- Dumping data for table `song_attributes_relationship`
 --
 
+INSERT INTO `song_attributes_relationship` (`song_id`, `attribute_id`) VALUES
+(41, 5),
+(41, 2),
+(41, 1),
+(42, 4),
+(42, 7),
+(42, 6),
+(43, 5),
+(43, 2),
+(43, 4),
+(43, 10),
+(43, 7),
+(43, 6),
+(43, 12),
+(44, 5),
+(44, 2),
+(44, 11),
+(44, 1),
+(44, 10),
+(44, 7),
+(44, 9),
+(44, 8),
+(45, 4),
+(45, 11),
+(45, 1),
+(45, 10),
+(45, 7),
+(46, 4),
+(46, 11),
+(46, 1),
+(46, 10),
+(47, 2),
+(47, 4),
+(47, 3),
+(48, 5),
+(48, 2),
+(48, 1),
+(48, 12),
+(49, 11),
+(49, 1),
+(49, 3),
+(49, 6),
+(50, 11),
+(50, 10),
+(50, 3),
+(50, 6),
+(51, 2),
+(51, 4),
+(51, 11),
+(52, 7),
+(52, 6),
+(52, 9),
+(53, 10),
+(53, 7),
+(53, 3);
 
 -- --------------------------------------------------------
 
@@ -180,16 +285,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `user_type`, `email`, `password`, `profile_picture`, `is_active`, `create_at`, `updated_at`) VALUES
-(27, 'Cassandra', 'Tiltack', 1, 'cassandra@me.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:23:15', '2019-12-14 15:45:01'),
-(28, 'Razvan', 'Bertea', 1, 'bertea74@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:23:38', '2019-12-12 14:23:38'),
-(29, 'Andrei', 'Atudorei', 1, 'stefandrei123@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:24:07', '2019-12-12 14:24:07'),
-(30, 'Larisa', 'Ailisoaie', 1, 'larisa@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:24:59', '2019-12-12 14:24:59'),
-(32, 'Teacher', 'Kea', 1, 'teacher@kea.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:26:19', '2019-12-12 14:26:19'),
-(33, 'Alin', 'Chiosa', 2, 'alin@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:26:46', '2019-12-14 15:45:37'),
-(34, 'Petru', 'Birzu', 2, 'petru@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:27:06', '2019-12-12 14:27:28'),
-(35, 'Tavi', 'Ciorobatca', 2, 'tavi@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:28:18', '2019-12-12 14:28:18'),
-(36, 'Alexandru', 'Dediu', 2, 'alex@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:29:04', '2019-12-12 14:29:04'),
-(37, 'Alexandru', 'Lentza', 2, 'lentza@gmail.com', 'password', 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png', 1, '2019-12-12 14:30:03', '2019-12-12 14:30:03');
+(27, 'Cassandra', 'Tiltack', 1, 'cassandra@me.com', 'password', '/images/default.png', 1, '2019-12-12 14:23:15', '2019-12-15 13:47:44'),
+(28, 'Razvan', 'Bertea', 1, 'bertea74@gmail.com', 'password', '/images/default.png', 1, '2019-12-12 14:23:38', '2019-12-15 13:47:53'),
+(29, 'Andrei', 'Atudorei', 1, 'stefandrei123@gmail.com', 'password', '/images/default.png', 1, '2019-12-12 14:24:07', '2019-12-15 13:48:00'),
+(30, 'Larisa', 'Ailisoaie', 1, 'larisa@gmail.com', 'password', '/images/default.png', 1, '2019-12-12 14:24:59', '2019-12-15 13:48:06'),
+(32, 'Teacher', 'Kea', 1, 'teacher@kea.com', 'password', '/images/default.png', 1, '2019-12-12 14:26:19', '2019-12-15 13:48:20'),
+(33, 'Alin', 'Chiosa', 2, 'alin@gmail.com', 'password', '/images/5df63708031aa.jpg', 1, '2019-12-12 14:26:46', '2019-12-15 13:37:12'),
+(34, 'Petru', 'Birzu', 2, 'petru@gmail.com', 'password', '/images/5df63b17a0f78.jpg', 1, '2019-12-12 14:27:06', '2019-12-15 13:54:31'),
+(35, 'Tavi', 'Ciorobatca', 2, 'tavi@gmail.com', 'password', '/images/5df63b5e0ce31.jpg', 1, '2019-12-12 14:28:18', '2019-12-15 13:55:42'),
+(36, 'Alexandru', 'Dediu', 2, 'alex@gmail.com', 'password', '/images/5df63aca0637d.jpg', 1, '2019-12-12 14:29:04', '2019-12-15 13:53:14'),
+(37, 'Alexandru', 'Lentza', 2, 'lentza@gmail.com', 'password', '/images/5df63a8bcc3ab.jpg', 1, '2019-12-12 14:30:03', '2019-12-15 13:52:11');
 
 -- --------------------------------------------------------
 
@@ -247,7 +352,8 @@ ALTER TABLE `invoices_relationship`
 --
 ALTER TABLE `songs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `currency` (`currency`);
 
 --
 -- Indexes for table `song_attributes`
@@ -283,7 +389,7 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `currencies`
@@ -295,13 +401,13 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `song_attributes`
@@ -349,7 +455,8 @@ ALTER TABLE `invoices_relationship`
 -- Constraints for table `songs`
 --
 ALTER TABLE `songs`
-  ADD CONSTRAINT `songs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `songs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `songs_ibfk_2` FOREIGN KEY (`currency`) REFERENCES `currencies` (`id`);
 
 --
 -- Constraints for table `song_attributes_relationship`
@@ -363,6 +470,7 @@ ALTER TABLE `song_attributes_relationship`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_type`) REFERENCES `user_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 
 
 --
@@ -410,6 +518,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
