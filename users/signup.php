@@ -6,6 +6,7 @@ if ($_SESSION) {
 }
 
 if (!empty($_POST)) {
+    require_once __DIR__ . "/../vendor/autoload.php";
     /* New object of Students() */
     require_once('../classes/User_class.php');
     $user = new User();
@@ -21,6 +22,19 @@ if (!empty($_POST)) {
     $res = $user->create($first, $last, $email, $password, $confirm_password, $user_type);
 
     if ($res ===  true) {
+        $collection = (new MongoDB\Client)->rominality->users;
+        $date = date("Y-m-d");
+        $time = date("h:i:sa");
+
+        $insertOneResult = $collection->insertOne([
+            'first_name' => $first,
+            'last_name' => $last,
+            'email' => $email,
+            'password' => $password,
+            'user_type' => $user_type,
+            'current_date' => $date,
+            'current_time' => $time,
+        ]);
         header("Location: latest_releases.php");
     } else {
         $showError = $res;
