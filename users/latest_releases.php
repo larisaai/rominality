@@ -4,9 +4,7 @@
 <?php
 
 require_once('../includes/header.php');
-require_once('../classes/Song_class.php');
 
-require_once('../classes/Attribute_class.php');
 session_start();
 ?>
 
@@ -29,14 +27,9 @@ session_start();
                 <a href="upload_song.php"><button>Upload new song</button></a>
             </div>
             <div id="songs-container">
-                <?php
-
-                $songs = Song::all();
-                foreach ($songs as $song) {
-                    $id = $song['id'];
-                    $attributes = Attribute::getAttributesForId($id);
-                    include('../components/audioPlayer.php');
-                } ?>
+            </div>
+            <div>
+                <button id="loadMore" style="text-align: center;" value="0">Load more</button>
             </div>
         </div>
 
@@ -50,6 +43,34 @@ session_start();
     <script src="../scripts/audio.js"></script>
     <script src="../scripts/search.js"></script>
     <script>
+        $("#loadMore").on("click", function() {
+            var row = Number($('#loadMore').val());
+
+            $.ajax({
+                method: "POST",
+                data: {
+                    row: row
+                },
+                url: "../includes/loadMoreSongs.php"
+            }).done(function(data) {
+                $('#loadMore').val(row + 5);
+                var result = $.parseJSON(data);
+
+                let songs = result.items;
+
+                songs.forEach(song => {
+                    createAudioElement(song.song_title, song.artist_name, song.path_id, song.id, song.price, getAttributesForSongId(song.id))
+                });
+
+                if ($('#loadMore').val() > document.getElementById('songs-container').children.length) {
+                    document.getElementById('loadMore').style.display = 'none';
+                }
+
+            });
+        });
+
+        $("#loadMore").trigger("click");
+
         $(function() {
             $("#songs-container").on('click', ".cartButton", function() {
                 let buttonElement = $(this);
@@ -124,7 +145,8 @@ session_start();
                         url: "../includes/addComment.php?songId=" + songId + "&&commentBody=" + commentBody + "",
                     })
                     .done(function(data) {
-                        var result = $.parseJSON(data)
+                        var result = $.parseJSON(data);
+                        readComments();
                     })
                 currentElement.val('');
             })

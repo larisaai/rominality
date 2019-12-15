@@ -47,11 +47,9 @@ $("#buttonSearch").on('click', function () {
       var result = $.parseJSON(data);
 
       let songs = result.items;
+
       if (songs.length > 0) {
         songs.forEach(song => {
-          //get the attributes for each song so access a function 
-          console.log(song);
-
           document.getElementById('songs-container').innerHTML = '';
           createAudioElement(song.song_title, song.artist_name, song.path_id, song.id, song.price, getAttributesForSongId(song.id));
         });
@@ -60,8 +58,9 @@ $("#buttonSearch").on('click', function () {
     });
 
   }
-  //we want to take the items that were found so we do one more call the last time to se eif there is anything to display
 })
+
+
 
 function createAudioElement(
   songTitle,

@@ -68,14 +68,16 @@ class Song
         }
     }
 
-    public function all()
+    public function all($count)
     {
         $db = new DB();
         $con = $db->connect();
         if ($con) {
             try {
-                $stmt = $con->prepare('SELECT * FROM songs ORDER BY song_title DESC');
+                $stmt = $con->prepare('SELECT * FROM songs ORDER BY created_at DESC LIMIT 5 OFFSET :count');
+                $stmt->bindParam(':count', $count);
                 $stmt->execute();
+
                 $result = $stmt->fetchAll();
 
                 $db->disconnect($con);
