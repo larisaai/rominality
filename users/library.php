@@ -30,7 +30,7 @@ session_start();
                         <li style="display: inline-block; padding: 10px;"><a id="boughtSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Bought songs</a></li>
                         <li style=" <?= $_SESSION['user']['user_type'] == 1 ? 'display:none;' : 'display:inline-block;' ?> padding: 10px;"><a id="mySongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">My songs</a></li>
                     </ul>
-                    <div id="songList"></div>
+                    <div id="songs-container"></div>
                 </div>
             </div>
         </div>
@@ -39,114 +39,94 @@ session_start();
     require_once('../includes/footer.php');
     ?>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-    </script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../scripts/audio.js"></script>
+    <script src="../scripts/search.js"></script>
     <script>
-        function createSongElement(title, artist, price, path) {
-            var div = document.createElement('div');
-            div.setAttribute('style', 'background-color: lightgrey; margin: 10px; padding: 4px;')
-            document.getElementById('songList').appendChild(div);
+        // function createSongElement(title, artist, price, path) {
+        //     var div = document.createElement('div');
+        //     div.setAttribute('style', 'background-color: lightgrey; margin: 10px; padding: 4px;')
+        //     document.getElementById('songs-container').appendChild(div);
 
-            var h3 = document.createElement('h3');
-            h3.innerHTML = title;
-            div.appendChild(h3);
+        //     var h3 = document.createElement('h3');
+        //     h3.innerHTML = title;
+        //     div.appendChild(h3);
 
-            var p = document.createElement('p');
-            p.innerHTML = artist;
-            div.appendChild(p);
+        //     var p = document.createElement('p');
+        //     p.innerHTML = artist;
+        //     div.appendChild(p);
 
-            var a = document.createElement('a');
-            a.setAttribute('href', '#');
-            a.innerHTML = 'Like';
-            div.appendChild(a);
+        //     var a = document.createElement('a');
+        //     a.setAttribute('href', '#');
+        //     a.innerHTML = 'Like';
+        //     div.appendChild(a);
 
-            var audio = document.createElement('audio');
-            audio.setAttribute('controls', 'controls');
-            div.appendChild(audio);
+        //     var audio = document.createElement('audio');
+        //     audio.setAttribute('controls', 'controls');
+        //     div.appendChild(audio);
 
-            var Elemprice = document.createElement('p');
-            price.innerHTML = 'Price: ' + price + 'EUR';
-            div.appendChild(Elemprice);
+        //     var Elemprice = document.createElement('p');
+        //     price.innerHTML = 'Price: ' + price + 'EUR';
+        //     div.appendChild(Elemprice);
 
-            var source = document.createElement('source');
-            source.setAttribute('src', '../uploads/' + path + '.mp3');
-            source.setAttribute('type', 'audio/mpeg');
-            audio.appendChild(source);
-        }
+        //     var source = document.createElement('source');
+        //     source.setAttribute('src', '../uploads/' + path + '.mp3');
+        //     source.setAttribute('type', 'audio/mpeg');
+        //     audio.appendChild(source);
+        // }
 
-        function createSongElementWithCart(song_id, title, artist, price, path) {
-            var div = document.createElement('div');
-            div.setAttribute('style', 'background-color: lightgrey; margin: 10px; padding: 4px;')
-            document.getElementById('songList').appendChild(div);
+        // function createSongElementWithCart(song_id, title, artist, price, path) {
+        //     var div = document.createElement('div');
+        //     div.setAttribute('style', 'background-color: lightgrey; margin: 10px; padding: 4px;')
+        //     document.getElementById('songs-container').appendChild(div);
 
-            var h3 = document.createElement('h3');
-            h3.innerHTML = title;
-            div.appendChild(h3);
+        //     var h3 = document.createElement('h3');
+        //     h3.innerHTML = title;
+        //     div.appendChild(h3);
 
-            var p = document.createElement('p');
-            p.innerHTML = artist;
-            div.appendChild(p);
+        //     var p = document.createElement('p');
+        //     p.innerHTML = artist;
+        //     div.appendChild(p);
 
-            var a = document.createElement('a');
-            a.setAttribute('href', '#');
-            a.innerHTML = 'Like';
-            div.appendChild(a);
+        //     var a = document.createElement('a');
+        //     a.setAttribute('href', '#');
+        //     a.innerHTML = 'Like';
+        //     div.appendChild(a);
 
-            var audio = document.createElement('audio');
-            audio.setAttribute('controls', 'controls');
-            div.appendChild(audio);
+        //     var audio = document.createElement('audio');
+        //     audio.setAttribute('controls', 'controls');
+        //     div.appendChild(audio);
 
-            var Elemprice = document.createElement('p');
-            price.innerHTML = 'Price: ' + price + 'EUR';
-            div.appendChild(Elemprice);
+        //     var Elemprice = document.createElement('p');
+        //     price.innerHTML = 'Price: ' + price + 'EUR';
+        //     div.appendChild(Elemprice);
 
-            var cartButton = document.createElement('a');
-            a.setAttribute('class', 'cartButton');
-            a.setAttribute('id', 'upload-btn');
-            a.setAttribute('value', song_id);
-            a.setAttribute('href', '#');
-            a.innerHTML = 'Add to cart';
-            div.appendChild(cartButton);
+        //     var cartButton = document.createElement('a');
+        //     a.setAttribute('class', 'cartButton');
+        //     a.setAttribute('id', 'upload-btn');
+        //     a.setAttribute('value', song_id);
+        //     a.setAttribute('href', '#');
+        //     a.innerHTML = 'Add to cart';
+        //     div.appendChild(cartButton);
 
-            var aLike = document.createElement('a');
-            a.setAttribute('href', '#');
-            div.appendChild(aLike);
+        //     var aLike = document.createElement('a');
+        //     a.setAttribute('href', '#');
+        //     div.appendChild(aLike);
 
-            var img = document.createElement('img');
-            img.setAttribute('class', 'like');
-            img.setAttribute('src', '../img/like.svg');
-            aLike.appendChild(img);
+        //     var img = document.createElement('img');
+        //     img.setAttribute('class', 'like');
+        //     img.setAttribute('src', '../img/like.svg');
+        //     aLike.appendChild(img);
 
-            var source = document.createElement('source');
-            source.setAttribute('src', '../uploads/' + path + '.mp3');
-            source.setAttribute('type', 'audio/mpeg');
-            audio.appendChild(source);
-        }
+        //     var source = document.createElement('source');
+        //     source.setAttribute('src', '../uploads/' + path + '.mp3');
+        //     source.setAttribute('type', 'audio/mpeg');
+        //     audio.appendChild(source);
+        // }
 
 
 
-        $(function() {
-            $("#songList").on('click', ".cartButton", function() {
-                let buttonElement = $(this);
-                let songId = $(this).attr('value');
-                $.ajax({
-                        method: "GET",
-                        url: "../includes/addToCart.php?songId=" + songId
-                    })
-                    .done(function(data) {
-                        var result = $.parseJSON(data);
-                        if (result.status == 1) {
-                            document.getElementById('cartItems').innerHTML = result.itemNumber;
 
-                            buttonElement.addClass("addedToCart");
-                            buttonElement.html('Added to cart');
-                        } else {
-                            console.log(result);
-                        }
-                    })
-            })
-        })
 
         $("#boughtSongs").on('click', function() {
             let userId = $(this).attr('userId');
@@ -157,17 +137,18 @@ session_start();
                 .done(function(data) {
                     var result = $.parseJSON(data);
                     let array = result.items;
-                    $('#songList').html('');
+                    $('#songs-container').html('');
                     if (array.length > 0) {
                         array.forEach(element => {
-                            createSongElement(element.song_title, element.artist_name, element.price, element.path_id)
+                            createAudioElement(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture);
+                            // createSongElement(element.song_title, element.artist_name, element.price, element.path_id)
                         })
                     } else {
-                        $('#songList').html('');
+                        $('#songs_container').html('');
                         let errorMessage = document.createElement('h2');
                         errorMessage.innerHTML = 'Sorry there are no items here';
 
-                        document.getElementById('songList').appendChild(errorMessage);
+                        document.getElementById('songs-container').appendChild(errorMessage);
                     }
 
                 }).fail(function(xhr, status, error) {
@@ -184,17 +165,17 @@ session_start();
                 .done(function(data) {
                     var result = $.parseJSON(data);
                     let array = result.items;
-                    $('#songList').html('');
+                    $('#songs-container').html('');
                     if (array.length > 0) {
                         array.forEach(element => {
-                            createSongElement(element.song_title, element.artist_name, element.price, element.path_id)
+                            createAudioElement(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture);
                         })
                     } else {
-                        $('#songList').html('');
+                        $('#songs-container').html('');
                         let errorMessage = document.createElement('h2');
                         errorMessage.innerHTML = 'Sorry there are no items here';
 
-                        document.getElementById('songList').appendChild(errorMessage);
+                        document.getElementById('songs-container').appendChild(errorMessage);
                     }
 
                 }).fail(function(xhr, status, error) {
@@ -212,17 +193,17 @@ session_start();
 
                     var result = $.parseJSON(data);
                     let array = result.items;
-                    $('#songList').html('');
+                    $('#songs-container').html('');
                     if (array.length > 0) {
                         array.forEach(element => {
-                            createSongElementWithCart(element.id, element.song_title, element.artist_name, element.price, element.path_id)
+                            createAudioElement(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture);
                         })
                     } else {
-                        $('#songList').html('');
+                        $('#songs-container').html('');
                         let errorMessage = document.createElement('h2');
                         errorMessage.innerHTML = 'Sorry there are no items here';
 
-                        document.getElementById('songList').appendChild(errorMessage);
+                        document.getElementById('songs-container').appendChild(errorMessage);
                     }
 
                 }).fail(function(xhr, status, error) {
@@ -249,12 +230,7 @@ session_start();
 
         $("#likedSongs").trigger("click");
 
-        function addValueToCartButtons() {
-            cartButtons = document.querySelectorAll('.cartButton');
-            cartButtons.forEach(item => {
-                checkIfElementIsInCart(item.getAttribute('value'), item);
-            })
-        }
+
         setTimeout(addValueToCartButtons, 100);
     </script>
 </body>

@@ -22,7 +22,7 @@ $("#songs-container").on("click", ".play", function () {
 
   song.addEventListener("timeupdate", function () {
     const position = song.currentTime / song.duration;
-    console.log(this.previousElementSibling.firstElementChild);
+    // console.log(this.previousElementSibling.firstElementChild);
     this.previousElementSibling.firstElementChild.style.width = position * 100 + "%";
   });
 

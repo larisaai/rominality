@@ -22,7 +22,7 @@ class User
                 };
 
                 $stmt = $con->prepare(" INSERT INTO users ( firstname, lastname, email, password, is_active, user_type, profile_picture)
-                        VALUES (:firstname, :lastname, :email, :password, 1, :usertype, 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png')");
+                        VALUES (:firstname, :lastname, :email, :password, 1, :usertype, '/images/default.png')");
                 $stmt->bindParam(':firstname', $first_name);
                 $stmt->bindParam(':lastname', $last_name);
                 $stmt->bindParam(':email', $email);
@@ -222,6 +222,29 @@ class User
         if ($con) {
             try {
                 $stmt = $con->prepare('SELECT firstname FROM users WHERE id = :user_id');
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->execute();
+                $result = $stmt->fetch();
+
+                $db->disconnect($con);
+                return $result;
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
+        } else {
+            $stmt = null;
+            $db->disconnect($con);
+            return false;
+        }
+    }
+
+    public function getUserImageById($user_id)
+    {
+        $db = new DB();
+        $con = $db->connect();
+        if ($con) {
+            try {
+                $stmt = $con->prepare('SELECT profile_picture FROM users WHERE id = :user_id');
                 $stmt->bindParam(':user_id', $user_id);
                 $stmt->execute();
                 $result = $stmt->fetch();
