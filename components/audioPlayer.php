@@ -42,11 +42,11 @@ Your browser does not support the audio element.
     id="commentId"
     songId="' . $song['id'] . '"
         />
-        <button class="addComment">Add</button>
+        <a class="addComment">Add</a>
     </div>
 
 </details>
-<p>Price: ' . $song['price'] . ' EUR</p>
+<p class="price">Price: ' . $song['price'] . ' EUR</p>
 <a  class="cartButton" 
     id="upload-btn"  
     value="' . $song['id'] . '" 
