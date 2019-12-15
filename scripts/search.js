@@ -1,4 +1,4 @@
-$("#searchInput").keyup(function () {
+$("#searchInput").keyup(function() {
   let parentResults = document.getElementById("searchResults");
   parentResults.innerHTML = "";
   value = $(this).val();
@@ -7,7 +7,7 @@ $("#searchInput").keyup(function () {
     $.ajax({
       method: "GET",
       url: "../includes/searchForSong.php?currentSearch=" + value
-    }).done(function (data) {
+    }).done(function(data) {
       var result = $.parseJSON(data);
 
       let songs = result.items;
@@ -30,165 +30,172 @@ $("#searchInput").keyup(function () {
   }
 });
 
-$("#searchResults").on("click", ".foundItem", function () {
+$("#searchResults").on("click", ".foundItem", function() {
   document.getElementById("searchInput").value = this.innerHTML;
   document.getElementById("searchResults").innerHTML = "";
 });
 
-$("#buttonSearch").on('click', function () {
-  let searchBar = document.getElementById('searchInput');
+$("#buttonSearch").on("click", function() {
+  let searchBar = document.getElementById("searchInput");
   value = $(searchBar).val();
 
   if (value != "") {
     $.ajax({
       method: "GET",
       url: "../includes/searchForSong.php?currentSearch=" + value
-    }).done(function (data) {
+    }).done(function(data) {
       var result = $.parseJSON(data);
       let songs = result.items;
 
       if (songs.length > 0) {
-        document.getElementById('songs-container').innerHTML = '';
+        document.getElementById("songs-container").innerHTML = "";
         songs.forEach(song => {
-          document.getElementById('loadMore').style.display = 'none';
-          createAudioElement(song.song_title, song.artist_name, song.path_id, song.id, song.price, getAttributesForSongId(song.id), song[0].profile_picture);
+          document.getElementById("loadMore").style.display = "none";
+          createAudioElement(
+            song.song_title,
+            song.artist_name,
+            song.path_id,
+            song.id,
+            song.price,
+            getAttributesForSongId(song.id),
+            song[0].profile_picture
+          );
         });
       }
       addValueToCartButtons();
     });
-
   }
-})
+});
 
 function getAttributesForSongId(id) {
-
   var s = $.ajax({
     async: false,
     method: "GET",
     url: "../includes/getAttributesForSong.php?id=" + id
-  })
+  });
   var result = $.parseJSON(s.responseText);
   return result.attributesHTML;
 }
 
-$(function () {
-  $("#songs-container").on('click', ".cartButton", function () {
+$(function() {
+  $("#songs-container").on("click", ".cartButton", function() {
     let buttonElement = $(this);
-    let songId = $(this).attr('value');
+    let songId = $(this).attr("value");
     $.ajax({
-        method: "GET",
-        url: "../includes/addToCart.php?songId=" + songId
-      })
-      .done(function (data) {
-        var result = $.parseJSON(data);
-        if (result.status == 1) {
-          document.getElementById('cartItems').innerHTML = result.itemNumber;
+      method: "GET",
+      url: "../includes/addToCart.php?songId=" + songId
+    }).done(function(data) {
+      var result = $.parseJSON(data);
+      if (result.status == 1) {
+        document.getElementById("cartItems").innerHTML = result.itemNumber;
 
-          buttonElement.addClass("addedToCart");
-          buttonElement.html('Added to cart');
-        }
-      })
-  })
-})
+        buttonElement.addClass("addedToCart");
+        buttonElement.html("Added to cart");
+      }
+    });
+  });
+});
 
 function checkIfElementIsInCart(id, element) {
   $.ajax({
-    url: '../includes/checkIfElementIsInCart.php?song_id=' + id
-  }).done(function (data) {
+    url: "../includes/checkIfElementIsInCart.php?song_id=" + id
+  }).done(function(data) {
     var result = $.parseJSON(data);
     if (result.status == 1) {
-      element.classList.remove('notAddedToCart')
-      element.classList.add('addedToCart');
-      element.innerHTML = 'Added to cart';
+      element.classList.remove("notAddedToCart");
+      element.classList.add("addedToCart");
+      element.innerHTML = "Added to cart";
     } else {
-      element.classList.remove('addedToCart');
-      element.classList.add('notAddedToCart');
-      element.innerHTML = 'Add to cart';
+      element.classList.remove("addedToCart");
+      element.classList.add("notAddedToCart");
+      element.innerHTML = "Add to cart";
     }
-  })
+  });
 }
 
 function addValueToCartButtons() {
-  cartButtons = document.querySelectorAll('.cartButton');
+  cartButtons = document.querySelectorAll(".cartButton");
   cartButtons.forEach(item => {
-    checkIfElementIsInCart(item.getAttribute('value'), item);
-  })
+    checkIfElementIsInCart(item.getAttribute("value"), item);
+  });
 }
 
 addValueToCartButtons();
 
 function readComments() {
-  let userComment = $('.user-comment');
+  let userComment = $(".user-comment");
   $.ajax({
-      url: "../includes/getAllComents.php"
-    })
-    .done(function (data) {
-      var result = $.parseJSON(data);
-      let comments = result.comments;
-      let commentDiv = document.querySelectorAll('.commentDiv');
+    url: "../includes/getAllComents.php"
+  }).done(function(data) {
+    var result = $.parseJSON(data);
+    let comments = result.comments;
+    let commentDiv = document.querySelectorAll(".commentDiv");
 
-      commentDiv.forEach(element => {
-        let thisDiv = element;
-        let songId = thisDiv.getAttribute('songId');
-        thisDiv.innerHTML = '';
+    commentDiv.forEach(element => {
+      let thisDiv = element;
+      let songId = thisDiv.getAttribute("songId");
+      thisDiv.innerHTML = "";
 
-        comments.forEach(comment => {
+      comments.forEach(comment => {
+        if (songId == comment.song_id) {
+          var p = document.createElement("p");
+          thisDiv.appendChild(p);
 
-          if (songId == comment.song_id) {
-            var p = document.createElement('p');
-            thisDiv.appendChild(p);
+          var name = document.createElement("span");
+          let nameDb = getUserNameById(comment.user_id);
+          name.innerHTML = nameDb;
+          p.append(name);
 
-            var name = document.createElement('span');
-            let nameDb = getUserNameById(comment.user_id)
-            name.innerHTML = nameDb;
-            p.append(name);
+          var dash = " - ";
+          p.append(dash);
 
-            var dash = " - ";
-            p.append(dash)
-
-            var commentBody = document.createElement('span');
-            commentBody.innerHTML = comment.comment_body;
-            p.append(commentBody);
-          }
-        })
-
-      })
-    })
+          var commentBody = document.createElement("span");
+          commentBody.innerHTML = comment.comment_body;
+          p.append(commentBody);
+        }
+      });
+    });
+  });
 }
 readComments();
 setInterval(readComments, 1000);
 
-$(function () {
-  $('#songs-container').on('click', ".addComment", function () {
+$(function() {
+  $("#songs-container").on("click", ".addComment", function() {
     let currentElement = $(this).siblings();
 
-    let songId = $(this).siblings('#commentId').attr('songId');
-    let commentBody = $(this).siblings('#commentId').val();
-
+    let songId = $(this)
+      .siblings("#commentId")
+      .attr("songId");
+    let commentBody = $(this)
+      .siblings("#commentId")
+      .val();
 
     $.ajax({
-        method: "GET",
-        url: "../includes/addComment.php?songId=" + songId + "&&commentBody=" + commentBody + "",
-      })
-      .done(function (data) {
-        var result = $.parseJSON(data);
-        readComments();
-      })
-    currentElement.val('');
-  })
-})
+      method: "GET",
+      url:
+        "../includes/addComment.php?songId=" +
+        songId +
+        "&&commentBody=" +
+        commentBody +
+        ""
+    }).done(function(data) {
+      var result = $.parseJSON(data);
+      readComments();
+    });
+    currentElement.val("");
+  });
+});
 
 function getUserNameById(user_id) {
-
   var s = $.ajax({
     async: false,
     method: "GET",
     url: "../includes/getUserNameByIdAPI.php?user_id=" + user_id
-  })
+  });
   var result = $.parseJSON(s.responseText);
   return result.name;
 }
-
 
 function createAudioElement(
   songTitle,
@@ -199,7 +206,6 @@ function createAudioElement(
   attributeHTML,
   profileUrl
 ) {
-
   let parentParentDiv = document.createElement("div");
   parentParentDiv.setAttribute("class", "player-component");
   document.getElementById("songs-container").appendChild(parentParentDiv);
@@ -212,10 +218,9 @@ function createAudioElement(
   imageDiv.setAttribute("class", "image-artist");
   parentParentDiv.appendChild(imageDiv);
 
-  let imageArtist = document.createElement('img');
-  imageArtist.setAttribute('src', '..' + profileUrl);
+  let imageArtist = document.createElement("img");
+  imageArtist.setAttribute("src", ".." + profileUrl);
   imageDiv.appendChild(imageArtist);
-
 
   let songTitleElement = document.createElement("h3");
   songTitleElement.innerHTML = songTitle;
@@ -296,6 +301,7 @@ function createAudioElement(
   commentDiv.appendChild(pTagCommentDiv);
 
   let addCommentDiv = document.createElement("div");
+  addCommentDiv.setAttribute("class", "commentContainer");
   detailsContainer.appendChild(addCommentDiv);
 
   let inputComment = document.createElement("input");
@@ -305,12 +311,13 @@ function createAudioElement(
   inputComment.setAttribute("songId", songId);
   addCommentDiv.appendChild(inputComment);
 
-  let buttonAddComment = document.createElement("button");
+  let buttonAddComment = document.createElement("a");
   buttonAddComment.setAttribute("class", "addComment");
   buttonAddComment.innerHTML = "Add";
   addCommentDiv.appendChild(buttonAddComment);
 
   let pTagPrice = document.createElement("p");
+  pTagPrice.setAttribute("class", "price");
   pTagPrice.innerHTML = songPrice + "EUR";
   infoAboutSongDiv.appendChild(pTagPrice);
 
@@ -318,6 +325,6 @@ function createAudioElement(
   aTagAddToCart.setAttribute("class", "cartButton");
   aTagAddToCart.setAttribute("id", "upload-btn");
   aTagAddToCart.setAttribute("value", songId);
-  aTagAddToCart.innerHTML = 'Add to cart';
+  aTagAddToCart.innerHTML = "Add to cart";
   infoAboutSongDiv.appendChild(aTagAddToCart);
 }

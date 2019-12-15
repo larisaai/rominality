@@ -2,13 +2,17 @@
 #searchResults {
   display: grid;
 }
+
+.search-container > div {
+  justify-self: end;
+}
+
 .search-container {
   position: relative;
 }
 
 form,
 #searchResults > p {
-  justify-self: end;
   color: var(--lightgrey);
 }
 form {
@@ -40,5 +44,5 @@ form {
 #searchResults {
   position: absolute;
   top: 30px;
-  right: 50px;
+  left: 250px;
 }
