@@ -26,11 +26,14 @@ echo '
                         <li><a href="../users/latest_releases.php">Home</a></li>
                         <li><a href="../users/library.php">Library</a></li>
                         
-                        <div class="sub-menu-header"><a class="user-name">';
+                        <div class="sub-menu-header"><a id="userNameId" class="user-name">';
 echo $_SESSION['user']['firstname']; ?>
                          <?php
                             echo '
-                            <img class="menu-arrow-down" src="../svg/arrow-right.svg" alt="menu arrow down">
+                            <div class="nav-two-design-lines">
+                            <div class="nav-design-line"></div>
+                            <div class="nav-design-line"></div>
+                        </div>
                             <div class="sub-menu"></a>
                        
                                 <li> <a href="../users/profile.php">My profile</a></li>
