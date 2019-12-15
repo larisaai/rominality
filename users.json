@@ -1,0 +1,10 @@
+{"_id":{"$oid":"5df69f99c52c383c94561ac2"},"first_name":"Cassandra","last_name":"Tilltack","email":"cassandra@me.dk","password":"password","user_type":"1","current_date":"2019-12-15","current_time":"10:03:21pm"}
+{"_id":{"$oid":"5df69fb6cac42552ec703f92"},"first_name":"Razvan","last_name":"Bertea","email":"bertea74@gmail.dk","password":"password","user_type":"1","current_date":"2019-12-15","current_time":"10:03:50pm"}
+{"_id":{"$oid":"5df69fd233890770ee330b54"},"first_name":"Andrei","last_name":"Atudorei","email":"stefandrei123@gmail.dk","password":"password","user_type":"1","current_date":"2019-12-15","current_time":"10:04:18pm"}
+{"_id":{"$oid":"5df69ff7c11d1a1be73c43b4"},"first_name":"Larisa","last_name":"Ailisoaie","email":"larisa@gmail.dk","password":"password","user_type":"1","current_date":"2019-12-15","current_time":"10:04:55pm"}
+{"_id":{"$oid":"5df6a01433890770ee330b55"},"first_name":"Kea","last_name":"Teacher","email":"teacher@kea.dk","password":"password","user_type":"1","current_date":"2019-12-15","current_time":"10:05:24pm"}
+{"_id":{"$oid":"5df6a033de0b4a15c5347ca2"},"first_name":"Alin","last_name":"Chiosa","email":"alin@gmail.dk","password":"password","user_type":"2","current_date":"2019-12-15","current_time":"10:05:55pm"}
+{"_id":{"$oid":"5df6a04dc52c383c94561ac3"},"first_name":"Petru","last_name":"Birzu","email":"petru@gmail.dk","password":"password","user_type":"2","current_date":"2019-12-15","current_time":"10:06:21pm"}
+{"_id":{"$oid":"5df6a067d7c5554574455a54"},"first_name":"Tavi","last_name":"Ciorobatca","email":"tavi@gmail.dk","password":"password","user_type":"2","current_date":"2019-12-15","current_time":"10:06:47pm"}
+{"_id":{"$oid":"5df6a087cac42552ec703f93"},"first_name":"Alexandru","last_name":"Dediu","email":"alex@gmail.dk","password":"password","user_type":"2","current_date":"2019-12-15","current_time":"10:07:19pm"}
+{"_id":{"$oid":"5df6a0a0d7c5554574455a55"},"first_name":"Alexandru","last_name":"Lentza","email":"lentza@gmail.dk","password":"password","user_type":"2","current_date":"2019-12-15","current_time":"10:07:44pm"}
