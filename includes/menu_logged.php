@@ -12,7 +12,7 @@ echo '
         <div class="box-wide">
             <div class="navigation ">
             <a href="../users/latest_releases.php">
-                <div class="nav-left-aligned"><h4>rominality</h4></div>
+                <div class="nav-left-aligned"><img src="../img/logo2.png"/></div>
             </a>
                 <div class="burger-menu-container">
                     <div class="burger-menu">
@@ -28,7 +28,7 @@ echo '
                         
                         <div class="sub-menu-header"><a class="user-name">';
 echo $_SESSION['user']['firstname']; ?>
-                         <?php 
+                         <?php
                             echo '
                             <img class="menu-arrow-down" src="../svg/arrow-right.svg" alt="menu arrow down">
                             <div class="sub-menu"></a>
@@ -49,4 +49,4 @@ echo $_SESSION['user']['firstname']; ?>
     <script src="../scripts/drop-down-sub-menu.js"></script>
 
 ';
-?>
+                            ?>
