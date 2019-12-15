@@ -74,7 +74,7 @@ class Song
         $con = $db->connect();
         if ($con) {
             try {
-                $stmt = $con->prepare('SELECT * FROM songs ORDER BY created_at DESC LIMIT 5 OFFSET :count');
+                $stmt = $con->prepare('SELECT * FROM songs ORDER BY created_at DESC LIMIT 3 OFFSET :count');
                 $stmt->bindParam(':count', $count);
                 $stmt->execute();
 
