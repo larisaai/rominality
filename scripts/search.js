@@ -114,8 +114,8 @@ function addValueToCartButtons() {
     checkIfElementIsInCart(item.getAttribute('value'), item);
   })
 }
+setTimeout(addValueToCartButtons, 100);
 
-addValueToCartButtons();
 
 function readComments() {
   let userComment = $('.user-comment');

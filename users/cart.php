@@ -118,27 +118,88 @@ session_start();
             linkLi.appendChild(link);
         };
 
-        function createSongElement(title, artist, path) {
-            var div = document.createElement('div');
-            div.setAttribute('style', 'background-color: lightgrey; margin: 10px; padding: 4px;')
-            document.getElementById('listed-songs').appendChild(div);
+        // function createSongElement(title, artist, path) {
+        //     var div = document.createElement('div');
+        //     div.setAttribute('style', 'background-color: lightgrey; margin: 10px; padding: 4px;')
+        //     document.getElementById('listed-songs').appendChild(div);
 
-            var h3 = document.createElement('h3');
-            h3.innerHTML = title;
-            div.appendChild(h3);
+        //     var h3 = document.createElement('h3');
+        //     h3.innerHTML = title;
+        //     div.appendChild(h3);
 
-            var p = document.createElement('p');
-            p.innerHTML = artist;
-            div.appendChild(p);
+        //     var p = document.createElement('p');
+        //     p.innerHTML = artist;
+        //     div.appendChild(p);
 
-            var audio = document.createElement('audio');
-            audio.setAttribute('controls', 'controls');
-            div.appendChild(audio);
+        //     var audio = document.createElement('audio');
+        //     audio.setAttribute('controls', 'controls');
+        //     div.appendChild(audio);
 
-            var source = document.createElement('source');
-            source.setAttribute('src', '../uploads/' + path + '.mp3');
-            source.setAttribute('type', 'audio/mpeg');
-            audio.appendChild(source);
+        //     var source = document.createElement('source');
+        //     source.setAttribute('src', '../uploads/' + path + '.mp3');
+        //     source.setAttribute('type', 'audio/mpeg');
+        //     audio.appendChild(source);
+        // }
+
+        function createSongElement(
+            songTitle,
+            artistName,
+            songPath,
+        ) {
+
+            let parentDiv = document.createElement("div");
+            parentDiv.setAttribute("class", "player-component");
+            document.getElementById("listed-songs").appendChild(parentDiv);
+
+            let songTitleElement = document.createElement("h3");
+            songTitleElement.innerHTML = songTitle;
+            parentDiv.appendChild(songTitleElement);
+
+            let tagsContainer = document.createElement("div");
+            tagsContainer.setAttribute("class", "tags-container");
+            parentDiv.appendChild(tagsContainer);
+
+            let artist = document.createElement("p");
+            artist.innerHTML = artistName + " - " + songTitle;
+            tagsContainer.appendChild(artist);
+
+            let seekBarDiv = document.createElement("div");
+            seekBarDiv.setAttribute("id", "seek-bar");
+            parentDiv.appendChild(seekBarDiv);
+
+            let fillSeekBar = document.createElement("div");
+            fillSeekBar.setAttribute("id", "fill");
+            seekBarDiv.appendChild(fillSeekBar);
+
+            let handleSeekBar = document.createElement("div");
+            handleSeekBar.setAttribute("id", "handle");
+            seekBarDiv.appendChild(handleSeekBar);
+
+            let audioFile = document.createElement("audio");
+            parentDiv.appendChild(audioFile);
+
+            let sourceAudioFile = document.createElement("source");
+            sourceAudioFile.setAttribute("src", "../uploads/" + songPath + ".mp3");
+            sourceAudioFile.setAttribute("type", "audio/mpeg");
+            audioFile.appendChild(sourceAudioFile);
+
+            let infoAboutSongDiv = document.createElement("div");
+            infoAboutSongDiv.setAttribute("class", "infoAboutSong");
+            parentDiv.appendChild(infoAboutSongDiv);
+
+            let playerDiv = document.createElement("div");
+            playerDiv.setAttribute("id", "player");
+            infoAboutSongDiv.appendChild(playerDiv);
+
+            let aTagPlay = document.createElement("a");
+            aTagPlay.setAttribute("id", "play");
+            aTagPlay.setAttribute("class", "play");
+            playerDiv.appendChild(aTagPlay);
+
+            let imgTagPlay = document.createElement("img");
+            imgTagPlay.setAttribute("src", "../img/play.png");
+            aTagPlay.appendChild(imgTagPlay);
+
         }
 
 
