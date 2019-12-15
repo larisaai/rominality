@@ -70,6 +70,7 @@ session_start();
             });
         });
 
+
         $("#loadMore").trigger("click");
     </script>
 
