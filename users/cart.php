@@ -25,23 +25,9 @@ session_start();
             <div id="listedSongsDiv" style=<?php if (empty($_SESSION['cartItems'])) {
                                                 echo '"display: none;"';
                                             } ?>>
-                <p>Cart songs with play</p>
-                <div id="listed-songs">
-                    <?php
-                    $cartSongs = $_SESSION['cartItems'];
+                <p>Songs in cart</p>
+                <div id="songs-container">
 
-                    foreach ($_SESSION['cartItems'] as $song) {
-                        echo '<div style="background-color: lightgrey; margin: 10px; padding: 4px;">
-                        <h3>' . $song['song_title'] . '</h3>
-                        <p>' . $song['artist_name'] . '</p>
-                        <audio controls="controls">
-                            <source src="../uploads/' . $song['path_id'] . '.mp3" type="audio/mpeg" />
-                                Your browser does not support the audio element.
-                        </audio>
-                        
-                    </div>';
-                    }
-                    ?>
                 </div>
 
             </div>
@@ -83,7 +69,7 @@ session_start();
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="../scripts/audio.js"></script>
     <script>
         function createListElement(name, price, id) {
 
@@ -118,38 +104,19 @@ session_start();
             linkLi.appendChild(link);
         };
 
-        // function createSongElement(title, artist, path) {
-        //     var div = document.createElement('div');
-        //     div.setAttribute('style', 'background-color: lightgrey; margin: 10px; padding: 4px;')
-        //     document.getElementById('listed-songs').appendChild(div);
-
-        //     var h3 = document.createElement('h3');
-        //     h3.innerHTML = title;
-        //     div.appendChild(h3);
-
-        //     var p = document.createElement('p');
-        //     p.innerHTML = artist;
-        //     div.appendChild(p);
-
-        //     var audio = document.createElement('audio');
-        //     audio.setAttribute('controls', 'controls');
-        //     div.appendChild(audio);
-
-        //     var source = document.createElement('source');
-        //     source.setAttribute('src', '../uploads/' + path + '.mp3');
-        //     source.setAttribute('type', 'audio/mpeg');
-        //     audio.appendChild(source);
-        // }
-
         function createSongElement(
             songTitle,
             artistName,
             songPath,
         ) {
 
+            let parentParentDiv = document.createElement("div");
+            parentParentDiv.setAttribute("class", "player-component");
+            document.getElementById("songs-container").appendChild(parentParentDiv);
+
             let parentDiv = document.createElement("div");
-            parentDiv.setAttribute("class", "player-component");
-            document.getElementById("listed-songs").appendChild(parentDiv);
+            parentDiv.setAttribute("class", "details-player-component");
+            parentParentDiv.appendChild(parentDiv);
 
             let songTitleElement = document.createElement("h3");
             songTitleElement.innerHTML = songTitle;
@@ -202,6 +169,21 @@ session_start();
 
         }
 
+        $(document).ready(function getSongsFromCart() {
+            $.ajax({
+                url: "../includes/getSongsFromCart.php",
+            }).done(function(data) {
+                var result = $.parseJSON(data);
+                let songs = result.items;
+                console.log(songs);
+                songs.forEach(song => {
+                    createSongElement(song.song_title, song.artist_name, song.path_id);
+                })
+
+            })
+        })
+
+
 
         $("#listedItems").on('click', '.cartRemove', function() {
             let songId = $(this).attr('value');
@@ -225,7 +207,7 @@ session_start();
                     }
                     let total = 0;
                     $('#listedItems').html('');
-                    $('#listed-songs').html('');
+                    $('#songs-container').html('');
 
                     array.forEach(element => {
                         createListElement(element.song_title, element.price, element.id);
