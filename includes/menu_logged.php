@@ -24,10 +24,10 @@ if (empty($_SESSION['cartItems'])) {
             </div>
             <div class="nav-right-aligned logged-in">
 
-                <li><a <?php echo ($active == 'homePage') ? 'id="active"' : '' ?> href="../users/latest_releases.php">Home</a></li>
-                <li><a <?php echo ($active == 'libraryPage') ? 'id="active"' : '' ?> href="../users/library.php">Library</a></li>
+                <li><a <?php echo ($active == 'homePage') ? 'class="menu-active"' : '' ?> href="../users/latest_releases.php">Home</a></li>
+                <li><a <?php echo ($active == 'libraryPage') ? 'class="menu-active"' : '' ?> href="../users/library.php">Library</a></li>
 
-                <div class="sub-menu-header"><a <?php echo ($active == 'userPage') ? 'id="active"' : '' ?> id="userNameId" class="user-name">
+                <div class="sub-menu-header"><a <?php echo ($active == 'userPage') ? 'class="menu-active"' : '' ?> id="userNameId" class="user-name">
                         <?= $_SESSION['user']['firstname']; ?>
 
                         <div class="nav-two-design-lines">

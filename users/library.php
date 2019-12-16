@@ -46,6 +46,11 @@ session_start();
     <script>
         $("#boughtSongs").on('click', function() {
             let userId = $(this).attr('userId');
+
+            $('#likedSongs').removeClass('menu-active');
+            $('#mySongs').removeClass('menu-active');
+            $('#boughtSongs').addClass('menu-active');
+
             $.ajax({
                     method: "GET",
                     url: "../includes/getBoughtSongs.php",
@@ -72,8 +77,15 @@ session_start();
                 })
         });
 
+
+
         $("#mySongs").on('click', function() {
             let userId = $(this).attr('userId');
+
+            $('#likedSongs').removeClass('menu-active');
+            $('#mySongs').addClass('menu-active');
+            $('#boughtSongs').removeClass('menu-active');
+
             $.ajax({
                     method: "GET",
                     url: "../includes/getMySongs.php",
@@ -101,6 +113,11 @@ session_start();
 
 
         $('#likedSongs').on('click', function() {
+
+            $('#likedSongs').addClass('menu-active');
+            $('#mySongs').removeClass('menu-active');
+            $('#boughtSongs').removeClass('menu-active');
+
             $.ajax({
                     method: "GET",
                     url: "../includes/getRandomSongs.php",
