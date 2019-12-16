@@ -132,9 +132,9 @@
     width: 15px;
   }
   .nav-left-aligned {
-    height: 75px;
-    display: flex;
-    align-items: center;
+    height:75px;
+    display:flex;
+    align-items:center;
   }
   .nav-right-aligned {
     display: flex;

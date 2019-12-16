@@ -3,7 +3,7 @@ echo '
 <div class="footer-container">
     <footer class="footer ">   
         <div class="copy-rights"><p>© copyrights reserved — 2020</p></div>
-        <div class="logo"><p> rominality </p> </div>
+        <div class="logo"><img style="width:150px" src="../img/logo2.png" /></div>
         <div class="social-media">
             <div id="fb-share-button">
                 <img src="../img/facebook.png">
@@ -20,4 +20,9 @@ echo '
         </div>
         </div>
     </footer>
-</div>';
+</div>
+';
+
+
+?>
+<script src="../scripts/footer.js"></script>
