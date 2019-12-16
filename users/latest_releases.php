@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-
+$active = 'homePage';
 require_once('../includes/header.php');
 
 session_start();

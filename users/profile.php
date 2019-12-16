@@ -1,4 +1,7 @@
 <?php
+
+$active = 'userPage';
+
 session_start();
 require_once('../classes/User_class.php');
 $user = new User();
@@ -41,7 +44,9 @@ require_once('../includes/header.php');
                 <h3>My profile</h3>
                 <div class="editable-data">
                     <div class="image-container">
+
                         <img src="..<?php echo $_SESSION['user']['profile_picture']; ?>" alt="">
+
                     </div>
                     <div class="profile-form-container">
                         <form class="form-horizontal" method="POST" action="profile.php" enctype="multipart/form-data">
