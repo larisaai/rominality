@@ -1,6 +1,10 @@
 <?php
 $active = 'loginPage';
 $showError = false;
+session_start();
+if ($_SESSION) {
+    header("Location: latest_releases.php");
+}
 
 if (!empty($_POST)) {
 

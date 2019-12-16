@@ -1,6 +1,11 @@
 <?php
 $active = 'signupPage';
 $showError = false;
+session_start();
+if ($_SESSION) {
+    header("Location: latest_releases.php");
+}
+
 if (!empty($_POST)) {
     require_once __DIR__ . "/../vendor/autoload.php";
     /* New object of Students() */
