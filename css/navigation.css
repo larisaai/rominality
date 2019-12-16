@@ -42,7 +42,6 @@
 .nav-two-design-lines {
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
 }
 
 .nav-design-line {
@@ -112,11 +111,13 @@
   color: #b8b7b7;
   text-decoration: underline;
 }
-
-@media screen and (max-width: 450px) {
+@media screen and (max-width:500px) {
   .nav-two-design-lines {
     display: none;
   }
+}
+@media screen and (max-width: 450px) {
+  
   .navigation {
     height: 75px;
     align-items: flex-start;
@@ -125,7 +126,7 @@
     font-size: 15px;
   }
   #logoId > img {
-    width: 192px;
+    width: 175px!important;
   }
   .menu-arrow-down {
     width: 15px;
