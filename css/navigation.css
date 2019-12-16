@@ -42,7 +42,6 @@
 .nav-two-design-lines {
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
 }
 
 .nav-design-line {

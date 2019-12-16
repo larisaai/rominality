@@ -11,6 +11,7 @@
 .login-form form, .signup-form-container form, .user-sigup-btn-container, .producer-sigup-btn-container { 
   width: 70%;
   margin: auto;
+  height: auto;
 }
 .login-form input[type="text"]:not(:empty) {
   background-color: transparent;
