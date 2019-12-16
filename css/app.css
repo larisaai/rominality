@@ -13,11 +13,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
+
 }
 
 body {
   --lightgrey: #f2edf0;
-  --dark-red : #982F2F;
+  --dark-red: #982F2F;
 }
 
 h1,
@@ -33,7 +35,8 @@ p {
 
 button,
 a,
-li, .button {
+li,
+.button {
   cursor: pointer;
 }
 
@@ -85,44 +88,55 @@ h4 {
   text-transform: capitalize;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1400px) {}
 
-}
 @media screen and (max-width: 1200px) {
   h1 {
     font-size: 45px;
   }
+
   h2 {
     font-size: 35px;
   }
+
   h3 {
     font-size: 28px;
   }
+
   h4 {
     font-size: 20px;
   }
 }
+
 @media screen and (max-width: 768px) {
 
   .box-wide {
     width: 90%;
   }
 }
+
 @media screen and (max-width: 450px) {
   h1 {
     font-size: 28px;
   }
+
   h2 {
     font-size: 23px;
   }
+
   h3 {
     font-size: 19px;
   }
+
   h4 {
     font-size: 15px;
   }
+
   a {
     font-size: 15px;
   }
-  .box-wide-inner{ width: 100%;}
+
+  .box-wide-inner {
+    width: 100%;
+  }
 }
