@@ -1,5 +1,4 @@
 <?php
-$active = 'signupPage';
 $showError = false;
 session_start();
 if ($_SESSION) {
@@ -17,6 +16,7 @@ if (!empty($_POST)) {
     $last =  $_POST["lastname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
+    $confirm_password = $_POST["confirm_password"];
     $user_type = $_POST["user_type"];
     // call add method in students object
     $res = $user->create($first, $last, $email, $password, $confirm_password, $user_type);
@@ -185,7 +185,6 @@ require_once('../includes/header.php');
     require_once('../includes/footer.php');
     ?>
     <script src="../scripts/app.js"></script>
-    <script src="../scripts/sign-up.js"></script>
 
 </body>
 
