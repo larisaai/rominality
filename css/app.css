@@ -13,13 +13,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-x: hidden;
+
 
 }
 
 body {
   --lightgrey: #f2edf0;
   --dark-red: #982F2F;
+  overflow-x: hidden;
 }
 
 h1,
