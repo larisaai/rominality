@@ -1,5 +1,5 @@
 <?php
-
+$active = 'loginPage';
 $showError = false;
 
 if (!empty($_POST)) {
@@ -15,7 +15,7 @@ if (!empty($_POST)) {
     // call add method in students object
     $res = $user->login($email, $password);
 
-    if($res == 'invalid-credentials'){
+    if ($res == 'invalid-credentials') {
         $showError = 'Invalid credentials';
     }
     if ($res === true) {
@@ -27,8 +27,8 @@ if (!empty($_POST)) {
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    /* Include <head></head> */
-    require_once('../includes/header.php');
+/* Include <head></head> */
+require_once('../includes/header.php');
 ?>
 
 <body>
@@ -61,33 +61,33 @@ if (!empty($_POST)) {
                             <input type="password" class="form-control" id="plot" placeholder="Password" name="password" required>
                         </div>
                         <?php
-                            if($showError){
-                                echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
-                            }
+                        if ($showError) {
+                            echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                        }
                         ?>
 
                         <div class="">
                             <input type="submit" class="button btn-white login-btn" value="Login">
                         </div>
-                
-                     
-                    
+
+
+
                     </form>
                 </div>
-             
+
             </div>
             <?php
-                require_once('../components/landing-page-bottom-animation.php');
+            require_once('../components/landing-page-bottom-animation.php');
             ?>
         </div>
     </div>
 
-    
+
     <?php
     require_once('../components/about-us-component.php');
     require_once('../includes/footer.php');
-?>
-<script src="../scripts/app.js"></script>
+    ?>
+    <script src="../scripts/app.js"></script>
 </body>
 
 </html>

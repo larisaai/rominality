@@ -108,6 +108,11 @@
   width: 192px;
 }
 
+#active {
+  color: #b8b7b7;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 450px) {
   .nav-two-design-lines {
     display: none;

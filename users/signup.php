@@ -1,4 +1,5 @@
 <?php
+$active = 'signupPage';
 $showError = false;
 if (!empty($_POST)) {
     require_once __DIR__ . "/../vendor/autoload.php";
