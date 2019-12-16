@@ -28,7 +28,7 @@ session_start();
             </div>
             <div id="songs-container">
             </div>
-            <div>
+            <div class="loadMoreContainer">
                 <button id="loadMore" style="text-align: center;" value="0">Load more</button>
             </div>
         </div>
