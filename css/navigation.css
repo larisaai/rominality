@@ -111,11 +111,13 @@
   color: #b8b7b7;
   text-decoration: underline;
 }
-
-@media screen and (max-width: 450px) {
+@media screen and (max-width:500px) {
   .nav-two-design-lines {
     display: none;
   }
+}
+@media screen and (max-width: 450px) {
+  
   .navigation {
     height: 75px;
     align-items: flex-start;
