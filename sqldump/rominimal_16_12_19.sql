@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2019 at 04:00 PM
+-- Generation Time: Dec 16, 2019 at 07:28 PM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -26,6 +26,10 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllSongs` ()  BEGIN
+    SELECT * FROM songs ORDER BY song_title DESC ;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `searchBar` (IN `search_term` CHAR(255))  BEGIN
 SELECT * FROM songs WHERE song_title LIKE CONCAT( search_term, '%') ORDER BY song_title DESC;
 END$$
@@ -126,6 +130,24 @@ INSERT INTO `invoices_relationship` (`invoice_id`, `song_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `new_users_id`
+--
+
+CREATE TABLE `new_users_id` (
+  `id` int(11) NOT NULL,
+  `new_user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `new_users_id`
+--
+
+INSERT INTO `new_users_id` (`id`, `new_user_id`) VALUES
+(1, 38);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `songs`
 --
 
@@ -212,34 +234,22 @@ INSERT INTO `song_attributes_relationship` (`song_id`, `attribute_id`) VALUES
 (42, 4),
 (42, 7),
 (42, 6),
-(43, 5),
-(43, 2),
-(43, 4),
 (43, 10),
 (43, 7),
 (43, 6),
 (43, 12),
-(44, 5),
-(44, 2),
-(44, 11),
-(44, 1),
-(44, 10),
 (44, 7),
 (44, 9),
 (44, 8),
 (45, 4),
 (45, 11),
-(45, 1),
 (45, 10),
 (45, 7),
 (46, 4),
-(46, 11),
-(46, 1),
 (46, 10),
 (47, 2),
 (47, 4),
 (47, 3),
-(48, 5),
 (48, 2),
 (48, 1),
 (48, 12),
@@ -248,7 +258,6 @@ INSERT INTO `song_attributes_relationship` (`song_id`, `attribute_id`) VALUES
 (49, 3),
 (49, 6),
 (50, 11),
-(50, 10),
 (50, 3),
 (50, 6),
 (51, 2),
@@ -288,13 +297,22 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `user_type`, `email`, `passw
 (27, 'Cassandra', 'Tiltack', 1, 'cassandra@me.com', 'password', '/images/default.png', 1, '2019-12-12 14:23:15', '2019-12-15 13:47:44'),
 (28, 'Razvan', 'Bertea', 1, 'bertea74@gmail.com', 'password', '/images/default.png', 1, '2019-12-12 14:23:38', '2019-12-15 13:47:53'),
 (29, 'Andrei', 'Atudorei', 1, 'stefandrei123@gmail.com', 'password', '/images/default.png', 1, '2019-12-12 14:24:07', '2019-12-15 13:48:00'),
-(30, 'Larisa', 'Ailisoaie', 1, 'larisa@gmail.com', 'password', '/images/default.png', 1, '2019-12-12 14:24:59', '2019-12-15 13:48:06'),
+(30, 'Larisa', 'Ailisoaie', 1, 'larisa@gmail.com', 'password', '/images/5df79bd9a0b57.jpg', 1, '2019-12-12 14:24:59', '2019-12-16 14:59:37'),
 (32, 'Teacher', 'Kea', 1, 'teacher@kea.com', 'password', '/images/default.png', 1, '2019-12-12 14:26:19', '2019-12-15 13:48:20'),
 (33, 'Alin', 'Chiosa', 2, 'alin@gmail.com', 'password', '/images/5df63708031aa.jpg', 1, '2019-12-12 14:26:46', '2019-12-15 13:37:12'),
 (34, 'Petru', 'Birzu', 2, 'petru@gmail.com', 'password', '/images/5df63b17a0f78.jpg', 1, '2019-12-12 14:27:06', '2019-12-15 13:54:31'),
 (35, 'Tavi', 'Ciorobatca', 2, 'tavi@gmail.com', 'password', '/images/5df63b5e0ce31.jpg', 1, '2019-12-12 14:28:18', '2019-12-15 13:55:42'),
 (36, 'Alexandru', 'Dediu', 2, 'alex@gmail.com', 'password', '/images/5df63aca0637d.jpg', 1, '2019-12-12 14:29:04', '2019-12-15 13:53:14'),
-(37, 'Alexandru', 'Lentza', 2, 'lentza@gmail.com', 'password', '/images/5df63a8bcc3ab.jpg', 1, '2019-12-12 14:30:03', '2019-12-15 13:52:11');
+(37, 'Alexandru', 'Lentza', 2, 'lentza@gmail.com', 'password', '/images/5df63a8bcc3ab.jpg', 1, '2019-12-12 14:30:03', '2019-12-15 13:52:11'),
+(38, 'Anna rggg', 'Ailisoaiea', 1, 'a@a.com', 'aaaaaa', '/images/default.png', 1, '2019-12-16 18:23:18', '2019-12-16 18:23:18');
+
+--
+-- Triggers `users`
+--
+DELIMITER $$
+CREATE TRIGGER `after_user_insert` AFTER INSERT ON `users` FOR EACH ROW INSERT into new_users_id (new_user_id) VALUES (new.id)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -346,6 +364,12 @@ ALTER TABLE `invoices`
 ALTER TABLE `invoices_relationship`
   ADD KEY `invoice_id` (`invoice_id`),
   ADD KEY `song_id` (`song_id`);
+
+--
+-- Indexes for table `new_users_id`
+--
+ALTER TABLE `new_users_id`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `songs`
@@ -404,6 +428,12 @@ ALTER TABLE `invoices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
+-- AUTO_INCREMENT for table `new_users_id`
+--
+ALTER TABLE `new_users_id`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
@@ -419,7 +449,7 @@ ALTER TABLE `song_attributes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user_types`
@@ -470,49 +500,6 @@ ALTER TABLE `song_attributes_relationship`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_type`) REFERENCES `user_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-
-
---
--- Users and privileges
---
-
-# Privileges for `admin-rominimal`@`%`
-
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19' WITH GRANT OPTION;
-
-GRANT ALL PRIVILEGES ON `rominimal`.* TO 'admin'@'%';
-
-
-# Privileges for `read-only-rominimal`@`%`
-
-GRANT SELECT ON *.* TO 'read-only'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19';
-
-GRANT SELECT ON `rominimal`.* TO 'read-only'@'%';
-
-GRANT SELECT ON `rominimal`.* TO 'read-only'@'%';
-
-
-# Privileges for `restricted-user-rominimal`@`%`
-
-GRANT USAGE ON *.* TO 'restricted-user'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19';
-
-GRANT SELECT ON `rominimal`.`song_attributes` TO 'restricted-user'@'%';
-
-GRANT SELECT ON `rominimal`.`comments` TO 'restricted-user'@'%';
-
-GRANT SELECT ON `rominimal`.`invoices` TO 'restricted-user'@'%';
-
-GRANT SELECT ON `rominimal`.`song_attributes_relationship` TO 'restricted-user'@'%';
-
-GRANT SELECT ON `rominimal`.`user_types` TO 'restricted-user'@'%';
-
-GRANT SELECT (updated_at, create_at, id, firstname, user_type, email, lastname, is_active, profile_picture) ON `rominimal`.`users` TO 'restricted-user'@'%';
-
-GRANT SELECT ON `rominimal`.`invoices_relationship` TO 'restricted-user'@'%';
-
-
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
