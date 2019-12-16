@@ -47,7 +47,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 100px;
+    margin-top: 75px;
     position: relative;
 }
 .arrow-down{
@@ -150,7 +150,7 @@
 
 @media screen and (max-width:1500px) {
     .landing-page-bottom-lines {
-        margin-top: 100px;
+        margin-top: 45px;
     }
 }
 @media screen and (max-width:1300px) {

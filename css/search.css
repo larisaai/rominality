@@ -46,3 +46,16 @@ form {
   top: 30px;
   left: 250px;
 }
+
+@media screen and (max-width: 450px) {
+  .search-container > div {
+    justify-self: start;
+    margin-top: 10px;
+  }
+  #searchInput {
+    width: 200px;
+  }
+  #searchResults {
+    left: 0px;
+  }
+}

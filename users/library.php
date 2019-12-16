@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+$active = 'libraryPage';
 /* Include <head></head> */
 require_once('../includes/header.php');
 require_once('../classes/Attribute_class.php');

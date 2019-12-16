@@ -169,3 +169,34 @@ a.addComment {
   background-color: #000000;
   color: #ffffff;
 }
+
+@media screen and (max-width: 450px) {
+  .player-component {
+    width: 100vw;
+    border-radius: 0px;
+  }
+  .image-artist > img {
+    display: none;
+  }
+  #containerLatest {
+    margin: 0;
+  }
+  .tags-container {
+    display: block;
+  }
+  .tags-container > p {
+    margin-right: 0px;
+  }
+  #seek-bar {
+    margin-left: 0px;
+    width: 125%;
+  }
+
+  .infoAboutSong {
+    width: 125%;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+  }
+  #upload-btn {
+    grid-column: 2 / span 3;
+  }
+}
