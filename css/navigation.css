@@ -124,7 +124,7 @@
     font-size: 15px;
   }
   #logoId > img {
-    width: 192px;
+    width: 175px!important;
   }
   .menu-arrow-down {
     width: 15px;
