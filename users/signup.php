@@ -1,4 +1,7 @@
 <?php
+
+$active = 'signupPage';
+
 $showError = false;
 session_start();
 if ($_SESSION) {
