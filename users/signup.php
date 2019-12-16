@@ -1,5 +1,7 @@
 <?php
+
 $active = 'signupPage';
+
 $showError = false;
 session_start();
 if ($_SESSION) {
@@ -186,7 +188,6 @@ require_once('../includes/header.php');
     require_once('../includes/footer.php');
     ?>
     <script src="../scripts/app.js"></script>
-    <script src="../scripts/sign-up.js"></script>
 
 </body>
 
