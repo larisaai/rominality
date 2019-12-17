@@ -49,7 +49,7 @@ require_once('../includes/header.php');
 
                     </div>
                     <div class="profile-form-container">
-                        <form class="form-horizontal" method="POST" action="profile.php" enctype="multipart/form-data">
+                        <form class="" method="POST" action="profile.php" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="First Name" name="firstname" value="<?php echo $_SESSION['user']['firstname'];  ?>" required>

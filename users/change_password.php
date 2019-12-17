@@ -59,7 +59,7 @@ require_once('../includes/header.php');
             </div>
             <div class="editable-data">
 
-                <form class="form-horizontal change-password-form" method="POST" action="change_password.php">
+                <form class=" change-password-form" method="POST" action="change_password.php">
                     <div class="form-group">
                         <input type="password" class="form-control" id="title" placeholder="Old password" name="old_password" required>
                     </div>
