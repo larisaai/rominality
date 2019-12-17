@@ -149,6 +149,7 @@
   }
   .sub-menu {
     left: 10px;
+    display: block;
   }
   .sub-menu a {
     justify-content: flex-start;
@@ -238,5 +239,8 @@
 
   .open .burger-menu-item:last-child {
     transform: rotate(45deg) translate(-7px, -7px);
+  }
+  .nav-two-design-lines.not-loggedin {
+    display: none;
   }
 }
