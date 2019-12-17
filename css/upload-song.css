@@ -1,0 +1,104 @@
+.parent-container-andrei {
+  min-height: calc(100vh - 220px);
+  margin-top: 150px;
+}
+
+.form-horizontal {
+  width: 100%;
+  min-height: 260px;
+  background-color: #b2b2b2;
+  cursor: default;
+  margin-top: 30px;
+  border-radius: 14px;
+  padding: 16px 44px;
+}
+
+.parent-tags {
+  margin-top: 10px;
+  width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-tags {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+}
+
+.parent-tags > p {
+  color: black;
+  margin-right: 20px;
+  font-size: 25px;
+}
+
+.tags-upload {
+  font-size: 12px;
+  font-family: Poppins;
+  color: #bebcbc;
+  background-color: #7b7575;
+  padding: 2px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.tags-upload > input {
+  display: none;
+}
+
+.tags-upload > input[type="checkbox"] + label {
+  color: #bebcbc;
+}
+.tags-upload > input[type="checkbox"]:checked + label {
+  color: white;
+}
+
+.upload-input {
+  margin: 20px 0px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+}
+.upload-input > input {
+  border: none;
+  outline: none;
+  background-color: #b2b2b2;
+  margin-right: 20px;
+  border-bottom: 2px solid #7b7575;
+  -webkit-appearance: none;
+}
+#file-name,
+.upload-input > input,
+.upload-input > input::placeholder {
+  color: #7b7575;
+  font-size: 14px;
+  font-family: Poppins;
+}
+
+#button-choose-file {
+  display: none;
+}
+
+.buttons-upload > div > label {
+  font-family: Poppins;
+  box-shadow: 0px 3px 6px #000000b3;
+  border-radius: 10px;
+  width: 240px;
+  height: 31px;
+  padding: 1.5px 60px;
+  text-align: center;
+  background-color: #ffffff !important;
+  margin-bottom: 35px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #000000;
+  opacity: 1;
+}
+
+.buttons-upload {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.buttons-upload > button {
+  justify-self: end;
+}

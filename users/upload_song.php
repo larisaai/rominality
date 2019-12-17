@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 /* Include <head></head> */
+$active = 'homePage';
 require_once('../includes/header.php');
 require_once('../classes/Attribute_class.php');
 require_once('../classes/Song_class.php');
@@ -35,48 +36,62 @@ if ($_POST) {
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container">
-        <div class="box-wide">
-            <h3>Latest releases</h3>
-            <div>
-                <div>Welcome, <?php echo $_SESSION['user']['firstname'];  ?>
-                    <?php echo $_SESSION['user']['id']; ?>
+    <div class="parent-container-andrei" id="container-releases">
+        <div class="imgParent"></div>
+        <div class="box-wide" id="containerLatest">
 
-                </div>
+
+
+            <div class="titles">
+                <h1>Upload new song.</h1>
             </div>
+            <form class="form-horizontal" method="POST" action="upload_song.php" enctype="multipart/form-data">
 
-            <div>
-                <div>
-                    <h1>Upload new song</h1>
-
-                    <form class="form-horizontal" method="POST" action="upload_song.php" enctype="multipart/form-data">
-                        <p>Select tags:</p>
-
-                        <div>
-                            <?php
-                            foreach ($res as $element) {
-                                echo '<div>
+                <h3>Describe the style</h3>
+                <div class="parent-tags">
+                    <p>Select tags:</p>
+                    <div class="container-tags">
+                        <?php
+                        foreach ($res as $element) {
+                            echo '<div class="tags-upload">
                                     <input type="checkbox" id="tag' . $element['id'] . '" name="tags[]" value="' . $element['id'] . '"></input>
                                     <label for="tag' . $element['id'] . '">' . $element['attribute_name'] . '</label>
                                 </div>';
-                            }
-                            ?>
-                        </div>
-
-                        <input name="songName" type="text" placeholder="Add the title of the song" required><br>
-
-                        <input name="artistName" type="text" placeholder="Add the name of the artist" required><br>
-
-                        <input name="price" type="number" placeholder="Add the price" required><br>
-
-                        <input type="file" name="songFile" required><br><br>
-
-                        <button type="submit">Add song</button>
-                    </form>
+                        }
+                        ?>
+                    </div>
                 </div>
-            </div>
+                <div class="upload-input">
+                    <input name="songName" type="text" placeholder="Put song name here*" required>
+
+                    <input name="artistName" type="text" placeholder="Put artist name here*" required>
+
+                    <input name="price" type="number" placeholder="Put price in EUR here*" required>
+                </div>
+                <div class="buttons-upload">
+                    <div class="input-upload">
+                        <input id="button-choose-file" type="file" name="songFile" required>
+                        <label for="button-choose-file">Upload file</label>
+                        <p id="file-name"></p>
+                    </div>
+                    <button type="submit">SUBMIT</button>
+                </div>
+            </form>
         </div>
+
     </div>
+    </div>
+    <?php
+
+    require_once('../includes/footer.php');
+    ?>
+
+    <script>
+        document.getElementById('button-choose-file').onchange = function() {
+            let inputValue = this.value;
+            document.getElementById('file-name').innerHTML = inputValue
+        };
+    </script>
 </body>
 
 </html>

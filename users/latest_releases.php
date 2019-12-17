@@ -37,12 +37,19 @@ session_start();
     </div>
     <?php
 
-    require_once('../includes/footer.php');
+                    require_once('../includes/footer.php');
     ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../scripts/audio.js"></script>
 
     <script>
+        $('.likeLink').on("click", function() {
+            console.log(this);
+            $(this).css({
+                fill: "#ff0000"
+            });
+        });
+
         $("#loadMore").on("click", function() {
             var row = Number($('#loadMore').val());
 
@@ -75,6 +82,9 @@ session_start();
     </script>
 
     <script src="../scripts/search.js"></script>
+    <script>
+
+    </script>
 </body>
 
 </html>

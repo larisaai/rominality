@@ -73,9 +73,12 @@ summary {
   outline: none;
   font-size: 16px;
   font-family: Poppins;
+  font-weight: bold;
+  text-shadow: 0px 3px 6px #00000029;
 }
 
 .commentContainer {
+  margin-top: 10px;
   display: flex;
 }
 
@@ -104,7 +107,7 @@ a.addComment {
   justify-items: center;
 }
 #commentId {
-  width: 200px;
+  width: 500px;
   height: 30px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 10px 0px 0px 10px;
