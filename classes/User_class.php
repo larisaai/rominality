@@ -1,5 +1,4 @@
 <?php
-
 require_once("../includes/connection.php");
 
 class User
@@ -165,20 +164,31 @@ class User
         $con = $db->connect();
 
         if ($con) {
-            $stmt = $con->prepare('UPDATE users SET password = :password WHERE id = :id');
-
+            $stmt = $con->prepare("SELECT * FROM users WHERE id = :id AND password = :password Limit 1");
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':password', $new_password);
-            $ok = $stmt->execute();
+            $stmt->bindParam(':password', $old_password);
+            $result = $stmt->execute();
+            $user = $stmt->fetch();
 
+            if ($user) {
+                $stmt = $con->prepare('UPDATE users SET password = :password WHERE id = :id');
 
+                $stmt->bindParam(':id', $id);
+                $stmt->bindParam(':password', $new_password);
+                $ok = $stmt->execute();
+    
+                $stmt = null;
+                $db->disconnect($con);
+    
+                return $ok;
 
-            $stmt = null;
-            $db->disconnect($con);
+            } else {
+                
+                return 'wrongoldpass';
+            }
 
-            $_SESSION['user']['password'] = $new_password;
-
-            return $ok;
+          
+            
         } else
             return false;
     }
