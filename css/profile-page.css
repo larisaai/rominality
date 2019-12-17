@@ -17,6 +17,8 @@
 }
 .profile-form-container {
     width:70%;
+    position: relative;
+    height: 300px;
 }
 .editable-data .form-group { 
     margin-bottom: 10px;
@@ -84,6 +86,9 @@
     opacity: 0.6;
     padding: 6px 30px;
     max-width: 110px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0;
 }
 .editable-data .button.delete-button:hover { 
     opacity:1;
