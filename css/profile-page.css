@@ -95,7 +95,7 @@
     max-height: calc(100vh - 220px);
 }
 .hero-container.change-password-page {
-    max-height: calc(100vh - 274px);
+    max-height: calc(100vh - 220px);
 }
 .change-password-form { width:400px; margin-top:40px; max-width:100%;}
 
@@ -104,7 +104,7 @@
 }
 @media screen and (max-width:768px) {
     .hero-container.profile-page { max-height: calc(100vh - 320px);}
-    .hero-container.change-password-page { max-height: calc(100vh - 374px); }
+    .hero-container.change-password-page { max-height: calc(100vh - 320px); }
     .profile-form-container { width:100%;}
 }
 @media screen and (max-width:450px) {
