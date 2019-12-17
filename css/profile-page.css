@@ -122,6 +122,6 @@
     .editable-data .button { padding:8px 20px;}
     .profile-page-inner {margin-top:100px;}
     .delete-account-content .button { margin: 0 5px;font-size:15px;}
-    .editable-data .button.delete-button { padding: 8px 20px; font-size:15px; margin-bottom:15px;}
+    .editable-data .button.delete-button { position: relative; padding: 8px 20px; font-size:15px; margin-bottom:15px;}
 
 }
