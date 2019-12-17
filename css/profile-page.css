@@ -1,129 +1,170 @@
-
 .profile-page-inner {
-    margin-top: 150px;
+  margin-top: 150px;
 }
 
-.profile-page-inner h3 , .change-password-page-inner h3, .change-password-page-inner h4 {
-    color: var(--lightgrey);
-    text-shadow: 0px 3px 6px #000000B2;
-    color: var(--lightgrey);
+.profile-page-inner > h1 {
+  text-shadow: 0px 3px 6px #000000b2;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 800;
+  color: #f2edf0;
+  margin-bottom: 20px;
 }
-.editable-data { 
-    width: 600px;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    max-width:100%;
+
+.profile-page-inner h3,
+.change-password-page-inner h3,
+.change-password-page-inner h4 {
+  color: var(--lightgrey);
+  text-shadow: 0px 3px 6px #000000b2;
+  color: var(--lightgrey);
+}
+.editable-data {
+  width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  max-width: 100%;
 }
 .profile-form-container {
-    width:70%;
-    position: relative;
-    height: 300px;
+  width: 70%;
+  position: relative;
+  height: 300px;
 }
-.editable-data .form-group { 
-    margin-bottom: 10px;
+.editable-data .form-group {
+  margin-bottom: 10px;
 }
 
 .image-container img {
-    width: 100px;
-    height: 100px;
-
+  width: 100px;
+  height: 100px;
 }
 .image-container {
-    width: 100px;
-    height: 100px;
-    margin-bottom:20px;
-    border-radius:27px;
-
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  border-radius: 27px;
 }
-.editable-data .change-pass, .change-picture {
-    color: var(--lightgrey);
+.editable-data .change-pass,
+.change-picture {
+  color: var(--lightgrey);
 }
 .editable-data .two-columns {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-.delete-account-container{
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom:0;
-    left:0;
-    right:0;
-    background-color:  rgba(0, 0, 0, 0.7);
-  
-;
- }
+.delete-account-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 .delete-account-container.show {
-    display: flex;
+  display: flex;
 }
-.delete-account-content{
-     width:600px;
-     height:400px;
-     background-color: var(--lightgrey);
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50% , -50%);
-     display: flex;
-     justify-content:center;
-     flex-direction: column;
-     align-items: center;
-     border-radius: 5px;
-     max-width: 95%
- }
- .delete-account-content p {
-     margin: 30px 0;
-     text-align: center;
-     
- }
- .delete-account-content .button { margin:0 10px;}
+.delete-account-content {
+  width: 600px;
+  height: 400px;
+  background-color: var(--lightgrey);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  max-width: 95%;
+}
+.delete-account-content p {
+  margin: 30px 0;
+  text-align: center;
+}
+.delete-account-content .button {
+  margin: 0 10px;
+}
 .editable-data .button {
-    font-size: 18px;
-    padding: 8px 30px;
- }
+  font-size: 18px;
+  padding: 8px 30px;
+}
 
-.editable-data .button.delete-button { 
-    margin-top:2px ;
-    opacity: 0.6;
-    padding: 6px 30px;
-    max-width: 110px;
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 0;
+.editable-data .button.delete-button {
+  margin-top: 2px;
+  opacity: 0.6;
+  padding: 6px 30px;
+  max-width: 110px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0;
 }
-.editable-data .button.delete-button:hover { 
-    opacity:1;
+.editable-data .button.delete-button:hover {
+  opacity: 1;
 }
-.update-btn { 
-    float: right;
+.update-btn {
+  float: right;
 }
-.hero-container.profile-page{
-    max-height: calc(100vh - 220px);
+.hero-container.profile-page {
+  max-height: calc(100vh - 220px);
 }
 .hero-container.change-password-page {
-    max-height: calc(100vh - 220px);
+  max-height: calc(100vh - 220px);
 }
-.change-password-form { width:400px; margin-top:40px; max-width:100%;}
-
-@media screen and (max-width:1024px) {
-    .editable-data { flex-direction: column; margin-top: 50px;}
+.change-password-form {
+  width: 400px;
+  margin-top: 40px;
+  max-width: 100%;
 }
-@media screen and (max-width:768px) {
-    .hero-container.profile-page { max-height: calc(100vh - 320px);}
-    .hero-container.change-password-page { max-height: calc(100vh - 320px); }
-    .profile-form-container { width:100%;}
+
+@media screen and (max-width: 1024px) {
+  .editable-data {
+    flex-direction: column;
+    margin-top: 50px;
+  }
 }
-@media screen and (max-width:450px) {
-    .hero-container.profile-page {max-height: calc(100vh - 100px);}
-    .hero-container.change-password-page { max-height: calc(100vh - 320px);}
+@media screen and (max-width: 768px) {
+  .hero-container.profile-page {
+    max-height: calc(100vh - 320px);
+  }
+  .hero-container.change-password-page {
+    max-height: calc(100vh - 320px);
+  }
+  .profile-form-container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .hero-container.profile-page {
+    max-height: calc(100vh - 100px);
+  }
+  .hero-container.change-password-page {
+    max-height: calc(100vh - 320px);
+  }
 
-    .profile-form-container { width: 100%;}
-    .editable-data .button { padding:8px 20px;}
-    .profile-page-inner {margin-top:100px;}
-    .delete-account-content .button { margin: 0 5px;font-size:15px;}
-    .editable-data .button.delete-button { padding: 8px 20px; font-size:15px; margin-bottom:15px;}
-    .editable-data .cancel-btn, .editable-data .button.delete-button.confirm-delete-btn { position: relative; display:block; margin:auto; margin-bottom:15px; }
-
-
+  .profile-form-container {
+    width: 100%;
+  }
+  .editable-data .button {
+    padding: 8px 20px;
+  }
+  .profile-page-inner {
+    margin-top: 100px;
+  }
+  .delete-account-content .button {
+    margin: 0 5px;
+    font-size: 15px;
+  }
+  .editable-data .button.delete-button {
+    padding: 8px 20px;
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+  .editable-data .cancel-btn,
+  .editable-data .button.delete-button.confirm-delete-btn {
+    position: relative;
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+  }
 }

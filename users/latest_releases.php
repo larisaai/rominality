@@ -23,7 +23,7 @@ session_start();
                 require_once('../includes/searchBar.php')
                 ?>
             </div>
-            <div <?= $_SESSION['user']['user_type'] == 1 ? 'style="display:none;"' : 'style="display:inline-block;"' ?> id="buttonLatest">
+            <div <?= $_SESSION['user']['user_type'] == 1 ? 'style="visibility: hidden"' : 'style="display:inline-block;"' ?> id="buttonLatest">
                 <a href="upload_song.php"><button>Upload new song</button></a>
             </div>
             <div id="songs-container">

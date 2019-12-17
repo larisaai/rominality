@@ -15,7 +15,7 @@ if (!empty($_POST)) {
     $email = $_POST["email"];
 
     $fileContent = $_FILES['profileImage']['tmp_name'];
-    $sExtention = $_FILES['profileImage']['name'] ? (pathinfo("{$_FILES['profileImage']['name']}", PATHINFO_EXTENSION)) : null ;
+    $sExtention = $_FILES['profileImage']['name'] ? (pathinfo("{$_FILES['profileImage']['name']}", PATHINFO_EXTENSION)) : null;
 
     $res = $user->update($id, $firstname, $lastname, $email, $fileContent, $sExtention);
 }
@@ -41,7 +41,7 @@ require_once('../includes/header.php');
 
         <div class="box-wide">
             <div class="profile-page-inner">
-                <h3>My profile</h3>
+                <h1>My profile.</h1>
                 <div class="editable-data">
                     <div class="image-container">
 
@@ -72,9 +72,9 @@ require_once('../includes/header.php');
                                 <input type="submit" class="button btn-white update-btn" value="Update profile">
                             </div>
                         </form>
-                            <button class="button btn-white delete-btn delete-button">Delete profile</button>
+                        <button class="button btn-white delete-btn delete-button">Delete profile</button>
                     </div>
-                   
+
 
                     <div class="delete-account-container">
                         <div class="delete-account-content">
@@ -95,7 +95,7 @@ require_once('../includes/header.php');
     <!-- bottom -->
 
     <?php
-    require_once('../includes/footer.php');
+                                                                                                                            require_once('../includes/footer.php');
     ?>
 </body>
 <script src="../scripts/profile.js"></script>

@@ -29,7 +29,6 @@ body {
 #containerLatest {
   display: grid;
   grid-template-columns: 1fr;
-  /* min-height: 100vh; */
 }
 #searchAndTitle {
   display: grid;
