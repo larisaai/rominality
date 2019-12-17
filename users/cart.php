@@ -15,60 +15,63 @@ session_start();
     /* Include <head></head> */
     require_once('../includes/menu_logged.php');
     ?>
-    <div class="container" style="margin-top: 100px;">
+    <div class="parent-container-andrei" id="container-releases">
+        <div class="imgParent"></div>
         <div class="box-wide">
-            <h3>Cart</h3>
+            <div class="titles">
+                <h1>My cart.</h1>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
-            <div id="listedSongsDiv" style=<?php if (empty($_SESSION['cartItems'])) {
-                                                echo '"display: none;"';
-                                            } ?>>
-                <p>Songs in cart</p>
-                <div id="songs-container">
+        <div class="box-wide">
+            <div class="container-cart">
+                <div id="noSongsMessage">
+                    <?php
+
+                    if (empty($_SESSION['cartItems'])) {
+                        echo '<h2>Your cart is empty. You need to add items inside the cart to see them here.</h2>';
+                    }
+
+                    ?>
+                </div>
+                <div id="listedSongsDiv" style=<?php if (empty($_SESSION['cartItems'])) {
+                                                    echo '"display: none;"';
+                                                } ?>>
+
+                    <div id="songs-container"></div>
 
                 </div>
 
-            </div>
-            <div id="noSongsMessage">
-                <?php
+                <div id="myCartDiv" style=<?php if (empty($_SESSION['cartItems'])) {
+                                                echo '"display: none;"';
+                                            } ?>>
 
-                if (empty($_SESSION['cartItems'])) {
-                    echo '<h2>Your cart is empty please go back shopping</h2>';
-                }
-
-                ?>
-            </div>
-            <div id="myCartDiv" style=<?php if (empty($_SESSION['cartItems'])) {
-                                            echo '"display: none;"';
-                                        } ?>>
-                <p>My cart with price and listed songs</p>
-                <div style="background-color:lightgray; padding: 20px;">
-                    <ol id="listedItems" style="width: 100%; padding: 0px;">
-                        <?php
-                        $totalPrice = 0;
-                        foreach ($_SESSION['cartItems'] as $song) {
-                            $totalPrice += $song['price'];
-                            echo '<li>
+                    <div class="cart-div">
+                        <ol id="listedItems" style="width: 100%; padding: 0px;">
+                            <?php
+                            $totalPrice = 0;
+                            foreach ($_SESSION['cartItems'] as $song) {
+                                $totalPrice += $song['price'];
+                                echo '<li>
                                     <ul style="padding: 0px; width: 100%;">
-                                        <li style="display:inline-block; width:50%;">' . $song['song_title'] . '</li>
+                                        <li style="display:inline-block; width:45%;">' . $song['song_title'] . '</li>
                                         <li style="display:inline-block; width:30%;">' . $song['price'] . 'EUR</li>
                                         <li style="display:inline-block; width:auto;";><a class="cartRemove" value="' . $song['id'] . '" href="#">Remove</a></li>
                                     </ul>
                                 </li>';
-                        }
-                        ?>
-                    </ol>
-                    <p style="text-align: right; margin-right: 35%; margin-top: 20px;">Total: <span id="cartTotal"><?php echo $totalPrice . ' EUR'; ?></span></p>
-
-                    <a href="../includes/processPayment.php">Pay now</a>
+                            }
+                            ?>
+                        </ol>
+                        <div class="pay-total-cart">
+                            <a href="../includes/processPayment.php">Pay now</a>
+                            <p>Total: <span id="cartTotal"><?php echo $totalPrice . ' EUR'; ?></span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <?php require_once('../includes/footer.php'); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../scripts/audio.js"></script>
     <script>
@@ -200,7 +203,7 @@ session_start();
                         document.getElementById('listedSongsDiv').style.display = 'none';
 
                         var h2 = document.createElement('h2');
-                        h2.innerHTML = "Your cart is empty, go back to shopping";
+                        h2.innerHTML = "Your cart is empty, go back to shopping.";
                         document.getElementById('noSongsMessage').appendChild(h2);
                     } else {
                         document.getElementById('myCartDiv').style.display = 'block';
