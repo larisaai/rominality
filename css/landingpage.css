@@ -152,11 +152,12 @@
         margin-top: 45px;
     }
 }
-@media screen and (max-width:1300px) {
+@media screen and (max-width:1400px) {
     .landing-page-bottom-lines {
-        margin-top: 50px;
+        margin-top: 0px;
     }
 }
+
 /* ipad */
 
 @media only screen and (device-width : 1024px) and (device-height: 1366px) {

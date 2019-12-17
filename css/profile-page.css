@@ -27,12 +27,14 @@
 .image-container img {
     width: 100px;
     height: 100px;
+
 }
 .image-container {
-    border: 1px solid var(--lightgrey) ;
     width: 100px;
     height: 100px;
     margin-bottom:20px;
+    border-radius:27px;
+
 }
 .editable-data .change-pass, .change-picture {
     color: var(--lightgrey);
@@ -117,8 +119,9 @@
     .hero-container.change-password-page { max-height: calc(100vh - 320px);}
 
     .profile-form-container { width: 100%;}
-    .editable-data .button { padding:8px 25px;}
+    .editable-data .button { padding:8px 20px;}
     .profile-page-inner {margin-top:100px;}
-    .delete-account-content .button { margin: 0 5px;;}
+    .delete-account-content .button { margin: 0 5px;font-size:15px;}
+    .editable-data .button.delete-button { padding: 8px 20px; font-size:15px; margin-bottom:15px;}
 
 }
