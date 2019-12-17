@@ -4,7 +4,7 @@ require_once('../classes/User_class.php');
 
 $showError = false;
 $user = new User();
-
+$active = "changePasswordPage";
 $id = $_SESSION['user']['id'];
 
 if (!empty($_POST)) {
