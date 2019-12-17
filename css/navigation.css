@@ -118,14 +118,11 @@
   text-decoration: underline !important;
 }
 
-@media screen and (max-width:500px) {
+
+@media screen and (max-width: 550px) {
   .nav-two-design-lines {
     display: none;
   }
-}
-
-@media screen and (max-width: 450px) {
-
   .navigation {
     height: 75px;
     align-items: flex-start;
@@ -162,21 +159,21 @@
   .nav-right-aligned.logged-in {
     flex-direction: column;
     align-items: flex-start;
-    width: 0;
+
     padding-top: 75px;
     position: absolute;
-    right:0;
+    right: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
     height: 100vh;
+    overflow: hidden;
+    width: 0;
     transition: width 1s;
   }
 
   .open .nav-right-aligned.logged-in {
-    right: 0;
     width: 65%;
-
   }
 
   .nav-right-aligned.logged-in>* {
