@@ -1,4 +1,4 @@
-$("#searchInput").keyup(function() {
+$("#searchInput").keyup(function () {
   let parentResults = document.getElementById("searchResults");
   parentResults.innerHTML = "";
   value = $(this).val();
@@ -7,7 +7,7 @@ $("#searchInput").keyup(function() {
     $.ajax({
       method: "GET",
       url: "../includes/searchForSong.php?currentSearch=" + value
-    }).done(function(data) {
+    }).done(function (data) {
       var result = $.parseJSON(data);
 
       let songs = result.items;
@@ -30,12 +30,12 @@ $("#searchInput").keyup(function() {
   }
 });
 
-$("#searchResults").on("click", ".foundItem", function() {
+$("#searchResults").on("click", ".foundItem", function () {
   document.getElementById("searchInput").value = this.innerHTML;
   document.getElementById("searchResults").innerHTML = "";
 });
 
-$("#buttonSearch").on("click", function() {
+$("#buttonSearch").on("click", function () {
   let searchBar = document.getElementById("searchInput");
   value = $(searchBar).val();
 
@@ -43,7 +43,7 @@ $("#buttonSearch").on("click", function() {
     $.ajax({
       method: "GET",
       url: "../includes/searchForSong.php?currentSearch=" + value
-    }).done(function(data) {
+    }).done(function (data) {
       var result = $.parseJSON(data);
       let songs = result.items;
 
@@ -77,14 +77,14 @@ function getAttributesForSongId(id) {
   return result.attributesHTML;
 }
 
-$(function() {
-  $("#songs-container").on("click", ".cartButton", function() {
+$(function () {
+  $("#songs-container").on("click", ".cartButton", function () {
     let buttonElement = $(this);
     let songId = $(this).attr("value");
     $.ajax({
       method: "GET",
       url: "../includes/addToCart.php?songId=" + songId
-    }).done(function(data) {
+    }).done(function (data) {
       var result = $.parseJSON(data);
       if (result.status == 1) {
         document.getElementById("cartItems").innerHTML = result.itemNumber;
@@ -99,7 +99,7 @@ $(function() {
 function checkIfElementIsInCart(id, element) {
   $.ajax({
     url: "../includes/checkIfElementIsInCart.php?song_id=" + id
-  }).done(function(data) {
+  }).done(function (data) {
     var result = $.parseJSON(data);
     if (result.status == 1) {
       element.classList.remove("notAddedToCart");
@@ -126,7 +126,7 @@ function readComments() {
   let userComment = $(".user-comment");
   $.ajax({
     url: "../includes/getAllComents.php"
-  }).done(function(data) {
+  }).done(function (data) {
     var result = $.parseJSON(data);
     let comments = result.comments;
     let commentDiv = document.querySelectorAll(".commentDiv");
@@ -160,8 +160,8 @@ function readComments() {
 readComments();
 setInterval(readComments, 1000);
 
-$(function() {
-  $("#songs-container").on("click", ".addComment", function() {
+$(function () {
+  $("#songs-container").on("click", ".addComment", function () {
     let currentElement = $(this).siblings();
 
     let songId = $(this)
@@ -173,13 +173,12 @@ $(function() {
 
     $.ajax({
       method: "GET",
-      url:
-        "../includes/addComment.php?songId=" +
+      url: "../includes/addComment.php?songId=" +
         songId +
         "&&commentBody=" +
         commentBody +
         ""
-    }).done(function(data) {
+    }).done(function (data) {
       var result = $.parseJSON(data);
       readComments();
     });
@@ -278,15 +277,17 @@ function createAudioElement(
   aTagPlay.appendChild(imgTagPlay);
 
   let aTagLike = document.createElement("a");
+  aTagLike.setAttribute("class", "likeLink");
   infoAboutSongDiv.appendChild(aTagLike);
 
   let imgTagLike = document.createElement("img");
   imgTagLike.setAttribute("class", "like");
   imgTagLike.setAttribute("src", "../img/like.svg");
+  imgTagLike.setAttribute("liked", "1");
   aTagLike.appendChild(imgTagLike);
 
   let detailsContainer = document.createElement("details");
-  infoAboutSongDiv.appendChild(detailsContainer);
+  parentDiv.appendChild(detailsContainer);
 
   let summaryDiv = document.createElement("summary");
   summaryDiv.innerHTML = "Add comment";
@@ -328,3 +329,147 @@ function createAudioElement(
   aTagAddToCart.innerHTML = "Add to cart";
   infoAboutSongDiv.appendChild(aTagAddToCart);
 }
+
+function createAudioElementLiked(
+  songTitle,
+  artistName,
+  songPath,
+  songId,
+  songPrice,
+  attributeHTML,
+  profileUrl
+) {
+  let parentParentDiv = document.createElement("div");
+  parentParentDiv.setAttribute("class", "player-component");
+  document.getElementById("songs-container").appendChild(parentParentDiv);
+
+  let parentDiv = document.createElement("div");
+  parentDiv.setAttribute("class", "details-player-component");
+  parentParentDiv.appendChild(parentDiv);
+
+  let imageDiv = document.createElement("div");
+  imageDiv.setAttribute("class", "image-artist");
+  parentParentDiv.appendChild(imageDiv);
+
+  let imageArtist = document.createElement("img");
+  imageArtist.setAttribute("src", ".." + profileUrl);
+  imageDiv.appendChild(imageArtist);
+
+  let songTitleElement = document.createElement("h3");
+  songTitleElement.innerHTML = songTitle;
+  parentDiv.appendChild(songTitleElement);
+
+  let tagsContainer = document.createElement("div");
+  tagsContainer.setAttribute("class", "tags-container");
+  parentDiv.appendChild(tagsContainer);
+
+  let artist = document.createElement("p");
+  artist.innerHTML = artistName + " - " + songTitle;
+  tagsContainer.appendChild(artist);
+
+  let tagsDiv = document.createElement("div");
+  tagsDiv.setAttribute("class", "tags");
+  tagsContainer.appendChild(tagsDiv);
+
+  tagsDiv.innerHTML = attributeHTML;
+
+  let seekBarDiv = document.createElement("div");
+  seekBarDiv.setAttribute("id", "seek-bar");
+  parentDiv.appendChild(seekBarDiv);
+
+  let fillSeekBar = document.createElement("div");
+  fillSeekBar.setAttribute("id", "fill");
+  seekBarDiv.appendChild(fillSeekBar);
+
+  let handleSeekBar = document.createElement("div");
+  handleSeekBar.setAttribute("id", "handle");
+  seekBarDiv.appendChild(handleSeekBar);
+
+  let audioFile = document.createElement("audio");
+  parentDiv.appendChild(audioFile);
+
+  let sourceAudioFile = document.createElement("source");
+  sourceAudioFile.setAttribute("src", "../uploads/" + songPath + ".mp3");
+  sourceAudioFile.setAttribute("type", "audio/mpeg");
+  audioFile.appendChild(sourceAudioFile);
+
+  let infoAboutSongDiv = document.createElement("div");
+  infoAboutSongDiv.setAttribute("class", "infoAboutSong");
+  parentDiv.appendChild(infoAboutSongDiv);
+
+  let playerDiv = document.createElement("div");
+  playerDiv.setAttribute("id", "player");
+  infoAboutSongDiv.appendChild(playerDiv);
+
+  let aTagPlay = document.createElement("a");
+  aTagPlay.setAttribute("id", "play");
+  aTagPlay.setAttribute("class", "play");
+  playerDiv.appendChild(aTagPlay);
+
+  let imgTagPlay = document.createElement("img");
+  imgTagPlay.setAttribute("src", "../img/play.png");
+  aTagPlay.appendChild(imgTagPlay);
+
+  let aTagLike = document.createElement("a");
+  aTagLike.setAttribute("class", "likeLink");
+  infoAboutSongDiv.appendChild(aTagLike);
+
+  let imgTagLike = document.createElement("img");
+  imgTagLike.setAttribute("class", "like");
+  imgTagLike.setAttribute("src", "../img/red_heart.svg");
+  imgTagLike.setAttribute("liked", "2");
+  aTagLike.appendChild(imgTagLike);
+
+  let detailsContainer = document.createElement("details");
+  parentDiv.appendChild(detailsContainer);
+
+  let summaryDiv = document.createElement("summary");
+  summaryDiv.innerHTML = "Add comment";
+  detailsContainer.appendChild(summaryDiv);
+
+  let commentDiv = document.createElement("div");
+  commentDiv.setAttribute("class", "commentDiv");
+  commentDiv.setAttribute("songId", +songId);
+  detailsContainer.appendChild(commentDiv);
+
+  let pTagCommentDiv = document.createElement("p");
+  commentDiv.appendChild(pTagCommentDiv);
+
+  let addCommentDiv = document.createElement("div");
+  addCommentDiv.setAttribute("class", "commentContainer");
+  detailsContainer.appendChild(addCommentDiv);
+
+  let inputComment = document.createElement("input");
+  inputComment.setAttribute("type", "text");
+  inputComment.setAttribute("placeholder", "Add comment here");
+  inputComment.setAttribute("id", "commentId");
+  inputComment.setAttribute("songId", songId);
+  addCommentDiv.appendChild(inputComment);
+
+  let buttonAddComment = document.createElement("a");
+  buttonAddComment.setAttribute("class", "addComment");
+  buttonAddComment.innerHTML = "Add";
+  addCommentDiv.appendChild(buttonAddComment);
+
+  let pTagPrice = document.createElement("p");
+  pTagPrice.setAttribute("class", "price");
+  pTagPrice.innerHTML = songPrice + "EUR";
+  infoAboutSongDiv.appendChild(pTagPrice);
+
+  let aTagAddToCart = document.createElement("a");
+  aTagAddToCart.setAttribute("class", "cartButton");
+  aTagAddToCart.setAttribute("id", "upload-btn");
+  aTagAddToCart.setAttribute("value", songId);
+  aTagAddToCart.innerHTML = "Add to cart";
+  infoAboutSongDiv.appendChild(aTagAddToCart);
+}
+
+$('#songs-container').on("click", ".like", function () {
+  if ($(this).attr('liked') == 1) {
+    $(this).attr('src', '../img/red_heart.svg');
+    $(this).attr('liked', 2);
+  } else {
+    $(this).attr('src', '../img/like.svg');
+    $(this).attr('liked', 1);
+  }
+});
