@@ -65,11 +65,6 @@ require_once('../includes/header.php');
                         <input type="submit" class="button btn-white update-btn" value="Update password">
                     </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <input type="submit" class="btn btn-primary" value="Update password">
-                        </div>
-                    </div>
 
                 </form>
             </div>
