@@ -120,33 +120,40 @@ class User
 
         if ($con) {
 
-
-            $sUniqueImageName = uniqid() . '.' . $sExtention;
-
-            move_uploaded_file($fileContent, __DIR__ . "/../images/$sUniqueImageName");
-
-            $stmt = $con->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, profile_picture = :profilePicture WHERE id = :id');
-
-            $fullPathToProfilePicture = "/images/$sUniqueImageName";
-
+            $stmt = $con->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email WHERE id = :id');
+       
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':firstname', $first_name);
             $stmt->bindParam(':lastname', $last_name);
             $stmt->bindParam(':email', $email);
 
-            $stmt->bindParam(':profilePicture', $fullPathToProfilePicture);
             $ok = $stmt->execute();
 
             $stmt = null;
+
+            if( $sExtention && $sExtention !='' ){
+                
+                $sUniqueImageName = uniqid() . '.' . $sExtention;
+                move_uploaded_file($fileContent, __DIR__ . "/../images/$sUniqueImageName");
+
+                $stmt = $con->prepare('UPDATE users SET profile_picture = :profilePicture WHERE id = :id');
+                $fullPathToProfilePicture = "/images/$sUniqueImageName";
+
+                $stmt->bindParam(':id', $id);
+                $stmt->bindParam(':profilePicture', $fullPathToProfilePicture);
+                $ok = $stmt->execute();
+
+                $stmt = null;
+                $_SESSION['user']['profile_picture'] = $fullPathToProfilePicture;
+
+            }
 
             $db->disconnect($con);
 
             $_SESSION['user']['firstname'] = $first_name;
             $_SESSION['user']['lastname'] = $last_name;
             $_SESSION['user']['email'] = $email;
-            $_SESSION['user']['profile_picture'] = $fullPathToProfilePicture;
-
-
+        
             return ($ok);
         } else
             return false;
