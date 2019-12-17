@@ -69,9 +69,10 @@ if ($_POST) {
                     <input name="price" type="number" placeholder="Put price in EUR here*" required>
                 </div>
                 <div class="buttons-upload">
-                    <div>
+                    <div class="input-upload">
                         <input id="button-choose-file" type="file" name="songFile" required>
                         <label for="button-choose-file">Upload file</label>
+                        <p id="file-name"></p>
                     </div>
                     <button type="submit">SUBMIT</button>
                 </div>
@@ -84,6 +85,13 @@ if ($_POST) {
 
     require_once('../includes/footer.php');
     ?>
+
+    <script>
+        document.getElementById('button-choose-file').onchange = function() {
+            let inputValue = this.value;
+            document.getElementById('file-name').innerHTML = inputValue
+        };
+    </script>
 </body>
 
 </html>
