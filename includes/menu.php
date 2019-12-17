@@ -7,7 +7,7 @@
             <div class="nav-right-aligned">
                 <li><a <?php echo ($active == 'loginPage') ? 'class="menu-active"' : '' ?> href="../users/login.php">Login</a></li>
                 <li><a <?php echo ($active == 'signupPage') ? 'class="menu-active"' : '' ?> href="../users/signup.php">Signup</a></li>
-                <div class="nav-two-design-lines">
+                <div class="nav-two-design-lines not-loggedin">
                     <div class="nav-design-line"></div>
                     <div class="nav-design-line"></div>
                 </div>
