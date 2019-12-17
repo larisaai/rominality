@@ -23,7 +23,6 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
 }
 
 .titles {
@@ -154,7 +153,6 @@
     }
 }
 @media screen and (max-width:1300px) {
-    .landing-page-container {padding-top:0;}
     .landing-page-bottom-lines {
         margin-top: 50px;
     }
