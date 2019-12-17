@@ -72,10 +72,11 @@ require_once('../includes/header.php');
                                 <input type="submit" class="button btn-white update-btn" value="Update profile">
                             </div>
                         </form>
-                        <div class="form-group">
+                        <div class="">
                             <button class="button btn-white delete-btn delete-button">Delete profile</button>
                         </div>
                     </div>
+                   
 
                     <div class="delete-account-container">
                         <div class="delete-account-content">

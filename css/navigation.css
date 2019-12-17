@@ -137,6 +137,10 @@
   #logoId>img {
     width: 175px !important;
   }
+  .nav-left-aligned>img {
+    width: 175px !important;
+
+  }
 
   .menu-arrow-down {
     width: 15px;
