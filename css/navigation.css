@@ -46,7 +46,7 @@
 .nav-design-line {
   height: 2px;
   width: 20px;
-  background-color: var(--lightgrey);
+  background-color:#b8b7b7;
 }
 
 .nav-design-line:last-child {
@@ -110,11 +110,14 @@
 }
 
 .menu-active {
-  color: #b8b7b7 !important;
+  color: var(--lightgrey)!important;
   text-decoration: underline !important;
 }
 .menu-active .nav-design-line {
-  background-color: #b8b7b7 !important;
+  background-color:var(--lightgrey)!important;
+}
+.sub-menu-header.active a.user-name {
+  color: #b8b7b7;
 }
 .nav-design-line:first-child {
   margin-left: 0;
@@ -129,7 +132,10 @@
   margin-left: 0;
 }
 .sub-menu-header.active a {
-  color: #b8b7b7 !important;
+  color: var(--lightgrey);
+}
+.sub-menu-header.active a.user-name {
+  
 }
 
 @media screen and (max-width: 620px) {
