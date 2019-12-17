@@ -15,7 +15,7 @@ if (!empty($_POST)) {
     $email = $_POST["email"];
 
     $fileContent = $_FILES['profileImage']['tmp_name'];
-    $sExtention = (pathinfo("{$_FILES['profileImage']['name']}", PATHINFO_EXTENSION));
+    $sExtention = $_FILES['profileImage']['name'] ? (pathinfo("{$_FILES['profileImage']['name']}", PATHINFO_EXTENSION)) : null ;
 
     $res = $user->update($id, $firstname, $lastname, $email, $fileContent, $sExtention);
 }

@@ -17,9 +17,15 @@ if (!empty($_POST)) {
 
         if ($_SESSION['user']['password'] == $oldPassword) {
             $res = $user->update_password($id, $oldPassword, $newPassword);
+            if ($res === 'wrongoldpass') {
+                $showError = 'Please  check your old password';
+            }
+            else{
 
-            unset($_POST);
-            header("Location: profile.php");
+                unset($_POST);
+                header("Location: profile.php");
+            }
+
         } else {
             $showError = 'Old password doesnt match';
         }
@@ -60,11 +66,17 @@ require_once('../includes/header.php');
                     <div class="form-group">
                         <input type="password" class="form-control" id="new_pass1" placeholder="New password" name="new_password" required>
                     </div>
+                    <?php
+                        if ($showError) {
+                            echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                        }
+                    ?>
 
                     <div class="form-group">
                         <input type="submit" class="button btn-white update-btn" value="Update password">
                     </div>
 
+                    
 
                 </form>
             </div>
