@@ -9,7 +9,9 @@ if ($_SESSION) {
 }
 
 if (!empty($_POST)) {
-    require_once __DIR__ . "/../vendor/autoload.php";
+    // MONGO DB REQUIRED
+    // require_once __DIR__ . "/../vendor/autoload.php";
+
     /* New object of Students() */
     require_once('../classes/User_class.php');
     $user = new User();
@@ -25,19 +27,20 @@ if (!empty($_POST)) {
     $res = $user->create($first, $last, $email, $password, $confirm_password, $user_type);
 
     if ($res ===  true) {
-        $collection = (new MongoDB\Client)->rominality->users;
-        $date = date("Y-m-d");
-        $time = date("h:i:sa");
+        // MONGO DB REQUIRED
+        // $collection = (new MongoDB\Client)->rominality->users;
+        // $date = date("Y-m-d");
+        // $time = date("h:i:sa");
 
-        $insertOneResult = $collection->insertOne([
-            'first_name' => $first,
-            'last_name' => $last,
-            'email' => $email,
-            'password' => $password,
-            'user_type' => $user_type,
-            'current_date' => $date,
-            'current_time' => $time,
-        ]);
+        // $insertOneResult = $collection->insertOne([
+        //     'first_name' => $first,
+        //     'last_name' => $last,
+        //     'email' => $email,
+        //     'password' => $password,
+        //     'user_type' => $user_type,
+        //     'current_date' => $date,
+        //     'current_time' => $time,
+        // ]);
         header("Location: latest_releases.php");
     } else {
         $showError = $res;
@@ -104,8 +107,8 @@ require_once('../includes/header.php');
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Email" name="email" required <?php if (!empty($email)) {
-                                                                                                                        echo "value=' $email'";
-                                                                                                                    } ?>>
+                                                                                                                                echo "value=' $email'";
+                                                                                                                            } ?>>
                             </div>
 
                             <div class="form-group">
@@ -119,9 +122,9 @@ require_once('../includes/header.php');
                             </div>
 
                             <?php
-                            if ($showError) {
-                                echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
-                            }
+                                                                                                                            if ($showError) {
+                                                                                                                                echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                                                                                                                            }
                             ?>
 
                             <div class="form-group">
@@ -148,8 +151,8 @@ require_once('../includes/header.php');
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Email" name="email" required <?php if (!empty($email)) {
-                                                                                                                        echo "value=' $email'";
-                                                                                                                    } ?>>
+                                                                                                                                echo "value=' $email'";
+                                                                                                                            } ?>>
                             </div>
 
                             <div class="form-group">
@@ -163,9 +166,9 @@ require_once('../includes/header.php');
                             </div>
 
                             <?php
-                            if ($showError) {
-                                echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
-                            }
+                                                                                                                            if ($showError) {
+                                                                                                                                echo "<div class='form-group'><p class='error-text'>$showError</p> </div>";
+                                                                                                                            }
                             ?>
 
                             <div class="form-group">
@@ -177,15 +180,15 @@ require_once('../includes/header.php');
                 </div>
             </div>
             <?php
-            require_once('../components/landing-page-bottom-animation.php');
+                                                                                                                            require_once('../components/landing-page-bottom-animation.php');
             ?>
         </div>
     </div>
 
 
     <?php
-    require_once('../components/about-us-component.php');
-    require_once('../includes/footer.php');
+                                                                                                                            require_once('../components/about-us-component.php');
+                                                                                                                            require_once('../includes/footer.php');
     ?>
     <script src="../scripts/app.js"></script>
     <script src="../scripts/sign-up.js"></script>

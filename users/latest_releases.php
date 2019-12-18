@@ -18,12 +18,16 @@ session_start();
         <div class="imgParent"></div>
         <div class="box-wide" id="containerLatest">
             <div class="titles" id="searchAndTitle">
-                <h1>Latest releases.</h1>
+                <div class="titles-latest">
+                    <h1>Latest releases.</h1>
+                    <p>In order to listen to a full song you have to buy it or to own it</p>
+                </div>
+
                 <?php
                 require_once('../includes/searchBar.php')
                 ?>
             </div>
-            <div <?= $_SESSION['user']['user_type'] == 1 ? 'style="display:none;"' : 'style="display:inline-block;"' ?> id="buttonLatest">
+            <div <?= $_SESSION['user']['user_type'] == 1 ? 'style="visibility: hidden"' : 'style="display:inline-block;"' ?> id="buttonLatest">
                 <a href="upload_song.php"><button>Upload new song</button></a>
             </div>
             <div id="songs-container">
@@ -67,7 +71,7 @@ session_start();
 
                 songs.forEach(song => {
 
-                    createAudioElement(song.song_title, song.artist_name, song.path_id, song.id, song.price, getAttributesForSongId(song.id), song[0].profile_picture)
+                    createAudioElement(song.song_title, song.artist_name, song.path_id, song.id, song.price, getAttributesForSongId(song.id), song[0].profile_picture, "../img/like.svg")
                 });
 
                 if ($('#loadMore').val() > document.getElementById('songs-container').children.length) {
