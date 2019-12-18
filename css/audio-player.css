@@ -14,18 +14,18 @@
   margin: 30px;
 }
 
-.image-artist > img {
+.image-artist>img {
   width: 150px;
   height: auto;
   border-radius: 27px;
 }
 
-.tags > ul {
+.tags>ul {
   list-style: none;
   display: flex;
 }
 
-.tags > ul > li {
+.tags>ul>li {
   font-size: 12px;
   color: #bebcbc;
   margin-right: 10px;
@@ -44,7 +44,7 @@ h3 {
   color: #504e4f;
 }
 
-.tags-container > p {
+.tags-container>p {
   font-size: 25px;
   font-family: Poppins, sans-serif;
   font-weight: 600;
@@ -94,6 +94,7 @@ details summary::-webkit-details-marker {
 .addCommentDiv {
   height: 30px;
 }
+
 a.addComment {
   width: 90px;
   height: 30px;
@@ -106,6 +107,7 @@ a.addComment {
   align-items: center;
   justify-items: center;
 }
+
 #commentId {
   width: 500px;
   height: 30px;
@@ -113,6 +115,7 @@ a.addComment {
   border-radius: 10px 0px 0px 10px;
   outline: none;
 }
+
 #commentId::placeholder {
   color: #7b7575;
   font-size: 14px;
@@ -125,7 +128,7 @@ a.addComment {
   border-radius: 52px;
 }
 
-#play > img {
+#play>img {
   width: auto;
   height: 52px;
 }
@@ -178,18 +181,23 @@ a.addComment {
     width: 100vw;
     border-radius: 0px;
   }
-  .image-artist > img {
+
+  .image-artist>img {
     display: none;
   }
+
   #containerLatest {
     margin: 0;
   }
+
   .tags-container {
     display: block;
   }
-  .tags-container > p {
+
+  .tags-container>p {
     margin-right: 0px;
   }
+
   #seek-bar {
     margin-left: 0px;
     width: 125%;
@@ -199,6 +207,7 @@ a.addComment {
     width: 125%;
     grid-template-columns: 1fr 1fr 2fr 1fr;
   }
+
   #upload-btn {
     grid-column: 2 / span 3;
   }

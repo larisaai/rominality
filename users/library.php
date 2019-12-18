@@ -18,9 +18,12 @@ session_start();
         <div class="box-wide" id="containerLatest">
             <div class="titles" id="searchAndTitle">
                 <h1>Library.</h1>
-                <?php
-                require_once('../includes/searchBar.php')
-                ?>
+                <div style="display: none;">
+                    <?php
+                    require_once('../includes/searchBar.php')
+                    ?>
+                </div>
+
             </div>
 
 
@@ -63,7 +66,7 @@ session_start();
                     $('#songs-container').html('');
                     if (array.length > 0) {
                         array.forEach(element => {
-                            createAudioElement(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture);
+                            createAudioElement(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture, "../img/like.svg", bought = 1);
                         })
                     } else {
                         $('#songs_container').html('');
@@ -97,7 +100,7 @@ session_start();
                     $('#songs-container').html('');
                     if (array.length > 0) {
                         array.forEach(element => {
-                            createAudioElement(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture);
+                            createAudioElement(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture, "../img/like.svg", bought = 1);
                         })
                     } else {
                         $('#songs-container').html('');
@@ -130,7 +133,7 @@ session_start();
                     $('#songs-container').html('');
                     if (array.length > 0) {
                         array.forEach(element => {
-                            createAudioElementLiked(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture);
+                            createAudioElement(element.song_title, element.artist_name, element.path_id, element.id, element.price, getAttributesForSongId(element.id), element[0].profile_picture, "../img/red_heart.svg");
                         })
                     } else {
                         $('#songs-container').html('');
