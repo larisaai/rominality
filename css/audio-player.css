@@ -175,7 +175,7 @@ a.addComment {
   background-color: #000000;
   color: #ffffff;
 }
-
+#songs-container h2 { color: #ffffff;}
 @media screen and (max-width: 1024px) {
 
   .infoAboutSong {
@@ -185,7 +185,7 @@ a.addComment {
 
 @media screen and (max-width: 768px) {
   .image-artist>img { width:120px;}
-
+  .player-component { max-width: 94vw;}
 }
 
 @media screen and (max-width: 767px) {
@@ -199,18 +199,16 @@ a.addComment {
 
 
 @media screen and (max-width: 550px) {
+  #songs-container { max-width: 85vw}
   .player-component {
-    max-width: 100vw;
-    border-radius: 0px;
+    max-width: calc( 100vw - 40px);;
     grid-template-columns: 100% 0%;
     padding: 16px 30px;
   }
   .tags { max-width: 100%;
     overflow: scroll;
 }
-  #containerLatest {
-    margin: 0;
-  }
+
 
   .tags-container {
     display: block;

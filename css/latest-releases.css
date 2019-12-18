@@ -33,7 +33,7 @@ body {
   color: #b3aeb1;
 }
 
-.titles>h1 {
+.titles>h1, .titles-latest>h1 {
   font-family: "Helvetica", sans-serif;
   font-weight: 800;
   color: #f2edf0;
@@ -73,11 +73,12 @@ body {
   #searchAndTitle {
     display: grid;
     grid-template-columns: 1fr;
-    margin: 0 10px;
   }
 
-  .titles>h1 {
+  .titles>h1, .titles-latest>h1  {
     font-size: 40px;
   }
-  .titles-latest, .search-container { margin:0 20px;}
+  .parent-container{
+    margin-top: 100px;
+  }
 }
