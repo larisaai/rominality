@@ -244,3 +244,18 @@
     display: none;
   }
 }
+
+
+@media screen and (max-width: 450px) {
+  .navigation a {
+    margin-right:20px;
+  }
+.navigation a.logo {
+  width: 145px;
+}
+#logoId > img {
+  width: 145px !important;
+  margin-left: 20px;
+}
+.no-margin { margin:0;}
+}
