@@ -1,5 +1,5 @@
 .row > ul > li > a {
-  color: var(--lightgrey);
+  color: #b8b7b7;
   font-family: Poppins;
   text-decoration: none;
   font-size: 30px;
@@ -12,9 +12,13 @@
 }
 
 @media screen and (max-width: 450px) {
-  .row > ul > li {
-    display: block;
+  #library-tabs > li {
     margin-bottom: 5px;
   }
-  .row > ul > li > a { font-size: 20px;}
+  #library-tabs {
+    margin: auto;
+  }
+  .row > ul > li > a {
+    font-size: 14px;
+  }
 }

@@ -21,19 +21,20 @@ body {
   z-index: -1;
 }
 
-.titles-latest>h1 {
+.titles-latest > h1 {
   font-family: "Helvetica", sans-serif;
   font-weight: 800;
   color: #f2edf0;
 }
 
-.titles-latest>p {
+.titles-latest > p {
   font-family: "Helvetica", sans-serif;
   font-weight: 600;
   color: #b3aeb1;
 }
 
-.titles>h1, .titles-latest>h1 {
+.titles > h1,
+.titles-latest > h1 {
   font-family: "Helvetica", sans-serif;
   font-weight: 800;
   color: #f2edf0;
@@ -75,10 +76,12 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .titles>h1, .titles-latest>h1  {
+  .titles > h1,
+  .titles-latest > h1 {
     font-size: 40px;
   }
-  .parent-container{
+  .parent-container {
     margin-top: 100px;
+    overflow-x: hidden;
   }
 }

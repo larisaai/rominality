@@ -29,7 +29,7 @@ session_start();
 
             <div class="container">
                 <div class="row" style="display: grid; grid-template-columns: 1fr">
-                    <ul>
+                    <ul id="library-tabs">
                         <li><a id="likedSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Liked songs</a></li>
                         <li><a id="boughtSongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">Bought songs</a></li>
                         <li style=" <?= $_SESSION['user']['user_type'] == 1 ? 'display:none;' : 'display:inline-block;' ?> padding: 10px;"><a id="mySongs" userId=<?php echo '"' . $_SESSION['user']['id'] . '"'; ?> href="#">My songs</a></li>
@@ -40,7 +40,7 @@ session_start();
         </div>
     </div>
     <?php
-                                                                                                                                                                    require_once('../includes/footer.php');
+    require_once('../includes/footer.php');
     ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
