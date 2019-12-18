@@ -83,12 +83,14 @@ if ($_POST) {
     </div>
     <?php
 
-    require_once('../includes/footer.php');
+                        require_once('../includes/footer.php');
     ?>
 
     <script>
         document.getElementById('button-choose-file').onchange = function() {
+
             let inputValue = this.value;
+            inputValue = inputValue.replace(/.*[\/\\]/, '');
             document.getElementById('file-name').innerHTML = inputValue
         };
     </script>
