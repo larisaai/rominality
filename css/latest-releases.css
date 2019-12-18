@@ -73,9 +73,11 @@ body {
   #searchAndTitle {
     display: grid;
     grid-template-columns: 1fr;
+    margin: 0 10px;
   }
 
   .titles>h1 {
     font-size: 40px;
   }
+  .titles-latest, .search-container { margin:0 20px;}
 }

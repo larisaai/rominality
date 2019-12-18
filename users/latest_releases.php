@@ -18,7 +18,7 @@ session_start();
         <div class="imgParent"></div>
         <div class="box-wide" id="containerLatest">
             <div class="titles" id="searchAndTitle">
-                <div class="titles-latest">
+                <div class="titles-latest titles">
                     <h1>Latest releases.</h1>
                     <p>In order to listen to a full song you have to buy it or to own it</p>
                 </div>

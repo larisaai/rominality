@@ -16,4 +16,5 @@
     display: block;
     margin-bottom: 5px;
   }
+  .row > ul > li > a { font-size: 20px;}
 }
