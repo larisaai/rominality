@@ -176,14 +176,32 @@ a.addComment {
   color: #ffffff;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 1024px) {
+
+  .infoAboutSong {
+    grid-template-columns: 2fr 2fr 4fr 1fr 2fr
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .image-artist>img { width:120px;}
+
+}
+
+@media screen and (max-width: 767px) {
+ 
+  .image-artist>img {
+    display: none;
+  }
+
+
+}
+
+
+@media screen and (max-width: 550px) {
   .player-component {
     width: 100vw;
     border-radius: 0px;
-  }
-
-  .image-artist>img {
-    display: none;
   }
 
   #containerLatest {
