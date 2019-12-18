@@ -185,7 +185,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.85);
     z-index: 1;
     height: 100vh;
     overflow: hidden;
