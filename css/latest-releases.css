@@ -59,7 +59,7 @@ body {
   margin: auto;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
   div#buttonLatest {
     visibility: hidden;
     display: none;
